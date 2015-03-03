@@ -1,13 +1,10 @@
 
-
 REST 
 
 -Consultar productos 
 
 // Consultar los productos ofrecidos en una sucursal
  https://eatfoodfaster.herokuapp.com/service/{sucursal}/productos/
-
-
 
  -Consultar franquicia
 
@@ -36,11 +33,11 @@ https://eatfoodfaster.herokuapp.com/service/guardarcarrito/{cliente}
 https://eatfoodfaster.herokuapp.com/service/pagar/{cliente}
 
 
--Recibir notifiaciones pedidos
+-Recibir notificaciones pedidos
 //Obtener los pedidos realizados a través de EFF
 https://eatfoodfaster.herokuapp.com/service/pedidos/{cajero}
 
--Notidicar cliente
+-Notificar cliente
 //Notificar al cliente que su pedido está listo
 https://eatfoodfaster.herokuapp.com/service/notificar/{cliente}/{pedidoId}
 
