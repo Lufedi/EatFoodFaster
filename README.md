@@ -1,2 +1,0 @@
-# EatFoodFaster
-Proyecto COSW 
