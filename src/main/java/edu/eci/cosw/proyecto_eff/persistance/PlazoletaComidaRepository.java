@@ -13,6 +13,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author FabianAndres
  */
-public class PlazoletaComidaRepository extends CrudRepository<PlazoletaComida,PlazoletaComidaId>{
+public interface PlazoletaComidaRepository extends CrudRepository<PlazoletaComida,PlazoletaComidaId>{
     
 }
