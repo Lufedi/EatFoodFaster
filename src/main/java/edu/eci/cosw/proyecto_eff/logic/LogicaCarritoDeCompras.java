@@ -18,6 +18,8 @@ public class LogicaCarritoDeCompras {
      * @param p: Producto a agregar
      * @param cantidad: cantidad de productos que quiere adquirir el cliente
      */
+    
+    //hola mundo 
     public void agregarProductoACarrito(Producto p, int cantidad){
         
     }
