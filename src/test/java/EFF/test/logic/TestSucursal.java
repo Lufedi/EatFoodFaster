@@ -5,6 +5,7 @@
  */
 package EFF.test.logic;
 
+import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
@@ -12,6 +13,7 @@ import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +32,9 @@ public class TestSucursal {
     
     @Autowired
     LogicaSucursal ls;
+    
+    @Autowired
+    LogicaPedido lp;
     
     //@Autowired
     
@@ -50,9 +55,9 @@ public class TestSucursal {
         Sucursal s= new Sucursal(f, pc, "12345");
         ls.recibirNotificacion(p,s);
         
-        
-        
-        assertEquals(true,true);
+        List<Pedido> list = lp.consultarPedidosCliente(c);
+        Pedido p1 = list.get(0);
+        assertEquals(p1.isEnviadoAsucursal(),true);
     }
     
 }

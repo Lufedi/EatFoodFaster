@@ -6,7 +6,10 @@
 package edu.eci.cosw.proyecto_eff.persistance;
 
 import edu.eci.cosw.proyecto_eff.model.Pedido;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -14,4 +17,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PedidoRepository extends CrudRepository<Pedido,Integer>{
     
+    @Query("from Pedido p where p.cliente.correoCliente like :ln")
+    public List<Pedido> search(@Param("ln") String searchTerm);
 }
