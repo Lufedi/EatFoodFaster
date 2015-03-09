@@ -8,11 +8,13 @@ package edu.eci.cosw.proyecto_eff.logic;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author fercho
  */
+@Service
 public class LogicaFranquicia {
     
     /**

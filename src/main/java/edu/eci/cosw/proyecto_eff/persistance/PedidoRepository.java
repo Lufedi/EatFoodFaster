@@ -17,6 +17,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PedidoRepository extends CrudRepository<Pedido,Integer>{
     
-    @Query("from Pedido p where p.cliente.correoCliente like :ln")
+    /*@Query("from Pedido p where p.clientes_correo_cliente like :ln")
     public List<Pedido> search(@Param("ln") String searchTerm);
+    */
 }

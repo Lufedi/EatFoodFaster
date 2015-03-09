@@ -6,11 +6,13 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Pedido;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author fercho
  */
+@Service
 public class LogicaPago {
     
     /**

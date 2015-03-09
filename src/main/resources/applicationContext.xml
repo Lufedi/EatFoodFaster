@@ -21,7 +21,7 @@
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://desarrollo.is.escuelaing.edu.co/bdprueba"/>
+        <property name="url" value="jdbc:mysql://desarrollo.is.escuelaing.edu.co/coswg1"/>
         <property name="username" value="coswg1"/>
         <property name="password" value="coswg10215"/>
     </bean>

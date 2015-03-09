@@ -10,18 +10,20 @@ import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author FabianAndres
  */
+@Service
 public class LogicaPedido {
     
     @Autowired
     PedidoRepository pr;
 
-    public List<Pedido> consultarPedidosCliente(Cliente c) {
+    /*public List<Pedido> consultarPedidosCliente(Cliente c) {
        return pr.search(c.getCorreoCliente());
-    }
+    }*/
     
 }
