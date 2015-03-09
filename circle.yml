@@ -3,7 +3,7 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: eatfoodfaster
+      appname: EatFoodFaster
 test:
   post:
     - mvn site
