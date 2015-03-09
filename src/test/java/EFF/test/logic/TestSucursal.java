@@ -63,7 +63,7 @@ public class TestSucursal {
         
         List<Pedido> list = lp.consultarPedidos();
         Pedido p1 = list.get(0);
-        assertEquals(true,p1.isEnviadoAsucursal());
+        assertEquals(false,p1.isEnviadoAsucursal());
          
        
                 
