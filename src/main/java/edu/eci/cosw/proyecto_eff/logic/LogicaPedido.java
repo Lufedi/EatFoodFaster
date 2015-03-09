@@ -22,8 +22,9 @@ public class LogicaPedido {
     @Autowired
     PedidoRepository pr;
 
-    /*public List<Pedido> consultarPedidosCliente(Cliente c) {
-       return pr.search(c.getCorreoCliente());
-    }*/
+    public List<Pedido> consultarPedidos() {
+       //return pr.search(c.getCorreoCliente());
+        return (List<Pedido>)pr.findAll();
+    }
     
 }

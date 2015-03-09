@@ -14,6 +14,7 @@ import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
+import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -40,28 +41,31 @@ public class TestSucursal {
     @Autowired
     ClienteRepository cr;
     
+    @Autowired
+    PedidoRepository pr;
     
     @Test
     public void testNotificarCliente(){
         assertEquals(true,true);
     }
     
-    //@Test
+    @Test
     public void testRecibirNotificacion(){
         
         Cliente c= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
-        /*Pedido p= new Pedido(c,false, false, "Pedido sin todavia enviarse a la sucursal");
-        
+        cr.save(c);
+        Pedido p= new Pedido(c,false, false, "Pedido sin todavia enviarse a la sucursal");
+        pr.save(p);
         Franquicia f = new Franquicia("El Corral");
         PlazoletaComida pc= new PlazoletaComida(new PlazoletaComidaId("CC Santafe", "Bogota"));
         Sucursal s= new Sucursal(f, pc, "12345");
         ls.recibirNotificacion(p,s);
         
-        List<Pedido> list = lp.consultarPedidosCliente(c);
+        List<Pedido> list = lp.consultarPedidos();
         Pedido p1 = list.get(0);
-        assertEquals(p1.isEnviadoAsucursal(),true);
-         */
-        cr.save(c);
+        assertEquals(true,p1.isEnviadoAsucursal());
+         
+       
                 
     }
     

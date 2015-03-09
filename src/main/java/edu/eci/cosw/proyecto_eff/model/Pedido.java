@@ -63,7 +63,7 @@ public class Pedido  implements java.io.Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name="Clientes_correo_cliente", nullable=false)
-    @Fetch (FetchMode.JOIN)
+    //@Fetch (FetchMode.JOIN)
     public Cliente getClientes() {
         return this.clientes;
     }
