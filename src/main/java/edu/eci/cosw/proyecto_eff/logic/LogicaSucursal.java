@@ -28,7 +28,7 @@ public class LogicaSucursal {
      * 
      * @param p : pedido realizado por el cliente
      */
-    public void recibirNotificacion(Pedido p){
+    public void recibirNotificacion(Pedido p,Sucursal s){
         
     }
     

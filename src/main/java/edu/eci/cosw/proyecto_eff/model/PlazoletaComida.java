@@ -36,6 +36,10 @@ public class PlazoletaComida  implements java.io.Serializable {
 
     public PlazoletaComida() {
     }
+    
+    public PlazoletaComida(PlazoletaComidaId id) {
+        this.id = id;
+    }
 
 	
     public PlazoletaComida(PlazoletaComidaId id, float gradosLon, float minutosLon, float segundosLon, char orientacionLon, float gradosLat, float minutosLat, float segundosLat, char orientacionLat, float radio) {

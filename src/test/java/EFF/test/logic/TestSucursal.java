@@ -7,7 +7,11 @@ package EFF.test.logic;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +31,9 @@ public class TestSucursal {
     @Autowired
     LogicaSucursal ls;
     
+    //@Autowired
+    
+    
     @Test
     public void testNotificarCliente(){
         assertEquals(true,true);
@@ -35,8 +42,15 @@ public class TestSucursal {
     @Test
     public void testRecibirNotificacion(){
         
-        Pedido p= new Pedido(new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582"),
-                false, false, "Pedido sin todavia enviarse a la sucursal");
+        Cliente c= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
+        Pedido p= new Pedido(c,false, false, "Pedido sin todavia enviarse a la sucursal");
+        
+        Franquicia f = new Franquicia("El Corral");
+        PlazoletaComida pc= new PlazoletaComida(new PlazoletaComidaId("CC Santafe", "Bogota"));
+        Sucursal s= new Sucursal(f, pc, "12345");
+        ls.recibirNotificacion(p,s);
+        
+        
         
         assertEquals(true,true);
     }
