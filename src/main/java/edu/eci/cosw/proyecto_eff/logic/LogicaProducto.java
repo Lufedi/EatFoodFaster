@@ -40,11 +40,22 @@ public class LogicaProducto {
      
     /**
      * @Obj: Consultar productos por el id
-     * @param s: id del producto a buscar
+     * @param id: id del producto a buscar
      * @return Pedido que se identifica con el id
      * @Throws ResourceNotFoundException
      */
     public Pedido consultarProductoPorId(int id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+     /**
+     * @Obj: Consultar productos por el nombre en un centro comercial
+     * @param centroComercial :  id centro comercia l , nombre :  cadena del producto a buscar
+     * @return Pedido que se identifica con el id
+     * @Throws ResourceNotFoundException
+     */
+    public Pedido consultarProductosPorNombre(int plazoletaComidas, String nombre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }

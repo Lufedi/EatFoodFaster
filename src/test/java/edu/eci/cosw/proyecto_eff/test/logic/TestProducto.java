@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.test.logic;
 
+import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
@@ -18,6 +19,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
@@ -33,6 +35,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 public class TestProducto {
+    
+    @Autowired
+    LogicaProducto  productoCtrl;
     
     @Autowired
     ProductoRepository pr;
@@ -161,20 +166,34 @@ public class TestProducto {
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "Pizza mexicana en combo",0);
         pr.save(producto);
+        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+                categoria, sucursal, 7800, true, "Sandwich italiano",0);
+        pr.save(producto);
     }
     
     @Test
     public void testConsultarProductosPorFranquicia(){
+        
         assertEquals(true,true);
     }
     
     @Test
     public void testConsultarProductosPorNombre(){
-        assertEquals(true,true);
+        List<Producto> resultSet =  productoCtrl.consultarProductosPorNombre("Sandwich");
+        assertEquals("Cantidad de personas con el apellido reportadas" , 4 ,resultSet.size() );
+    }
+    
+    @Test
+    public void testConsularProductosPorNombreEnPlazoletaComidas(){
+        List<Producto> resultSet =  productoCtrl.consultarProductosPorNombre("Sandwich");
+        assertEquals("Cantidad de personas con el apellido reportadas" , 4 ,resultSet.size() );
+        
     }
     
     @Test
     public void consultarProductoPorSucursal(){
         
+        
+        assertEquals(true,true);
     }
 }
