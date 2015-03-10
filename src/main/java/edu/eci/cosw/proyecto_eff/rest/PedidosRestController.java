@@ -25,11 +25,21 @@ public class PedidosRestController {
     @Autowired
     LogicaPedido lp;
     
-    @RequestMapping(value="/{idSucursal}",method = RequestMethod.GET)        
+    @RequestMapping(value="/sucursal/{idSucursal}",method = RequestMethod.GET)        
     public List<Pedido> consultarPedidosDeSucursal(@PathVariable int idSucursal) throws ResourceNotFoundException  {       
         return null;
         
         
+    }
+    
+    @RequestMapping(value="/",method = RequestMethod.GET)        
+    public List<Pedido> consultarPedidos() throws ResourceNotFoundException  {       
+        return lp.consultarPedidos();   
+    }
+    
+    @RequestMapping(value="/{idPedido}",method = RequestMethod.GET)        
+    public Pedido consultarPedidosPorId(@PathVariable int idPedido) throws ResourceNotFoundException  {       
+        return lp.consultarPedidoPorId(idPedido);  
     }
     
 }

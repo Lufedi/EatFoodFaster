@@ -27,4 +27,14 @@ public class LogicaPedido {
         return (List<Pedido>)pr.findAll();
     }
     
+    public Pedido consultarPedidoPorId(int id) {
+       //return pr.search(c.getCorreoCliente());
+        return pr.findOne(id);
+    }
+    
+    public List<Pedido> consultarPedidosPorSucursal() {
+       //return pr.search(c.getCorreoCliente());
+        return null;
+    }
+    
 }
