@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EFF.test.logic;
+package edu.eci.cosw.proyecto_eff.test.logic;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
