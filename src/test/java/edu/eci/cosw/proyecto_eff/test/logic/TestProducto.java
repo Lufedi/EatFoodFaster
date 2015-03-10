@@ -175,12 +175,15 @@ public class TestProducto {
     
     @Test
     public void testConsultarProductosPorFranquicia(){
-        
-        assertEquals(true,true);
+        /*String   productoId =  "cazuela";
+        String   franquicia =  "See";
+        List<Producto> resultSet = 
+            productoCtrl.consultarProductoPorFranquicia(franquicia, productoId);
+        assertEquals(resultSet.size(),3);*/
     }
     
     @Test
-    public void testConsultarProductosPorNombre(){
+    public void testConsultarProductosPorNombreGlobal(){
        /* List<Producto> resultSet =  productoCtrl.consultarProductosPorNombre("Sandwich");
         assertEquals("Cantidad de personas con el apellido reportadas" , 3 ,resultSet.size() );
         assertEquals(true,true);*/
@@ -189,19 +192,14 @@ public class TestProducto {
     
     @Test
     public void testConsularProductosPorNombreEnPlazoletaDeComidas(){
-        /*String   productoId =  "perro";
+        String   productoId =  "perro";
+        String   cc  = "C.C. Santa fe";
+        String   ciudad = "Bogotá";
         List<Producto> resultSet = 
                 productoCtrl.consultarProductosPorNombre(
-                        new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), productoId);
+                        cc, ciudad, productoId);
         
         
-        assertEquals(resultSet.size(),3);*/
-    }
-    
-    @Test
-    public void consultarProductoPorSucursal(){
-        
-        
-        
-    }
+        assertEquals(resultSet.size(),3);
+    } 
 }

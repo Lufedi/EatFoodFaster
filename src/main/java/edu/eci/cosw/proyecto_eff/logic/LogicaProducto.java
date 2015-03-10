@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.logic;
 
+import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Producto;
@@ -19,14 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogicaProducto {
     
-    /**
-     * @Obj: consultar los productos por suscursal
-     * @param s: Sucursal de una franquicia
-     * @return : listado de productos de una sucursal
-     */
-    public List<Producto> consultarProductosPorSucursal(int sucursal){
-        return null;
-    }
+    
     
     /**
      * @Obj: consultar los productos por el nombre
@@ -45,28 +39,26 @@ public class LogicaProducto {
      * @return Pedido que se identifica con el id
      * @Throws ResourceNotFoundException
      */
-    public Pedido consultarProductoPorId(int id) {
+    public Pedido getProducto(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
 
      /**
-     * @Obj: Consultar productos por el nombre en un centro comercial
+     * @Obj: Consultar productos por el nombre en una plazoleta de comidas 
      * @param centroComercial :  id centro comercia l , nombre :  cadena del producto a buscar
      * @return Pedido que se identifica con el id
      * @Throws ResourceNotFoundException
      */
-    public List<Producto> consultarProductosPorNombre(PlazoletaComidaId pcid, String nombre) {
+    public List<Producto> consultarProductosPorNombre(String centrocomercial ,  String ciudad, String nombre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
     
-     
-    public List<Producto> consultarProductosPorNombre(
-            String centrocomercial  , 
-            String ciudad ,
-            int idSucursal , 
-            String nombre ){
+    public List<Producto> consultarProductoPorFranquicia( String franquicia  ,  String nombre){
+        
         return null;
     }
+     
+ 
 }

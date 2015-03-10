@@ -27,11 +27,11 @@ public class ProductosRestController {
     @Autowired
     LogicaProducto lp;
     
-    @RequestMapping(value="/{sucursal}",method = RequestMethod.GET)        
-    public List<Producto> consultarPedidosPorSucursal(@PathVariable int sucursal) throws ResourceNotFoundException  {       
-        return lp.consultarProductosPorSucursal(sucursal);
-        
-        
+   
+    
+    @RequestMapping(value="/{franquicia}/{producto}",method = RequestMethod.GET)        
+    public List<Producto> consultarPedidosPorSucursal(@PathVariable String franquicia ,  @PathVariable String producto) throws ResourceNotFoundException  {       
+        return lp.consultarProductoPorFranquicia(franquicia, producto);
     }
     
     @RequestMapping(value="/{nombre}",method = RequestMethod.GET)        
@@ -41,16 +41,15 @@ public class ProductosRestController {
     
     @RequestMapping(value="/{id}",method = RequestMethod.GET)        
     public Pedido consultarPedidosPorId(@PathVariable int id) throws ResourceNotFoundException  {       
-        return lp.consultarProductoPorId(id);
+        return lp.getProducto(id);
     }
     
     @RequestMapping(value="/{centrocomercial}/{ciudad}/{sucursal}/{nombre}",method = RequestMethod.GET)        
     public List<Producto> consultarPedidosPorNombreEnPlazoletaComidas(
             @PathVariable String  centrocomercial, 
             @PathVariable String ciudad ,
-            @PathVariable int sucursal,
             @PathVariable String  nombre) throws ResourceNotFoundException  {       
-       return lp.consultarProductosPorNombre(centrocomercial  , ciudad , sucursal ,   nombre);
+       return lp.consultarProductosPorNombre(centrocomercial  , ciudad  ,   nombre);
     }
     
     
