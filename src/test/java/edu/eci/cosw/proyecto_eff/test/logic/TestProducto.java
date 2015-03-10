@@ -189,11 +189,13 @@ public class TestProducto {
     
     @Test
     public void testConsularProductosPorNombreEnPlazoletaDeComidas(){
-
-      //  List<Productos> resultSet =  productoCtrl.consultarProductosPorNombre(plazoletaComidas, null)
-
+        String   productoId =  "perro";
+        List<Producto> resultSet = 
+                productoCtrl.consultarProductosPorNombre(
+                        new PlazoletaComidaId("C.C. Santa fe", "Bogotá"), productoId);
         
-        assertEquals(true,true);
+        
+        assertEquals(resultSet.size(),3);
     }
     
     @Test

@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Pedido;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
@@ -55,7 +56,7 @@ public class LogicaProducto {
      * @return Pedido que se identifica con el id
      * @Throws ResourceNotFoundException
      */
-    public List<Producto> consultarProductosPorNombre(int plazoletaComidas, String nombre) {
+    public List<Producto> consultarProductosPorNombre(PlazoletaComidaId pcid, String nombre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
