@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.logic;
 
+import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
@@ -22,7 +23,7 @@ public class LogicaProducto {
      * @param s: Sucursal de una franquicia
      * @return : listado de productos de una sucursal
      */
-    public List<Producto> consultarProductosPorSucursal(Sucursal s){
+    public List<Producto> consultarProductosPorSucursal(int sucursal){
         return null;
     }
     
@@ -32,6 +33,19 @@ public class LogicaProducto {
      * @return listado de productos de diferentes franquicias cuyo nombre coincide con la palabra usada 
      */
     public List<Producto> consultarProductosPorNombre(String s){
+        return null;
+    }
+    
+    
+     
+    /**
+     * @Obj: Consultar productos por el id
+     * @param s: id del producto a buscar
+     * @return Pedido que se identifica con el id
+     * @Throws ResourceNotFoundException
+     */
+    public Pedido consultarProductoPorId(int id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
     
