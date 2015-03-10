@@ -55,9 +55,17 @@ public class LogicaProducto {
      * @return Pedido que se identifica con el id
      * @Throws ResourceNotFoundException
      */
-    public Pedido consultarProductosPorNombre(int plazoletaComidas, String nombre) {
+    public List<Producto> consultarProductosPorNombre(int plazoletaComidas, String nombre) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
     
+     
+    public List<Producto> consultarProductosPorNombre(
+            String centrocomercial  , 
+            String ciudad ,
+            int idSucursal , 
+            String nombre ){
+        return null;
+    }
 }

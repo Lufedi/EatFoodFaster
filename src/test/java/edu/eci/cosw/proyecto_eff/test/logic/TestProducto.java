@@ -58,6 +58,8 @@ public class TestProducto {
     CategoriaRepository cr;
     
     
+    
+    
     @Before
     public void datos(){
         
@@ -186,7 +188,11 @@ public class TestProducto {
     }
     
     @Test
-    public void testConsularProductosPorNombreEnCentroComercial(){
+    public void testConsularProductosPorNombreEnPlazoletaDeComidas(){
+
+      //  List<Productos> resultSet =  productoCtrl.consultarProductosPorNombre(plazoletaComidas, null)
+
+        
         assertEquals(true,true);
     }
     
