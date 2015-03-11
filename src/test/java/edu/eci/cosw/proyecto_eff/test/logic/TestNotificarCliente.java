@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.test.logic;
 
+import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
@@ -62,6 +63,9 @@ public class TestNotificarCliente {
     @Autowired
     CategoriaRepository cr;
     
+    @Autowired
+    LogicaPedido lp;
+    
     @Before
     public void preparar(){
           //realizar operación de persistencia
@@ -112,5 +116,6 @@ public class TestNotificarCliente {
     @Test
     public void testNotificarClientePedidoListo(){
         
+        //lp.notificarPedidoListo(pedr.findOne(1).getIdPedidos());
     }
 }

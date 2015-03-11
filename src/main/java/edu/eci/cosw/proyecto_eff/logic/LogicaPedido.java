@@ -37,9 +37,10 @@ public class LogicaPedido {
         //return pr.searchBySucursal(idSucursal);
         return null;
     }
-    
-    public void notificarClientePedidoListo(int idPedido){
-        
+
+
+    public void notificarPedidoListo(int idPedido) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

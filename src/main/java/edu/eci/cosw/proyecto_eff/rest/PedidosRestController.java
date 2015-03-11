@@ -9,6 +9,8 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +42,12 @@ public class PedidosRestController {
     @RequestMapping(value="/{idPedido}",method = RequestMethod.GET)        
     public Pedido consultarPedidosPorId(@PathVariable int idPedido) throws ResourceNotFoundException  {       
         return lp.consultarPedidoPorId(idPedido);  
+    }
+    
+    @RequestMapping(value="/listo/{idPedido}",method = RequestMethod.GET)        
+    public ResponseEntity<?> notificarPedidoListo(@PathVariable int idPedido) throws ResourceNotFoundException  {       
+         lp.notificarPedidoListo(idPedido);  
+          return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
     
 }
