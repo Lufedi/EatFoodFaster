@@ -34,7 +34,8 @@ public class LogicaPedido {
     
     public List<Pedido> consultarPedidosPorSucursal(int idSucursal) {
        //return pr.search(c.getCorreoCliente());
-        return pr.searchBySucursal(idSucursal);
+        //return pr.searchBySucursal(idSucursal);
+        return null;
     }
     
 }
