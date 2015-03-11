@@ -38,4 +38,8 @@ public class LogicaPedido {
         return null;
     }
     
+    public void notificarClientePedidoListo(int idPedido){
+        
+    }
+    
 }
