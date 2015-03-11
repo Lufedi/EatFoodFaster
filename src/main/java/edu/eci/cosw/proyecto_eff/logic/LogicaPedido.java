@@ -32,9 +32,9 @@ public class LogicaPedido {
         return pr.findOne(id);
     }
     
-    public List<Pedido> consultarPedidosPorSucursal() {
+    public List<Pedido> consultarPedidosPorSucursal(int idSucursal) {
        //return pr.search(c.getCorreoCliente());
-        return null;
+        return pr.searchBySucursal(idSucursal);
     }
     
 }

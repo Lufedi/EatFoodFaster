@@ -17,7 +17,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface PedidoRepository extends CrudRepository<Pedido,Integer>{
     
-    //@Query("from Pedido p where p.cliente like :ln")
-    //public List<Pedido> search(@Param("ln") String searchTerm);
+    @Query("from Pedido p INNER JOIN Pedidos_Productos pe INNER JOIN Productos pr where pr.sucursales_idSucursales=:ln ")
+    public List<Pedido> searchBySucursal(@Param("ln") int searchTerm);
     
 }

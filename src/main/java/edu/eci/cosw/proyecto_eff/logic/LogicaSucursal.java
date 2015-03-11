@@ -31,7 +31,7 @@ public class LogicaSucursal {
      * @param p : pedido realizado por el cliente
      */
     public void recibirNotificacion(Pedido p,Sucursal s){
-        
+        //Debo retornal algo
     }
     
 }

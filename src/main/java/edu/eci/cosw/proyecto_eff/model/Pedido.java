@@ -103,7 +103,7 @@ public class Pedido  implements java.io.Serializable {
     }
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
-    //@Fetch (FetchMode.JOIN)
+    @Fetch (FetchMode.JOIN)
     public Set<PedidoProducto> getPedidosProductoses() {
         return this.pedidosProductoses;
     }
