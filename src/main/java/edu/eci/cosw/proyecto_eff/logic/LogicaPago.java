@@ -10,6 +10,7 @@ import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,12 +28,17 @@ public class LogicaPago {
     @Autowired
     PedidoRepository pr;
     
+    @Autowired
+    ClienteRepository cr;
+    
     /**
      * @Obj : guardar un pedido de un usuario
      * @param p: Pedido que incluye los productos del carrito de compras  
      */
-    public void registrarPago(ArrayList<Producto> productos, Cliente c){
-        /*Hashtable<String, Pedido> pedidos = new Hashtable<>();
+    public void registrarPago(ArrayList<Producto> productos, String cliente){
+        /*
+        Cliente c = cr.findOne(cliente);
+        Hashtable<String, Pedido> pedidos = new Hashtable<>();
         for (int i = 0; i < productos.size(); i++) {
             Sucursal s = productos.get(i).getSucursales();
             Pedido p = null;
