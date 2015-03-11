@@ -22,11 +22,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 public class TestCliente {
-    @Autowired
+    /*@Autowired
     LogicaCliente lc;
     
     @Autowired
-    ClienteRepository cr;
+    ClienteRepository cr;*/
     
     @Test
     public void testAgregarCliente(){
