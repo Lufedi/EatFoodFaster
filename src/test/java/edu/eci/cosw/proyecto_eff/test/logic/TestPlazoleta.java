@@ -51,7 +51,7 @@ public class TestPlazoleta {
         Sucursal sucursal;
                 
         //C.C Santa fe 
-        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá") , 1, 1, 1, 'W', 1, 1, 1, 'N' , 5);
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Andino", "Bogotá") , 1, 1, 1, 'W', 1, 1, 1, 'N' , 5);
         pcr.save(plazoletaComida);
         
         franquicia = new  Franquicia("Mc Donalds", new Float(1.3));
