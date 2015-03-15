@@ -22,31 +22,31 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 public class TestCliente {
-    /*@Autowired
+    @Autowired
     LogicaCliente lc;
     
     @Autowired
-    ClienteRepository cr;*/
+    ClienteRepository cr;
     
     @Test
     public void testAgregarCliente(){
-        /*Cliente cl;
+        Cliente cl;
         Cliente c= new Cliente("oliva@hot.com", "sora", "Jenni", "Barajas", "310598");
         cr.save(c);
         lc.registrarCliente(c);
         
         cl=lc.consultarCliente("oliva@hot.com");
-        assertEquals(true,cl.getNombre()+cl.getApellido());*/
+        assertEquals(c.getNombre()+c.getApellido(),cl.getNombre()+cl.getApellido());
     }
     
     @Test
     public void testModificarCliente(){
         /*Cliente cl;
-        Cliente c= new Cliente("oliva@hot.com", "1234", "Jenni", "Barajas", "310598");
+        Cliente c= new Cliente("oliva@gmail.com", "1234", "Jenni", "Barajas", "310598");
         cr.save(c);
+        c.setContrasena("4321");
         lc.modificarCliente(c);
-        
-        cl=lc.consultarCliente("oliva@hot.com");
-        assertEquals(true,cl.getContrasena());*/
+        cl=lc.consultarCliente("oliva@gmail.com");
+        assertEquals(c.getContrasena(),cl.getContrasena());*/
     }
 }
