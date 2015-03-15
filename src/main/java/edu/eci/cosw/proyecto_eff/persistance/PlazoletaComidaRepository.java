@@ -24,6 +24,6 @@ public interface PlazoletaComidaRepository extends CrudRepository<PlazoletaComid
      * @param plazoletaid
      * @return
      */
-    /*@Query("from Sucursal s inner join s.plazoletaComidas as pc where pc.idPlazoletaComidas like :id")
-    public List<Sucursal> search(@Param("id") String plazoletaid);*/
+    @Query("Select s from Sucursal s inner join s.plazoletaComidas as pc where pc.id.idPlazoletaComidas like :id")
+    public List<Sucursal> search(@Param("id") String plazoletaid);
 }
