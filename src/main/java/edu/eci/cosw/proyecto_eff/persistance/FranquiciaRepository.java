@@ -6,12 +6,22 @@
 package edu.eci.cosw.proyecto_eff.persistance;
 
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author FabianAndres
  */
 public interface FranquiciaRepository extends CrudRepository<Franquicia,String>{
-    
+    //las sucursales de una plazoleta de comida 
+    /**
+     * @param plazoletaid
+     * @return
+     */
+    @Query("from Sucursal s inner join s.franquicias as f where pc.idFranquicia like :id")
+    public List<Sucursal> search(@Param("id") String franquiciaid);
 }

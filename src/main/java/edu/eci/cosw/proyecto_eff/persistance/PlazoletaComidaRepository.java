@@ -7,7 +7,11 @@ package edu.eci.cosw.proyecto_eff.persistance;
 
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -15,4 +19,11 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PlazoletaComidaRepository extends CrudRepository<PlazoletaComida,PlazoletaComidaId>{
     
+    //las sucursales de una plazoleta de comida 
+    /**
+     * @param plazoletaid
+     * @return
+     */
+    @Query("from Sucursal s inner join s.plazoletaComidas as pc where pc.idPlazoletaComidas like :id")
+    public List<Sucursal> search(@Param("id") String plazoletaid);
 }
