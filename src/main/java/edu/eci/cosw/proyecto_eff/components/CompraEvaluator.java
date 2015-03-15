@@ -11,6 +11,6 @@ package edu.eci.cosw.proyecto_eff.components;
  */
 public interface CompraEvaluator {
    
-    public boolean ejecutarCompra(String cuenta, int mes, int anio, int codigoSeguridad, int total);
+    public boolean ejecutarCompra(String cuenta, int mes, int anio, int codigoSeguridad, float total);
     
 }

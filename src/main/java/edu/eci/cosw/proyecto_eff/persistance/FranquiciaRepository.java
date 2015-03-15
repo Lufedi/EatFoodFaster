@@ -19,9 +19,9 @@ import org.springframework.data.repository.query.Param;
 public interface FranquiciaRepository extends CrudRepository<Franquicia,String>{
     //las sucursales de una plazoleta de comida 
     /**
-     * @param plazoletaid
+     * @param franquiciaid
      * @return
      */
-    /*@Query("from Sucursal s inner join s.franquicias as f where pc.idFranquicia like :id")
-    public List<Sucursal> search(@Param("id") String franquiciaid);*/
+    @Query("from Sucursal s inner join s.franquicias as f where f.idFranquicia like :id")
+    public List<Sucursal> search(@Param("id") String franquiciaid);
 }

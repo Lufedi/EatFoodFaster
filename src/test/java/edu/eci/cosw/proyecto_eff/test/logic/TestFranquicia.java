@@ -45,7 +45,7 @@ public class TestFranquicia {
     
     @Test
     public void testBuscarSucursalesPorFranquicia(){
-       /* PlazoletaComida plazoletaComida;
+        PlazoletaComida plazoletaComida;
         Franquicia franquicia;
         Sucursal sucursal;
         
@@ -64,16 +64,14 @@ public class TestFranquicia {
         sucursal = new Sucursal(franquicia, plazoletaComida, "2222");
         sr.save(sucursal);
 
-        
-        
-         //C.C Unicentro
+        //C.C Unicentro
         plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Unicentro", "Bogotá"), 3, 3,3, 'S', 3, 3, 3, 'W' , 9);
         pcr.save(plazoletaComida);
         sucursal = new Sucursal(franquicia, plazoletaComida, "4444");
         sr.save(sucursal);
  
         List<Sucursal> ls= lf.buscarSucursalesPorFranquicia(franquicia);
-        assertEquals(ls.size(),3);*/
+        assertEquals(ls.size(),3);
     }
     
 }

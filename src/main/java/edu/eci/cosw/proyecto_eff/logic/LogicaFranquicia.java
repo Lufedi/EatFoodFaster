@@ -7,7 +7,9 @@ package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import edu.eci.cosw.proyecto_eff.persistance.FranquiciaRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,12 +19,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class LogicaFranquicia {
     
+    @Autowired
+    private FranquiciaRepository fr;
     /**
      * @Obj: Listar las sucursales disponibles de una franquicia
      * @param f: franquicia a la que se le buscará sus sucursales
      * @return : lista de sucursales que pertenecen a la franquicia
      */
     public List<Sucursal> buscarSucursalesPorFranquicia(Franquicia f){
-        return null;
+        return fr.search(f.getIdFranquicia());
     }
 }

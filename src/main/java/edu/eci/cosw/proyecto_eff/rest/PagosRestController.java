@@ -31,7 +31,7 @@ public class PagosRestController {
     LogicaPago lp;
     
     @RequestMapping(value="/{correo}",method = RequestMethod.POST)   
-    public ResponseEntity<?> persist(@PathVariable String Correo,@RequestBody InformacionCompra ic) {
+    public ResponseEntity<?> persist(@PathVariable String Correo,@RequestBody InformacionCompra ic) throws OperationFailedException {
         lp.registrarPago(ic, Correo);
         return new ResponseEntity<>(HttpStatus.CREATED);
      }

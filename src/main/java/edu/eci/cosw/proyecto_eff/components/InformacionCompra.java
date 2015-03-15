@@ -6,7 +6,7 @@
 package edu.eci.cosw.proyecto_eff.components;
 
 import edu.eci.cosw.proyecto_eff.model.Producto;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -14,11 +14,12 @@ import java.util.ArrayList;
  */
 public class InformacionCompra {
     
+    private String metodoDepago;
     private String cuenta;
     private int mes;
     private int anio;
     private int codigoSeguridad;
-    private ArrayList<Producto> productos;
+    private Producto[] productos;
     
     /**
      * @return the cuenta
@@ -79,19 +80,29 @@ public class InformacionCompra {
     /**
      * @return the productos
      */
-    public ArrayList<Producto> getProductos() {
+    public Producto[] getProductos() {
         return productos;
     }
 
     /**
      * @param productos the productos to set
      */
-    public void setProductos(ArrayList<Producto> productos) {
+    public void setProductos(Producto[] productos) {
         this.productos = productos;
     }
 
-    
-    
-    
-    
+    /**
+     * @return the metodoDepago
+     */
+    public String getMetodoDepago() {
+        return metodoDepago;
+    }
+
+    /**
+     * @param metodoDepago the metodoDepago to set
+     */
+    public void setMetodoDepago(String metodoDepago) {
+        this.metodoDepago = metodoDepago;
+    }
+
 }

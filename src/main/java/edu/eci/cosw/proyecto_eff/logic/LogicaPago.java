@@ -8,15 +8,21 @@ package edu.eci.cosw.proyecto_eff.logic;
 import edu.eci.cosw.proyecto_eff.components.CompraEvaluator;
 import edu.eci.cosw.proyecto_eff.components.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Pago;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
+import edu.eci.cosw.proyecto_eff.persistance.PagoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +34,7 @@ import org.springframework.stereotype.Service;
 public class LogicaPago {
     
     @Autowired
-    private PedidoRepository pr;
+    private PagoRepository pr;
     
     @Autowired
     private ClienteRepository cr;
@@ -37,15 +43,17 @@ public class LogicaPago {
     private CompraEvaluator ce;
     
     /**
-     * @Obj : guardar un pedido de un usuario
-     * @param p: Pedido que incluye los productos del carrito de compras  
+     * @param ic
+     * @param cliente
+     * @throws edu.eci.cosw.proyecto_eff.rest.OperationFailedException
+     * @Obj : guardar un pedido de un usuario  
      */
-    public void registrarPago(InformacionCompra ic, String cliente){
-        /*Cliente c = cr.findOne(cliente);
-        ArrayList<Producto> productos = ic.getProductos();
+    public void registrarPago(InformacionCompra ic, String cliente) throws OperationFailedException{
+        Cliente c = cr.findOne(cliente);
+        Producto[] productos = ic.getProductos();
         Hashtable<String, Pedido> pedidos = new Hashtable<>();
-        for (int i = 0; i < productos.size(); i++) {
-            Sucursal s = productos.get(i).getSucursales();
+        for (int i = 0; i < productos.length; i++) {
+            Sucursal s = productos[i].getSucursales();
             Pedido p = null;
             String key = s.getFranquicias().getIdFranquicia()+
                     s.getPlazoletaComidas().getId().getIdPlazoletaComidas()+
@@ -55,14 +63,31 @@ public class LogicaPago {
             }else{
                 p = pedidos.get(key);
             }
-            p.getPedidosProductoses().add(new PedidoProducto(p, productos.get(i)));
+            p.getPedidosProductoses().add(new PedidoProducto(p, productos[i]));
             pedidos.put(key, p);
-        }*/
+        }
+        boolean ok = true;
+        for(String key: pedidos.keySet()){
+            ok = ok && ce.ejecutarCompra(ic.getCuenta(), ic.getMes(), ic.getAnio(), ic.getCodigoSeguridad(), getTotalPedido(pedidos.get(key)));
+        }
+        if(ok){
+            throw new OperationFailedException();
+        }else{
+            for(String key: pedidos.keySet()){
+                Pago pago = new Pago(pedidos.get(key), new Date(System.currentTimeMillis()), getTotalPedido(pedidos.get(key)), ic.getMetodoDepago());
+                pr.save(pago);
+            }
+        }
     }
     
     
-    private int getTotalPedido(Pedido p){
-        int res=0;
+    private float getTotalPedido(Pedido p){
+        float res=0;
+        Set<PedidoProducto> productos = p.getPedidosProductoses();
+        Iterator it = productos.iterator();
+        while(it.hasNext()){
+            res+= ((Producto)it.next()).getPrecio();
+        }
         return res;
     }
     
