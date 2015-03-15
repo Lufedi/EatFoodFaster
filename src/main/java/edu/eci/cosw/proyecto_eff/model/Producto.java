@@ -33,7 +33,6 @@ public class Producto  implements java.io.Serializable {
      private boolean esCombo;
      private String descripcion;
      private float porcentajeDescuento;
-     private Set<PedidoProducto> pedidosProductoses = new HashSet<PedidoProducto>(0);
 
     public Producto() {
     }
@@ -48,17 +47,7 @@ public class Producto  implements java.io.Serializable {
         this.descripcion = descripcion;
         this.porcentajeDescuento = porcentajeDescuento;
     }
-    public Producto(ProductoId id,Categoria categorias, Sucursal sucursales, float precio, boolean esCombo, String descripcion, float porcentajeDescuento, Set<PedidoProducto> pedidosProductoses) {
-       this.id = id;
-       this.categorias = categorias;
-       this.sucursales = sucursales;
-       this.precio = precio;
-       this.esCombo = esCombo;
-       this.descripcion = descripcion;
-       this.porcentajeDescuento = porcentajeDescuento;
-       this.pedidosProductoses = pedidosProductoses;
-    }
-   
+    
     @EmbeddedId
     @AttributeOverrides( {
         @AttributeOverride(name="idProductos", column=@Column(name="idProductos", nullable=false, length=45) ), 
@@ -131,18 +120,6 @@ public class Producto  implements java.io.Serializable {
     public void setPorcentajeDescuento(float porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
-
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="productos",cascade = CascadeType.ALL)
-    public Set<PedidoProducto> getPedidosProductoses() {
-        return this.pedidosProductoses;
-    }
-    
-    public void setPedidosProductoses(Set<PedidoProducto> pedidosProductoses) {
-        this.pedidosProductoses = pedidosProductoses;
-    }
-
-
-
 
 }
 

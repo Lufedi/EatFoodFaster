@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.rest;
 
+import edu.eci.cosw.proyecto_eff.components.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Producto;
@@ -30,8 +31,8 @@ public class PagosRestController {
     LogicaPago lp;
     
     @RequestMapping(value="/{correo}",method = RequestMethod.POST)   
-    public ResponseEntity<?> persist(@PathVariable String Correo,@RequestBody ArrayList<Producto> productos) {
-        lp.registrarPago(productos, Correo);
+    public ResponseEntity<?> persist(@PathVariable String Correo,@RequestBody InformacionCompra ic) {
+        lp.registrarPago(ic, Correo);
         return new ResponseEntity<>(HttpStatus.CREATED);
      }
     
