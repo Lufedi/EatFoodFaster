@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 
 public class TestPlazoleta {
-    @Autowired
+    /*@Autowired
     PlazoletaComidaRepository pcr;
         
     @Autowired
@@ -39,7 +39,7 @@ public class TestPlazoleta {
     FranquiciaRepository  fr;
     
     @Autowired
-    LogicaPlazoleta lp;
+    LogicaPlazoleta lp;*/
         
     /**
     * Obj: Sacar las sucursales de una plazoleta en especifico.

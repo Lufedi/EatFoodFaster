@@ -22,6 +22,6 @@ public interface FranquiciaRepository extends CrudRepository<Franquicia,String>{
      * @param plazoletaid
      * @return
      */
-    @Query("from Sucursal s inner join s.franquicias as f where pc.idFranquicia like :id")
-    public List<Sucursal> search(@Param("id") String franquiciaid);
+    /*@Query("from Sucursal s inner join s.franquicias as f where pc.idFranquicia like :id")
+    public List<Sucursal> search(@Param("id") String franquiciaid);*/
 }
