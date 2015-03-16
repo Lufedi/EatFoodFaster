@@ -33,7 +33,7 @@ public class LogicaCliente {
      * @param correoCliente: El correo del cliente que se desea buscar
      */
     public Cliente consultarCliente(String correoCliente){
-        return cr.search(correoCliente).get(0);    
+        return cr.findOne(correoCliente);
     }
     
     /**
@@ -42,11 +42,14 @@ public class LogicaCliente {
      */
     public void modificarCliente(Cliente cl){
         Cliente clienteViejo = cr.findOne(cl.getCorreoCliente());
+        
         clienteViejo.setApellido(cl.getApellido());
         clienteViejo.setCelular(cl.getCelular());
         clienteViejo.setContrasena(cl.getContrasena());
         clienteViejo.setCorreoCliente(cl.getCorreoCliente());
         clienteViejo.setNombre(cl.getNombre());
+        
         cr.save(clienteViejo);
+
     }
 }
