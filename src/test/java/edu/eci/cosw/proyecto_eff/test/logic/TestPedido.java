@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.test.logic;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
+import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
@@ -43,6 +44,9 @@ public class TestPedido {
     LogicaPedido lp;
     
     @Autowired
+    LogicaSucursal ls;
+    
+    @Autowired
     ClienteRepository cr;
     
     @Autowired
@@ -65,7 +69,7 @@ public class TestPedido {
     @Autowired
     CategoriaRepository catr;
     
-    @Test
+    //@Test
     public void testConsultarPedidoPorSucursal(){
          Cliente cliente= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
         cr.save(cliente);
@@ -113,6 +117,62 @@ public class TestPedido {
         
         assertEquals(ped.getIdPedidos(),p.getIdPedidos());
         assertEquals(ped1.getIdPedidos(),p1.getIdPedidos());
+        
+    }
+    
+    @Test
+    public void testConsultarPedidoPorSucursalConYSinNotificar(){
+        Cliente cliente= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
+        cr.save(cliente);
+        Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
+        pedr.save(ped);
+        
+        
+        PlazoletaComida plazoletaComida;
+        Franquicia franquicia;
+        Sucursal sucursal;
+        Categoria categoria;
+        
+        //C.C Santa fe 
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá") , 1, 1, 1, 'W', 1, 1, 1, 'N' , 5);
+        pcr.save(plazoletaComida);
+        franquicia = new  Franquicia("Mc Donalds", new Float(1.3));
+        fr.save(franquicia);
+        sucursal = new Sucursal(franquicia, plazoletaComida, "1111");
+        sr.save(sucursal);
+        categoria = new Categoria("Perro Caliente");
+        catr.save(categoria);
+        Producto producto1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
+                categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
+        pr.save(producto1);
+        Producto producto2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
+                categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
+        pr.save(producto2);
+        Producto producto3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
+                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
+        pr.save(producto3);
+        
+        ped.getPedidosProductoses().add(new PedidoProducto(ped, producto1) );
+        ped.getPedidosProductoses().add(new PedidoProducto(ped, producto3) );
+        pedr.save(ped);
+        
+        Pedido ped1= new Pedido(cliente, false, false,"esperando");
+        ped1.getPedidosProductoses().add(new PedidoProducto(ped1, producto2));
+        pedr.save(ped1);
+        
+        ls.recibirNotificacion(ped1);
+        
+        List<Pedido> list1 = lp.consultarPedidosPorSucursalNotificados(sucursal.getIdSucursales());
+        List<Pedido> list2 = lp.consultarPedidosPorSucursalSinNotificar(sucursal.getIdSucursales());
+        
+        System.out.println(list1.size());
+        System.out.println(list2.size());
+        Pedido p = list1.get(0);
+        Pedido p1 = list2.get(0);
+        
+        
+        assertEquals(ped1.getIdPedidos(),p.getIdPedidos());
+        assertEquals(ped.getIdPedidos(),p1.getIdPedidos());
         
     }
     
