@@ -26,4 +26,6 @@ public interface PedidoRepository extends CrudRepository<Pedido,Integer>{
     @Query("select distinct(p) from Pedido p INNER JOIN p.pedidosProductoses as pe INNER JOIN pe.productos as pr INNER JOIN pr.sucursales as s where s.idSucursales=:ln AND p.enviadoAsucursal=true")
     public List<Pedido> searchBySucursalNotificados(@Param("ln") int searchTerm);
     
+  
+    
 }

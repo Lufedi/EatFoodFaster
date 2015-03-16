@@ -20,6 +20,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import java.util.List;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
@@ -60,16 +61,10 @@ public class TestProducto {
     
     
     
-    @Before
-    public void datos(){
-        
-    }
-    
-   
-    
-    @Test
-    public void testConsultarProductosPorNombreGlobal(){
-        
+     @Before  
+    public void setUp()
+    {
+ 
          //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
@@ -179,6 +174,28 @@ public class TestProducto {
                 categoria, sucursal, 7800, true, "Sandwich italiano",0);
         pr.save(producto);
         
+    
+    }
+    
+    /*
+    Obj :  Borra rla base de datos antes de cada test
+    pre: están definidos los repositorios
+    */
+    @After
+    public void tearDown(){
+        pedr.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        fr.deleteAll();
+        pcr.deleteAll();
+        cr.deleteAll();
+    }
+    
+   
+    
+    @Test
+    public void testConsultarProductosPorNombreGlobal(){
+       
        List<Producto> resultSet =  productoCtrl.consultarProductosPorNombre("Sandwich");
        for(Producto c :  resultSet)
            System.out.println(c.getDescripcion());

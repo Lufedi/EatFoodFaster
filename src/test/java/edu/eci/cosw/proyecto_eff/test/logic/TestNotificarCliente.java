@@ -9,6 +9,7 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
@@ -24,6 +25,8 @@ import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
+import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -102,9 +105,8 @@ public class TestNotificarCliente {
         clr.save(felipe);
         Cliente jenni = new Cliente("jennibarajas@gmail.com" , "comunismo" , "Jenni" , "Barajas" , "321505481");
         clr.save(jenni);
-        
-        PedidoProducto pedidoProducto;
-        Pedido pedido = new Pedido(fercho, false, false, "en espera");
+      
+        Pedido pedido = new Pedido(fercho, false, false, EstadosPedido.ENVIADOASUCURSAL);
         pedido.getPedidosProductoses().add(new PedidoProducto(pedido, producto1) );
         pedido.getPedidosProductoses().add(new PedidoProducto(pedido, producto2) );
         pedido.getPedidosProductoses().add(new PedidoProducto(pedido, producto3) );
@@ -114,8 +116,17 @@ public class TestNotificarCliente {
     }
     
     @Test
-    public void testNotificarClientePedidoListo(){
+    /*
+    PRE :  El pedido ha sido enviado y procesado en la sucursal y está listo para ser notificado al cliente
+    */
+    public void testNotificarClientePedidoListo() throws OperationFailedException{
+        //Actualizar estado del pedido a listo
+        int idPedido = pedr.findOne(1).getIdPedidos();
+        lp.notificarPedidoListo(idPedido);
         
-        //lp.notificarPedidoListo(pedr.findOne(1).getIdPedidos());
+        //Verificar estado del pedido
+        Pedido p =  pedr.findOne(idPedido);
+        assertEquals(true ,  p.isNotificadoAcliente());
+        assertEquals(EstadosPedido.NOTIFICADOACLIENTE ,  p.getEstadoPedido());
     }
 }

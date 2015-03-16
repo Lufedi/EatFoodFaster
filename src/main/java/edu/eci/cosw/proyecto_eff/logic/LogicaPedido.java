@@ -6,8 +6,10 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,8 +52,12 @@ public class LogicaPedido {
     }
 
 
-    public void notificarPedidoListo(int idPedido) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void notificarPedidoListo(int idPedido)  throws OperationFailedException{
+        //pr.notificarPedidoListo(idPedido);
+        Pedido p  = pr.findOne(idPedido);
+        p.setNotificadoAcliente(true);
+        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
+        pr.save(p);
     }
     
 }
