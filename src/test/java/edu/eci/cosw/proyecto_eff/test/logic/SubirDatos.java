@@ -6,14 +6,19 @@
 package edu.eci.cosw.proyecto_eff.test.logic;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
+import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
+import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
+import edu.eci.cosw.proyecto_eff.model.Pedido;
+import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.ProductoId;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.CategoriaRepository;
+import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
 import edu.eci.cosw.proyecto_eff.persistance.FranquiciaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
@@ -58,16 +63,25 @@ public class SubirDatos {
     @Autowired
     CategoriaRepository cr;
     
+    @Autowired
+    ClienteRepository crr;
     
+    @Autowired
+    LogicaSucursal ls;
     
     
      @Before  
     public void setUp()
     {
- 
+        Cliente cliente= new Cliente("fandres@hotmail.com", "123456", "Fabian", "Alvarez", "310582");
+        crr.save(cliente);
+        Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
+        pedr.save(ped);
+        
+        
          //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
-      /*  PlazoletaComida plazoletaComida;
+        PlazoletaComida plazoletaComida;
         Franquicia franquicia;
         Sucursal sucursal;
         Producto producto;
@@ -85,12 +99,25 @@ public class SubirDatos {
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
                 categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
         pr.save(producto);
+        
+        ped.getPedidosProductoses().add(new PedidoProducto(ped, producto) );
+        
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
                 categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
         pr.save(producto);
+        
+        ped.getPedidosProductoses().add(new PedidoProducto(ped, producto) );
+        pedr.save(ped);
+        
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
         pr.save(producto);
+        
+        Pedido ped1= new Pedido(cliente, false, false,"esperando");
+        ped1.getPedidosProductoses().add(new PedidoProducto(ped1, producto));
+        pedr.save(ped1);
+        
+        ls.recibirNotificacion(ped1);
         
         
         //C.C BIMA
@@ -172,7 +199,13 @@ public class SubirDatos {
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 7800, true, "Sandwich italiano",0);
-        pr.save(producto);*/
+        pr.save(producto);
+        
+        
+        
+        
+        
+       
         
     
     }
@@ -183,7 +216,7 @@ public class SubirDatos {
     */
     @After
     public void tearDown(){
-        /*pedr.deleteAll();
+    /*    pedr.deleteAll();
         pr.deleteAll();
         sr.deleteAll();
         fr.deleteAll();
