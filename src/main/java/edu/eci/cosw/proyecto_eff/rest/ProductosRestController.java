@@ -32,7 +32,9 @@ public class ProductosRestController {
    
     
     @RequestMapping(value="/{franquicia}/{producto}",method = RequestMethod.GET)        
-    public List<Producto> consultarPedidosPorSucursal(@PathVariable String franquicia ,  @PathVariable String producto) throws ResourceNotFoundException  {       
+    public List<Producto> consultarPedidosPorFranquicia(
+            @PathVariable("franquicia") String franquicia ,  
+            @PathVariable("producto") String producto) throws ResourceNotFoundException  {       
         return lp.consultarProductoPorFranquicia(franquicia, producto);
     }
     

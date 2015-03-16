@@ -21,4 +21,12 @@ public class TestRestController {
         return new ResponseEntity<>("REST API working. Echo:"+input,HttpStatus.ACCEPTED);
     }
     
+     @RequestMapping(value="/ha/{input}/{dos}",method = RequestMethod.GET)        
+    public ResponseEntity<?> consultaY(@PathVariable("input") String input ,  
+             @PathVariable("dos") String dos) {       
+        return new ResponseEntity<>("REST API working. Echo:"+input + " " + dos,HttpStatus.ACCEPTED);
+    }
+    
+    
+    
 }
