@@ -33,5 +33,11 @@ public interface ProductoRepository extends CrudRepository<Producto,ProductoId> 
             @Param("ciudad") String ciudad , 
             @Param("centrocomercial") String centrocomercial);
             
+    @Query("select  p  from Producto  p  INNER JOIN p.sucursales s INNER JOIN s.franquicias f where "
+            + " p.descripcion like :nombre and f.idFranquicia = :franquicia")
+    public List<Producto> searchPorFranquicia(
+            @Param("nombre") String nombre , 
+            @Param("franquicia") String franquicia );
+            
             
 }

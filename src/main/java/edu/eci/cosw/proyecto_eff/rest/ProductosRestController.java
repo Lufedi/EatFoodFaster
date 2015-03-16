@@ -51,10 +51,10 @@ public class ProductosRestController {
             @PathVariable String  centrocomercial, 
             @PathVariable String ciudad ,
             @PathVariable String  nombre) throws ResourceNotFoundException  {       
-       return lp.consultarProductosPorNombre(centrocomercial  , ciudad  ,   nombre);
+       return lp.consultarProductosPorPlazoletaDeComidas(centrocomercial  , ciudad  ,   nombre);
     }
     
-  /*@RequestMapping(value="/echo/{input}",method = RequestMethod.GET)        
+    /*@RequestMapping(value="/echo/{input}",method = RequestMethod.GET)        
     public ResponseEntity<?> consultaX(@PathVariable String input) {       
         return new ResponseEntity<>("REST API working. Echo:"+input,HttpStatus.ACCEPTED);
     }*/

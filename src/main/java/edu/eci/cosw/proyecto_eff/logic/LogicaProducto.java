@@ -61,8 +61,7 @@ public class LogicaProducto {
     }
     
     public List<Producto> consultarProductoPorFranquicia( String franquicia  ,  String nombre){
-        
-        return null;
+        return  pr.searchPorFranquicia("%"+nombre+"%", franquicia);
     }
      
  
