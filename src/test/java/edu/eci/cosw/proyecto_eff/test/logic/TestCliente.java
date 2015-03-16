@@ -36,7 +36,6 @@ public class TestCliente {
         lc.registrarCliente(c);
         
         cl=lc.consultarCliente("juanpa@hot.com");
-        //System.out.println(c.getNombre()+" "+c.getApellido()+" "+c.getCorreoCliente()+" trae "+cl.getNombre()+" "+cl.getApellido()+" "+cl.getCorreoCliente());
         assertEquals(c.getNombre()+c.getApellido(),cl.getNombre()+cl.getApellido());
     }
     
@@ -48,7 +47,6 @@ public class TestCliente {
         c.setContrasena("4321");
         lc.modificarCliente(c);
         cl=lc.consultarCliente("oliva@gmail.com");
-        //System.out.println(c.getContrasena()+" nueva "+cl.getContrasena());
         assertEquals(c.getContrasena(),cl.getContrasena());
     }
 }
