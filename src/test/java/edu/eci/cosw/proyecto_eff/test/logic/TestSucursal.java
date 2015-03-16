@@ -59,11 +59,11 @@ public class TestSucursal {
         Franquicia f = new Franquicia("El Corral");
         PlazoletaComida pc= new PlazoletaComida(new PlazoletaComidaId("CC Santafe", "Bogota"));
         Sucursal s= new Sucursal(f, pc, "12345");
-        ls.recibirNotificacion(p,s);
+        ls.recibirNotificacion(p);
         
-        List<Pedido> list = lp.consultarPedidos();
-        Pedido p1 = list.get(0);
-        assertEquals(false,p1.isEnviadoAsucursal());
+        
+        Pedido p1 = lp.consultarPedidoPorId(p.getIdPedidos());
+        assertEquals(true,p1.isEnviadoAsucursal());
          
        
                 

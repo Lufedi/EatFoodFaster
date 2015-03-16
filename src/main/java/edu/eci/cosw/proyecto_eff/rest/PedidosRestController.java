@@ -29,7 +29,12 @@ public class PedidosRestController {
     
     @RequestMapping(value="/sucursal/{idSucursal}",method = RequestMethod.GET)        
     public List<Pedido> consultarPedidosDeSucursal(@PathVariable int idSucursal) throws ResourceNotFoundException  {       
-        return lp.consultarPedidosPorSucursal(idSucursal);
+        List<Pedido> list = lp.consultarPedidosPorSucursal(idSucursal);
+        if(null!=list)
+            return list;
+        else
+            throw new ResourceNotFoundException();
+                 
         
         
     }

@@ -47,6 +47,7 @@ public class PedidoProducto  implements java.io.Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="Pedidos_idPedidos", nullable=false)
+    @Fetch (FetchMode.JOIN)
     public Pedido getPedidos() {
         return this.pedidos;
     }

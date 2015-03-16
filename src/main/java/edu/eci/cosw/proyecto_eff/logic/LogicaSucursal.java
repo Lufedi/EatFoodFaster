@@ -7,6 +7,8 @@ package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LogicaSucursal {
+    
+    @Autowired
+    PedidoRepository pr;
     
     /**
      * @Obj: Notificar al cliente que el pedido de una sucursal esta listo
@@ -30,8 +35,10 @@ public class LogicaSucursal {
      * 
      * @param p : pedido realizado por el cliente
      */
-    public void recibirNotificacion(Pedido p,Sucursal s){
+    public void recibirNotificacion(Pedido p){
         //Debo retornal algo
+        p.setEnviadoAsucursal(true);
+        pr.save(p);
     }
     
 }
