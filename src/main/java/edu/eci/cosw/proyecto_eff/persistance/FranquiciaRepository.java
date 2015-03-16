@@ -24,4 +24,5 @@ public interface FranquiciaRepository extends CrudRepository<Franquicia,String>{
      */
     @Query("from Sucursal s inner join s.franquicias as f where f.idFranquicia like :id")
     public List<Sucursal> search(@Param("id") String franquiciaid);
+    
 }
