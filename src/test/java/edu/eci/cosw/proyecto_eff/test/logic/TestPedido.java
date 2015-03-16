@@ -24,6 +24,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import java.util.List;
+import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -100,12 +101,19 @@ public class TestPedido {
         ped.getPedidosProductoses().add(new PedidoProducto(ped, producto3) );
         pedr.save(ped);
         
-        //List<Pedido> list1 = lp.consultarPedidosPorSucursal(sucursal.getIdSucursales());
-        //Pedido p = list1.get(0);
-        Pedido p = lp.consultarPedidoPorId(ped.getIdPedidos());
-        System.out.println(p.getPedidosProductoses().size());
-        System.out.println(p.getPedidosProductoses().isEmpty());
+        Pedido ped1= new Pedido(cliente, false, false,"esperando");
+        ped1.getPedidosProductoses().add(new PedidoProducto(ped1, producto2));
+        pedr.save(ped1);
+        
+        
+        List<Pedido> list1 = lp.consultarPedidosPorSucursal(sucursal.getIdSucursales());
+        Pedido p = list1.get(0);
+        Pedido p1 = list1.get(1);
+        
+        
         assertEquals(ped.getIdPedidos(),p.getIdPedidos());
+        assertEquals(ped1.getIdPedidos(),p1.getIdPedidos());
+        
     }
     
 }
