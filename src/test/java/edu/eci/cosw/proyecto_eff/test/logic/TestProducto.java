@@ -197,7 +197,7 @@ public class TestProducto {
         List<Producto> resultSet = 
                 productoCtrl.consultarProductosPorPlazoletaDeComidas(
                         cc, ciudad, productoId);
-        assertEquals(resultSet.size(),3);
+        assertEquals(3 , resultSet.size());
     } 
     
      @Test
@@ -207,6 +207,6 @@ public class TestProducto {
         String   franquicia =  "See";
         List<Producto> resultSet = 
             productoCtrl.consultarProductoPorFranquicia(franquicia, productoId);
-        assertEquals(resultSet.size(),2);
+        assertEquals(2 , resultSet.size());
     }
 }
