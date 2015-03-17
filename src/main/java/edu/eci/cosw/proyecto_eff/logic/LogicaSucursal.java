@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.logic;
 
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
@@ -38,6 +39,7 @@ public class LogicaSucursal {
     public void recibirNotificacion(Pedido p){
         //Debo retornal algo
         p.setEnviadoAsucursal(true);
+        p.setEstadoPedido(EstadosPedido.RECIBIDOENSUCURSAL);
         pr.save(p);
     }
     
