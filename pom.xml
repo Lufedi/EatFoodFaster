@@ -95,15 +95,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.5.1</version>
         </dependency>
-        
-
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate4</artifactId>
             <version>2.4.2</version>
-        </dependency>
-        
-        
+        </dependency>     
     </dependencies>
 
     <!--PROJECT REPORTS-->
@@ -144,12 +140,8 @@
         </plugins>
     </reporting>
 
-
     <build>
-        
-        <plugins>
-                        
-            
+        <plugins> 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -192,7 +184,7 @@
                 </executions>
             </plugin>
             
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
@@ -218,13 +210,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            
-            
-
-        
-        
-        
+            </plugin> !-->
         </plugins>
     </build>
 
