@@ -28,7 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,33 @@ public class TestPago {
     
     @Autowired
     SucursalRepository sr;
+    
+    @Before
+    public void setup(){
+         pr2.deleteAll();
+        pr1.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        cr.deleteAll();
+        cr1.deleteAll();
+        pcr.deleteAll();
+        fr.deleteAll();
+        
+    }
+    
+    @After
+    public void tearDown(){
+        pr2.deleteAll();
+        pr1.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        cr.deleteAll();
+        cr1.deleteAll();
+        pcr.deleteAll();
+        fr.deleteAll();
+        
+    }
+    
     
     @Test
     public void testRegistrarPago(){
