@@ -26,6 +26,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
+import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -73,7 +74,31 @@ public class TestNotificarCliente {
     @Before
     public void preparar(){
         this.borrarDatos();
-        //realizar operación de persistencia
+    }
+    
+    @After
+    public void tearDown(){
+        this.borrarDatos();
+    }
+    
+     public void borrarDatos(){
+         
+        pedr.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        fr.deleteAll();
+        pcr.deleteAll();
+        cr.deleteAll();
+        clr.deleteAll();
+     }
+    @Test
+    /*
+    PRE :  El pedido ha sido enviado y procesado en la sucursal y está listo para ser notificado al cliente
+    */
+    public void testNotificarClientePedidoListo() throws OperationFailedException{
+        //Actualizar estado del pedido a listo
+        
+                //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
         Franquicia franquicia;
@@ -113,30 +138,9 @@ public class TestNotificarCliente {
         pedido.getPedidosProductoses().add(new PedidoProducto(pedido, producto2) );
         pedido.getPedidosProductoses().add(new PedidoProducto(pedido, producto3) );
         pedr.save(pedido);
+  
         
-
-    }
-    
-    @After
-    public void tearDown(){
-        this.borrarDatos();
-    }
-    
-     public void borrarDatos(){
-        pedr.deleteAll();
-        pr.deleteAll();
-        sr.deleteAll();
-        fr.deleteAll();
-        pcr.deleteAll();
-        cr.deleteAll();
-    }
-    @Test
-    /*
-    PRE :  El pedido ha sido enviado y procesado en la sucursal y está listo para ser notificado al cliente
-    */
-    public void testNotificarClientePedidoListo() throws OperationFailedException{
-        //Actualizar estado del pedido a listo
-        int idPedido = pedr.findOne(1).getIdPedidos();
+        int idPedido = pedido.getIdPedidos();
         
         lp.notificarPedidoListo(idPedido);
         
