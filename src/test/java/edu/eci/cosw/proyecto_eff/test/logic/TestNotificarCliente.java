@@ -26,6 +26,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,6 +72,7 @@ public class TestNotificarCliente {
     
     @Before
     public void preparar(){
+        this.borrarDatos();
           //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
@@ -115,6 +117,19 @@ public class TestNotificarCliente {
 
     }
     
+    @After
+    public void tearDown(){
+        this.borrarDatos();
+    }
+    
+     public void borrarDatos(){
+        pedr.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        fr.deleteAll();
+        pcr.deleteAll();
+        cr.deleteAll();
+    }
     @Test
     /*
     PRE :  El pedido ha sido enviado y procesado en la sucursal y está listo para ser notificado al cliente

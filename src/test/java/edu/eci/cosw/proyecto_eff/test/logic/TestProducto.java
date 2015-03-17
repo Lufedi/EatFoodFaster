@@ -64,8 +64,8 @@ public class TestProducto {
      @Before  
     public void setUp()
     {
- 
-         //realizar operación de persistencia
+        this.borrarDatos();
+        //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
         Franquicia franquicia;
@@ -181,14 +181,19 @@ public class TestProducto {
     Obj :  Borra rla base de datos antes de cada test
     pre: están definidos los repositorios
     */
-    @After
-    public void tearDown(){
+    
+    public void borrarDatos(){
         pedr.deleteAll();
         pr.deleteAll();
         sr.deleteAll();
         fr.deleteAll();
         pcr.deleteAll();
         cr.deleteAll();
+    }
+    
+    @After
+    public void tearDown(){
+        this.borrarDatos();
     }
     
    
