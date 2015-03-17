@@ -3,6 +3,7 @@ package edu.eci.cosw.proyecto_eff.model;
 
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +51,7 @@ public class Pago  implements java.io.Serializable {
         this.idPagos = idPagos;
     }
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name="Pedidos_idPedidos", nullable=false)
     public Pedido getPedidos() {
         return this.pedidos;

@@ -7,9 +7,6 @@ package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.components.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
-import edu.eci.cosw.proyecto_eff.model.Cliente;
-import edu.eci.cosw.proyecto_eff.model.Producto;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +29,10 @@ public class PagosRestController {
     
     @RequestMapping(value="/{correo}",method = RequestMethod.POST)   
     public ResponseEntity<?> persist(@PathVariable String Correo,@RequestBody InformacionCompra ic) throws OperationFailedException {
-        lp.registrarPago(ic, Correo);
+        boolean ok = lp.registrarPago(ic, Correo);
+        if(!ok){
+            throw new OperationFailedException();
+        }
         return new ResponseEntity<>(HttpStatus.CREATED);
      }
     

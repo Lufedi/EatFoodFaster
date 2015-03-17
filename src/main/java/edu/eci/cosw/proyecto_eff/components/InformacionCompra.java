@@ -20,6 +20,17 @@ public class InformacionCompra {
     private int anio;
     private int codigoSeguridad;
     private Producto[] productos;
+
+    public InformacionCompra(String metodoDepago, String cuenta, int mes, int anio, int codigoSeguridad, Producto[] productos) {
+        this.metodoDepago = metodoDepago;
+        this.cuenta = cuenta;
+        this.mes = mes;
+        this.anio = anio;
+        this.codigoSeguridad = codigoSeguridad;
+        this.productos = productos;
+    }
+    
+    
     
     /**
      * @return the cuenta

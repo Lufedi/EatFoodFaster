@@ -6,7 +6,11 @@
 package edu.eci.cosw.proyecto_eff.persistance;
 
 import edu.eci.cosw.proyecto_eff.model.Pago;
+import edu.eci.cosw.proyecto_eff.model.Pedido;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -14,4 +18,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PagoRepository extends CrudRepository<Pago, Integer>{
     
+    @Query("Select ped from Pago p inner join p.pedidos as ped where ped.clientes.correoCliente = :id")
+    public List<Pedido> search(@Param("id") String correoCliente);
 }

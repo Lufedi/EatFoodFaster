@@ -17,9 +17,7 @@ import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PagoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
@@ -42,13 +40,16 @@ public class LogicaPago {
     @Autowired
     private CompraEvaluator ce;
     
+    @Autowired
+    private PedidoRepository pr1;
+    
     /**
      * @param ic
      * @param cliente
      * @throws edu.eci.cosw.proyecto_eff.rest.OperationFailedException
      * @Obj : guardar un pedido de un usuario  
      */
-    public void registrarPago(InformacionCompra ic, String cliente) throws OperationFailedException{
+    public boolean registrarPago(InformacionCompra ic, String cliente) {
         Cliente c = cr.findOne(cliente);
         Producto[] productos = ic.getProductos();
         Hashtable<String, Pedido> pedidos = new Hashtable<>();
@@ -59,10 +60,11 @@ public class LogicaPago {
                     s.getPlazoletaComidas().getId().getIdPlazoletaComidas()+
                     s.getPlazoletaComidas().getId().getCiudad();
             if(!pedidos.containsKey(key)){
-                p = new Pedido(c, true, false, "no enviado");
+                p = new Pedido(c, false, false, "no enviado");
             }else{
                 p = pedidos.get(key);
             }
+            
             p.getPedidosProductoses().add(new PedidoProducto(p, productos[i]));
             pedidos.put(key, p);
         }
@@ -71,13 +73,13 @@ public class LogicaPago {
             ok = ok && ce.ejecutarCompra(ic.getCuenta(), ic.getMes(), ic.getAnio(), ic.getCodigoSeguridad(), getTotalPedido(pedidos.get(key)));
         }
         if(ok){
-            throw new OperationFailedException();
-        }else{
             for(String key: pedidos.keySet()){
+                pr1.save(pedidos.get(key));
                 Pago pago = new Pago(pedidos.get(key), new Date(System.currentTimeMillis()), getTotalPedido(pedidos.get(key)), ic.getMetodoDepago());
                 pr.save(pago);
             }
         }
+        return ok;
     }
     
     
@@ -86,7 +88,7 @@ public class LogicaPago {
         Set<PedidoProducto> productos = p.getPedidosProductoses();
         Iterator it = productos.iterator();
         while(it.hasNext()){
-            res+= ((Producto)it.next()).getPrecio();
+            res+= ((PedidoProducto)it.next()).getProductos().getPrecio();
         }
         return res;
     }
