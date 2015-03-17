@@ -73,7 +73,7 @@ public class TestNotificarCliente {
     @Before
     public void preparar(){
         this.borrarDatos();
-          //realizar operación de persistencia
+        //realizar operación de persistencia
         //se agregan los datos de persistencia para las pruebas
         PlazoletaComida plazoletaComida;
         Franquicia franquicia;
@@ -137,6 +137,7 @@ public class TestNotificarCliente {
     public void testNotificarClientePedidoListo() throws OperationFailedException{
         //Actualizar estado del pedido a listo
         int idPedido = pedr.findOne(1).getIdPedidos();
+        
         lp.notificarPedidoListo(idPedido);
         
         //Verificar estado del pedido

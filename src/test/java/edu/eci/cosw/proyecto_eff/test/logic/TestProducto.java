@@ -217,10 +217,12 @@ public class TestProducto {
         String   cc  = "C.C. Santa fe";
         String   ciudad = "Bogotá";
         List<Producto> resultSet = 
-                productoCtrl.consultarProductosPorPlazoletaDeComidas(
+        productoCtrl.consultarProductosPorPlazoletaDeComidas(
                         cc, ciudad, productoId);
         assertEquals(3 , resultSet.size());
     } 
+    
+    
     
      @Test
     public void testConsultarProductosPorFranquicia(){
@@ -228,7 +230,7 @@ public class TestProducto {
         String   productoId =  "Cazuela";
         String   franquicia =  "See";
         List<Producto> resultSet = 
-            productoCtrl.consultarProductoPorFranquicia(franquicia, productoId);
+        productoCtrl.consultarProductoPorFranquicia(franquicia, productoId);
         assertEquals(2 , resultSet.size());
     }
 }

@@ -73,7 +73,7 @@ public class SubirDatos {
      @Before  
     public void setUp()
     {
-        Cliente cliente= new Cliente("fandres@hotmail.com", "123456", "Fabian", "Alvarez", "310582");
+        /*Cliente cliente= new Cliente("fandres@hotmail.com", "123456", "Fabian", "Alvarez", "310582");
         crr.save(cliente);
         Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
         pedr.save(ped);
@@ -199,7 +199,7 @@ public class SubirDatos {
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 7800, true, "Sandwich italiano",0);
-        pr.save(producto);
+        pr.save(producto);*/
         
         
         
