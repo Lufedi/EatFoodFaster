@@ -123,8 +123,11 @@ public class TestPago {
         sr.save(s);
         Producto p2 = new Producto(new ProductoId("hamburguesa", s.getIdSucursales()), c, s, 12000, false, "hamburguesa con carne de res", new Float(0.0));
         pr.save(p2);
+        Producto p3 = new Producto(new ProductoId("Pollo asado", s.getIdSucursales()), c, s, 15000, false, "pollo asado", new Float(0.0));
+        pr.save(p3);
         
-        Producto[] productos = new Producto[]{p1, p2};
+        
+        Producto[] productos = new Producto[]{p1, p2, p3};
         InformacionCompra ic = new InformacionCompra("tarjeta debito", "4000 0012 3456 7890", 1, 2000, 1234, productos);
         boolean ok = lp.registrarPago(ic, cliente.getCorreoCliente());
         List<Pedido> l = pr2.search(cliente.getCorreoCliente());
