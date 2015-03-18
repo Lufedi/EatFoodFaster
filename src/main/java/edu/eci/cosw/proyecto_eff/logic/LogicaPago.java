@@ -87,9 +87,12 @@ public class LogicaPago {
         float res=0;
         Set<PedidoProducto> productos = p.getPedidosProductoses();
         Iterator it = productos.iterator();
+        PedidoProducto pp = null;
         while(it.hasNext()){
-            res+= ((PedidoProducto)it.next()).getProductos().getPrecio();
+            pp =((PedidoProducto)it.next());
+            res+= (pp.getProductos().getPrecio())*(1-(pp.getProductos().getPorcentajeDescuento()/100));
         }
+        res=res*(1-(pp.getProductos().getSucursales().getFranquicias().getPorcentajeAcordado()/100));
         return res;
     }
     

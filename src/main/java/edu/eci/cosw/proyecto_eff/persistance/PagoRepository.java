@@ -19,5 +19,9 @@ import org.springframework.data.repository.query.Param;
 public interface PagoRepository extends CrudRepository<Pago, Integer>{
     
     @Query("Select ped from Pago p inner join p.pedidos as ped where ped.clientes.correoCliente = :id")
-    public List<Pedido> search(@Param("id") String correoCliente);
+    public List<Pedido> searchPedidosDeCliente(@Param("id") String correoCliente);
+    
+    @Query("Select SUM(p.monto) from Pago p inner join p.pedidos as ped where ped.clientes.correoCliente = :id")
+    public List<Double> searchPagosDeCliente(@Param("id") String correoCliente);
+    
 }

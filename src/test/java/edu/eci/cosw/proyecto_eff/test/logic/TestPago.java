@@ -9,6 +9,7 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
+import edu.eci.cosw.proyecto_eff.model.Pago;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
@@ -114,23 +115,28 @@ public class TestPago {
         sr.save(s);
         Categoria c = new Categoria("comida rapida");
         cr1.save(c);
-        Producto p1 = new Producto(new ProductoId("pizza de carne", s.getIdSucursales()), c, s, 10000, false, "pizza con trozos de carne", new Float(0.0));
+        Producto p1 = new Producto(new ProductoId("pizza de carne", s.getIdSucursales()), c, s, 10000, false, "pizza con trozos de carne", new Float(3.0));
         pr.save(p1);
         
-        f = new Franquicia("PPC", new Float(1.3));
-        fr.save(f);
-        s = new Sucursal(f, pc, "54321");
-        sr.save(s);
-        Producto p2 = new Producto(new ProductoId("hamburguesa", s.getIdSucursales()), c, s, 12000, false, "hamburguesa con carne de res", new Float(0.0));
+        Franquicia f1 = new Franquicia("PPC", new Float(1.3));
+        fr.save(f1);
+        Sucursal s1 = new Sucursal(f1, pc, "54321");
+        sr.save(s1);
+        Producto p2 = new Producto(new ProductoId("hamburguesa", s1.getIdSucursales()), c, s1, 12000, false, "hamburguesa con carne de res", new Float(2.0));
         pr.save(p2);
-        Producto p3 = new Producto(new ProductoId("Pollo asado", s.getIdSucursales()), c, s, 15000, false, "pollo asado", new Float(0.0));
+        Producto p3 = new Producto(new ProductoId("Pollo asado", s1.getIdSucursales()), c, s1, 15000, false, "pollo asado", new Float(1.0));
         pr.save(p3);
         
         
         Producto[] productos = new Producto[]{p1, p2, p3};
         InformacionCompra ic = new InformacionCompra("tarjeta debito", "4000 0012 3456 7890", 1, 2000, 1234, productos);
         boolean ok = lp.registrarPago(ic, cliente.getCorreoCliente());
-        List<Pedido> l = pr2.search(cliente.getCorreoCliente());
+        List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),2);
+        List<Double> l2 = pr2.searchPagosDeCliente(cliente.getCorreoCliente());
+        assertEquals(l2.get(0),new Double(
+        ((p1.getPrecio()-(p1.getPrecio()*p1.getPorcentajeDescuento()/100))*(1-(f.getPorcentajeAcordado()/100)))+
+        (((p2.getPrecio()-(p2.getPrecio()*p2.getPorcentajeDescuento()/100))+(p3.getPrecio()-(p3.getPrecio()*p3.getPorcentajeDescuento()/100)))*(1-(f1.getPorcentajeAcordado()/100)))
+        ));
     }
 }
