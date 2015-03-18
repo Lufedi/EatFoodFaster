@@ -7,8 +7,8 @@ package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
-import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +24,15 @@ public class LogicaSucursal {
     
     /**
      * @Obj: Notificar al cliente que el pedido de una sucursal esta listo
-     * @param p: Pedido del cliente
-     * @param s: Sucursal de la franquicia donde se notifica
-     * @return : true si la notificación fue enviada exitosamente, false en caso contrario
+     * @param idPedido: id  del Pedido del cliente
+     * @throws OperationFailedException 
      */
-    public boolean notificarCliente(Pedido p, Sucursal s){
-        return false;
+    public void notificarPedidoListo(int idPedido)  throws OperationFailedException{
+        //pr.notificarPedidoListo(idPedido);
+        Pedido p  = pr.findOne(idPedido);
+        p.setNotificadoAcliente(true);
+        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
+        pr.save(p);
     }
     
     /**

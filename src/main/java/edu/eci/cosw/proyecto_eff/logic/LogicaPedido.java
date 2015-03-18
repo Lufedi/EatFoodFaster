@@ -52,12 +52,6 @@ public class LogicaPedido {
     }
 
 
-    public void notificarPedidoListo(int idPedido)  throws OperationFailedException{
-        //pr.notificarPedidoListo(idPedido);
-        Pedido p  = pr.findOne(idPedido);
-        p.setNotificadoAcliente(true);
-        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
-        pr.save(p);
-    }
+    
     
 }

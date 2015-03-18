@@ -20,10 +20,7 @@ import org.springframework.data.repository.query.Param;
 public interface ProductoRepository extends CrudRepository<Producto,ProductoId> {
     @Query("from Producto c where c.descripcion like :nombre")
     public List<Producto> search(@Param("nombre") String nombre);
-    
-    
-    
-    
+
     @Query("select  p  from Producto  p  INNER JOIN p.sucursales f where "
             + " f.plazoletaComidas.id.idPlazoletaComidas = :centrocomercial and "
             + " f.plazoletaComidas.id.ciudad = :ciudad and"

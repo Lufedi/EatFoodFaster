@@ -7,6 +7,7 @@ package edu.eci.cosw.proyecto_eff.test.logic;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
+import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
@@ -26,7 +27,6 @@ import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
-import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -70,6 +70,9 @@ public class TestNotificarCliente {
     
     @Autowired
     LogicaPedido lp;
+    
+    @Autowired
+    LogicaSucursal ls;
     
     @Before
     public void preparar(){
@@ -141,8 +144,7 @@ public class TestNotificarCliente {
   
         
         int idPedido = pedido.getIdPedidos();
-        
-        lp.notificarPedidoListo(idPedido);
+        ls.notificarPedidoListo(idPedido);
         
         //Verificar estado del pedido
         Pedido p =  pedr.findOne(idPedido);

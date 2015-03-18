@@ -63,15 +63,7 @@ public class PedidosRestController {
         return lp.consultarPedidoPorId(idPedido);  
     }
     
-    @RequestMapping(value="/notificacion/{idPedido}",method = RequestMethod.POST   )        
-    public ResponseEntity<?> notificarPedidoListo(@PathVariable int idPedido) throws ResourceNotFoundException  {       
-        try{ 
-          lp.notificarPedidoListo(idPedido);  
-        }catch(OperationFailedException e){
-              return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }
+   
     
     
 }
