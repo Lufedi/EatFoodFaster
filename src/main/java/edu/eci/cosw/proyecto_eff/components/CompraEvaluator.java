@@ -16,7 +16,7 @@ public interface CompraEvaluator {
      * @param sucursal: Nombre de la sucursal donde se hace la compra
      * @param total: Valor total a pagar
      * @param tipoDePago: Tipo de pago seleccionado
-     * @return frue si el pago fue realizado correctamente, false en caso contrario
+     * @return true si el pago fue realizado correctamente, false en caso contrario
      */
     public boolean ejecutarCompra(String sucursal, float total, String tipoDePago);
 
