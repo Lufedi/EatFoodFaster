@@ -10,7 +10,14 @@ package edu.eci.cosw.proyecto_eff.components;
  * @author fercho
  */
 public interface CompraEvaluator {
-   
-    public boolean ejecutarCompra(String cuenta, int mes, int anio, int codigoSeguridad, float total);
-    
+
+    /**
+     * @obj: Efectuar el pago de un pedido de una sucursal usando un tipo de pago a través de un tercero
+     * @param sucursal: Nombre de la sucursal donde se hace la compra
+     * @param total: Valor total a pagar
+     * @param tipoDePago: Tipo de pago seleccionado
+     * @return frue si el pago fue realizado correctamente, false en caso contrario
+     */
+    public boolean ejecutarCompra(String sucursal, float total, String tipoDePago);
+
 }

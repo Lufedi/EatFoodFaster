@@ -70,7 +70,7 @@ public class LogicaPago {
         }
         boolean ok = true;
         for(String key: pedidos.keySet()){
-            ok = ok && ce.ejecutarCompra(ic.getCuenta(), ic.getMes(), ic.getAnio(), ic.getCodigoSeguridad(), getTotalPedido(pedidos.get(key)));
+            ok = ok && ce.ejecutarCompra(key, getTotalPedido(pedidos.get(key)), ic.getMetodoDepago());
         }
         if(ok){
             for(String key: pedidos.keySet()){
