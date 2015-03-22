@@ -69,8 +69,9 @@ public class TestPedido {
     @Autowired
     CategoriaRepository catr;
     
-    //@Test
+    @Test
     public void testConsultarPedidoPorSucursal(){
+        //deleteInfo();
          Cliente cliente= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
         cr.save(cliente);
         Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
@@ -114,14 +115,16 @@ public class TestPedido {
         Pedido p = list1.get(0);
         Pedido p1 = list1.get(1);
         
-        
+       
         assertEquals(ped.getIdPedidos(),p.getIdPedidos());
         assertEquals(ped1.getIdPedidos(),p1.getIdPedidos());
+        //deleteInfo();
         
     }
     
     @Test
     public void testConsultarPedidoPorSucursalConYSinNotificar(){
+        //deleteInfo();
         Cliente cliente= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
         cr.save(cliente);
         Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
@@ -173,7 +176,36 @@ public class TestPedido {
         
         assertEquals(ped1.getIdPedidos(),p.getIdPedidos());
         assertEquals(ped.getIdPedidos(),p1.getIdPedidos());
+        //deleteInfo();
         
+    }
+    @Test
+    public void consultarPedidos(){
+        //deleteInfo();
+        Cliente cliente= new Cliente("fand@hot.com", "1234567", "Fabian", "Alvarez", "3105821116");
+        cr.save(cliente);
+        Pedido ped= new Pedido(cliente,false, false, "Pedido  todavia enviarse a la sucursal");
+        pedr.save(ped);
+        Pedido ped1= new Pedido(cliente, false, false,"esperando.");
+        pedr.save(ped1);
+        Pedido ped2= new Pedido(cliente, false, false,"esperando..");
+        pedr.save(ped2);
+        
+        List<Pedido> list1 = lp.consultarPedidos(); 
+        assertEquals(ped.getIdPedidos(),list1.get(list1.size()-3).getIdPedidos());
+        assertEquals(ped1.getIdPedidos(),list1.get(list1.size()-2).getIdPedidos());
+        assertEquals(ped2.getIdPedidos(),list1.get(list1.size()-1).getIdPedidos());
+        
+    }
+    
+     public void deleteInfo(){
+        pedr.deleteAll();
+        pr.deleteAll();
+        sr.deleteAll();
+        fr.deleteAll();
+        pcr.deleteAll();
+        cr.deleteAll();
+        catr.deleteAll();
     }
     
 }

@@ -43,13 +43,13 @@ public class Pedido  implements java.io.Serializable {
         this.notificadoAcliente = notificadoAcliente;
         this.estadoPedido = estadoPedido;
     }
-    public Pedido(Cliente clientes, boolean enviadoAsucursal, boolean notificadoAcliente, String estadoPedido, Set<PedidoProducto> pedidosProductoses) {
+    /*public Pedido(Cliente clientes, boolean enviadoAsucursal, boolean notificadoAcliente, String estadoPedido, Set<PedidoProducto> pedidosProductoses) {
        this.clientes = clientes;
        this.enviadoAsucursal = enviadoAsucursal;
        this.notificadoAcliente = notificadoAcliente;
        this.estadoPedido = estadoPedido;
        this.pedidosProductoses = pedidosProductoses;
-    }
+    }*/
    
     @Id @GeneratedValue(strategy=IDENTITY)
     @Column(name="idPedidos", unique=true, nullable=false)
