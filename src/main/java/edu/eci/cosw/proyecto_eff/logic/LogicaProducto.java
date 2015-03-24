@@ -36,19 +36,7 @@ public class LogicaProducto {
         //return pr.searchP();
     }
     
-    
-     
-    /**
-     * @Obj: Consultar productos por el id
-     * @param id: id del producto a buscar
-     * @return Pedido que se identifica con el id
-     * @Throws ResourceNotFoundException
-     */
-    public Pedido getProducto(int id) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return null;
-    }
-
+ 
      /**
      * @Obj: Consultar productos por el nombre en una plazoleta de comidas 
      * @param centroComercial :  id centro comercia l , nombre :  cadena del producto a buscar
@@ -63,6 +51,7 @@ public class LogicaProducto {
     public List<Producto> consultarProductoPorFranquicia( String franquicia  ,  String nombre){
         return  pr.searchPorFranquicia("%"+nombre+"%", franquicia);
     }
-     
+
+   
  
 }

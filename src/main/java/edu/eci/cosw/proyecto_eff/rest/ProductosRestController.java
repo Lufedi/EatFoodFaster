@@ -43,10 +43,7 @@ public class ProductosRestController {
         return lp.consultarProductosPorNombre(nombre);
     }
     
-    @RequestMapping(value="/id/{id}",method = RequestMethod.GET)        
-    public Pedido consultarPedidosPorId(@PathVariable int id) throws ResourceNotFoundException  {       
-        return lp.getProducto(id);
-    }
+ 
     
     @RequestMapping(value="/{centrocomercial}/{ciudad}/{sucursal}/{nombre}",method = RequestMethod.GET)        
     public List<Producto> consultarPedidosPorNombreEnPlazoletaComidas(
