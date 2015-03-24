@@ -48,10 +48,13 @@ public class LogicaProducto {
         return pr.searchPorPlazoletaComidas("%"+nombre+"%", ciudad, centrocomercial);
     }
     
+    /**
+     * Obj: Consultar producto por nombre en una franquicia especifica 
+     * @param franquicia  franquicia de la que se quiere consultar
+     * @param nombre nombre del producto a buscar
+     * @return lista de productos que coinciden con el nombre en la franquicia destino
+     */
     public List<Producto> consultarProductoPorFranquicia( String franquicia  ,  String nombre){
         return  pr.searchPorFranquicia("%"+nombre+"%", franquicia);
     }
-
-   
- 
 }
