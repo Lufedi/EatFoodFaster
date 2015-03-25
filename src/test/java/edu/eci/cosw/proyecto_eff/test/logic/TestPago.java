@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package edu.eci.cosw.proyecto_eff.test.logic;
-import edu.eci.cosw.proyecto_eff.components.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
@@ -125,8 +124,7 @@ public class TestPago {
         
         
         Producto[] productos = new Producto[]{p1, p2, p3};
-        InformacionCompra ic = new InformacionCompra("tarjeta credito",productos);
-        boolean ok = lp.registrarPago(ic, cliente.getCorreoCliente());
+        boolean ok = lp.registrarPago(productos, cliente.getCorreoCliente(),"master card");
         List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),2);
         List<Double> l2 = pr2.searchPagosDeCliente(cliente.getCorreoCliente());
@@ -165,8 +163,7 @@ public class TestPago {
         
         
         Producto[] productos = new Producto[]{p1, p2, p3};
-        InformacionCompra ic = new InformacionCompra("tarjeta debito", productos);
-        boolean ok = lp.registrarPago(ic, cliente.getCorreoCliente());
+        boolean ok = lp.registrarPago(productos, cliente.getCorreoCliente(),"master card");
         List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),0);
     }

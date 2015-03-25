@@ -6,7 +6,6 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.components.CompraEvaluator;
-import edu.eci.cosw.proyecto_eff.components.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Pago;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
@@ -16,7 +15,6 @@ import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PagoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
-import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -49,9 +47,9 @@ public class LogicaPago {
      * @throws edu.eci.cosw.proyecto_eff.rest.OperationFailedException
      * @Obj : guardar un pedido de un usuario  
      */
-    public boolean registrarPago(InformacionCompra ic, String cliente) {
+    public boolean registrarPago(Producto[] prods, String cliente, String metodoPago) {
         Cliente c = cr.findOne(cliente);
-        Producto[] productos = ic.getProductos();
+        Producto[] productos = prods;
         Hashtable<String, Pedido> pedidos = new Hashtable<>();
         for (int i = 0; i < productos.length; i++) {
             Sucursal s = productos[i].getSucursales();
@@ -70,12 +68,12 @@ public class LogicaPago {
         }
         boolean ok = true;
         for(String key: pedidos.keySet()){
-            ok = ok && ce.ejecutarCompra(key, getTotalPedido(pedidos.get(key)), ic.getMetodoDepago());
+            ok = ok && ce.ejecutarCompra(key, getTotalPedido(pedidos.get(key)), metodoPago);
         }
         if(ok){
             for(String key: pedidos.keySet()){
                 pr1.save(pedidos.get(key));
-                Pago pago = new Pago(pedidos.get(key), new Date(System.currentTimeMillis()), getTotalPedido(pedidos.get(key)), ic.getMetodoDepago());
+                Pago pago = new Pago(pedidos.get(key), new Date(System.currentTimeMillis()), getTotalPedido(pedidos.get(key)), metodoPago);
                 pr.save(pago);
             }
         }
