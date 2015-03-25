@@ -144,7 +144,8 @@ public class TestNotificarCliente {
   
         
         int idPedido = pedido.getIdPedidos();
-        ls.notificarPedidoListo(idPedido);
+        //notificando pedido listo
+        ls.notificarPedidoListo(pedido);
         
         //Verificar estado del pedido
         Pedido p =  pedr.findOne(idPedido);

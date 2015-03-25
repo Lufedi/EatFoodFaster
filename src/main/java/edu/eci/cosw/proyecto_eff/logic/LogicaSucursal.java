@@ -45,5 +45,12 @@ public class LogicaSucursal {
         p.setEstadoPedido(EstadosPedido.RECIBIDOENSUCURSAL);
         pr.save(p);
     }
+
+    public void notificarPedidoListo(Pedido p) throws OperationFailedException {
+        p.setNotificadoAcliente(true);
+        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
+        pr.save(p);
+        
+    }
     
 }
