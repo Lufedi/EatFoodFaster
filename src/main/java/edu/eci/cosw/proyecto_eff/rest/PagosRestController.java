@@ -34,7 +34,7 @@ public class PagosRestController {
     }
     
     @RequestMapping(value="/{correo}/metodoPago/{metodoPago}",method = RequestMethod.POST)   
-    public ResponseEntity<?> persist(@PathVariable String correo, @PathVariable String metodoPago,@RequestBody Producto[] prods) throws OperationFailedException {
+    public ResponseEntity<?> persist(@PathVariable("correo") String correo, @PathVariable("metodoPago") String metodoPago, @RequestBody Producto[] prods) throws OperationFailedException {
         boolean ok = lp.registrarPago(prods, correo, metodoPago);
         if(!ok){
             throw new OperationFailedException();
