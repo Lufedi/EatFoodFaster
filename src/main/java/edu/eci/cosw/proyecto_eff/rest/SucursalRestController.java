@@ -31,7 +31,7 @@ public class SucursalRestController {
     
      @RequestMapping(value="/notificacion/pedido/listo/{id}",method = RequestMethod.PUT   )        
     public ResponseEntity<?> notificarPedidoListo(@PathVariable("id") int id  , 
-            @RequestBody EstadosPedido estado ) throws ResourceNotFoundException  {       
+            @RequestBody Estado estado) throws ResourceNotFoundException  {       
         try{ 
           ls.notificarPedidoListo(id  , estado);  
         }catch(OperationFailedException e){

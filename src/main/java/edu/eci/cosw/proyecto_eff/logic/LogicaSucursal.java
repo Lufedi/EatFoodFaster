@@ -30,7 +30,7 @@ public class LogicaSucursal {
      * 
      * @throws OperationFailedException 
      */
-    public void notificarPedidoListo(int idPedido , EstadosPedido e)  throws OperationFailedException{
+    public void notificarPedidoListo(int idPedido , Estado e)  throws OperationFailedException{
         //pr.notificarPedidoListo(idPedido);
         Pedido p  = pr.findOne(idPedido);
         p.setNotificadoAcliente(true);
