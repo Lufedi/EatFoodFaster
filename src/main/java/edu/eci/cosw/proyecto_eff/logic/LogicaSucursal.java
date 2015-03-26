@@ -34,7 +34,7 @@ public class LogicaSucursal {
         //pr.notificarPedidoListo(idPedido);
         Pedido p  = pr.findOne(idPedido);
         p.setNotificadoAcliente(true);
-        p.setEstadoPedido(e.estado);
+        p.setEstadoPedido(e.getEstado());
         pr.save(p);
     }
     

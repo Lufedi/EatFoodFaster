@@ -10,14 +10,14 @@ package edu.eci.cosw.proyecto_eff.model;
  * @author Pipe
  */
 public class Estado {
-    public Estado(String estado){this.estado  = estado;}
-    public String estado;
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    private String estado;
 
     public String getEstado() {
         return estado;
     }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
 }
