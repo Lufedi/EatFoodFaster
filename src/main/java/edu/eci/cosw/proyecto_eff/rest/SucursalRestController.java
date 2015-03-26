@@ -6,6 +6,8 @@
 package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
+import edu.eci.cosw.proyecto_eff.model.Estado;
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,17 @@ public class SucursalRestController {
     LogicaSucursal ls;
     
      @RequestMapping(value="/notificacion/pedido/listo/{id}",method = RequestMethod.PUT   )        
-    public ResponseEntity<?> notificarPedidoListo(@PathVariable("id") int id  ,@RequestBody String estado ) throws ResourceNotFoundException  {       
+    public ResponseEntity<?> notificarPedidoListo(@PathVariable("id") int id  , 
+            @RequestBody EstadosPedido estado ) throws ResourceNotFoundException  {       
         try{ 
           ls.notificarPedidoListo(id  , estado);  
         }catch(OperationFailedException e){
               return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-         return new ResponseEntity<>(HttpStatus.ACCEPTED);
+         return new ResponseEntity<>("REST API "+ estado + "id " + id , HttpStatus.ACCEPTED);
         
     }
     
 }
+
+  

@@ -10,6 +10,7 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
@@ -145,7 +146,7 @@ public class TestNotificarCliente {
         
         int idPedido = pedido.getIdPedidos();
         //notificando pedido listo
-        ls.notificarPedidoListo(idPedido , EstadosPedido.NOTIFICADOACLIENTE);
+        ls.notificarPedidoListo(idPedido , new EstadosPedido(EstadosPedido.NOTIFICADOACLIENTE));
         
         //Verificar estado del pedido
         Pedido p =  pedr.findOne(idPedido);

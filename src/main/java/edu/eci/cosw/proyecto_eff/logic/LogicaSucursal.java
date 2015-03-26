@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.logic;
 
+import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
@@ -23,15 +24,17 @@ public class LogicaSucursal {
     PedidoRepository pr;
     
     /**
+     * @param e estado
      * @Obj: Notificar al cliente que el pedido de una sucursal esta listo
      * @param idPedido: id  del Pedido del cliente
+     * 
      * @throws OperationFailedException 
      */
-    public void notificarPedidoListo(int idPedido , String estado)  throws OperationFailedException{
+    public void notificarPedidoListo(int idPedido , EstadosPedido e)  throws OperationFailedException{
         //pr.notificarPedidoListo(idPedido);
         Pedido p  = pr.findOne(idPedido);
         p.setNotificadoAcliente(true);
-        p.setEstadoPedido(estado);
+        p.setEstadoPedido(e.estado);
         pr.save(p);
     }
     
