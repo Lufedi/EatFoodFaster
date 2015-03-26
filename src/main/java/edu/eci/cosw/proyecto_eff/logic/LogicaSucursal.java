@@ -27,11 +27,11 @@ public class LogicaSucursal {
      * @param idPedido: id  del Pedido del cliente
      * @throws OperationFailedException 
      */
-    public void notificarPedidoListo(int idPedido)  throws OperationFailedException{
+    public void notificarPedidoListo(int idPedido , String estado)  throws OperationFailedException{
         //pr.notificarPedidoListo(idPedido);
         Pedido p  = pr.findOne(idPedido);
         p.setNotificadoAcliente(true);
-        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
+        p.setEstadoPedido(estado);
         pr.save(p);
     }
     
@@ -46,11 +46,7 @@ public class LogicaSucursal {
         pr.save(p);
     }
 
-    public void notificarPedidoListo(Pedido p) throws OperationFailedException {
-        p.setNotificadoAcliente(true);
-        p.setEstadoPedido(EstadosPedido.NOTIFICADOACLIENTE);
-        pr.save(p);
-        
-    }
+    
+  
     
 }

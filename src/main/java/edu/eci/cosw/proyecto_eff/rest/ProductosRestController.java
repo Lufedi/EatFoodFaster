@@ -28,9 +28,7 @@ public class ProductosRestController {
     
     @Autowired
     LogicaProducto lp;
-    
-   
-    
+
     @RequestMapping(value="/{franquicia}/{producto}",method = RequestMethod.GET)        
     public List<Producto> consultarPedidosPorFranquicia(
             @PathVariable("franquicia") String franquicia ,  
