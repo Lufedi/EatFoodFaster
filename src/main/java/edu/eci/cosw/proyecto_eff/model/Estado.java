@@ -12,4 +12,12 @@ package edu.eci.cosw.proyecto_eff.model;
 public class Estado {
     public Estado(String estado){this.estado  = estado;}
     public String estado;
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
 }
