@@ -8,6 +8,7 @@ package edu.eci.cosw.proyecto_eff.logic;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
+import java.util.AbstractList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,19 @@ public class LogicaPlazoleta {
     PlazoletaComidaRepository pcr;
 
     /**
-     * @param pc
+     * @param pcId
      * @return 
     * @Obj: buscar las sucursales de cada franquicia que está en la plazoleta de comidas
-    * @param pc: plazoleta de comida donde buscara sus franquicias
+    * @param pcId: Nombre de la plazoleta de comida donde buscara sus franquicias
     * @return: listado de sucursales de franquicias ubicados en la plazoleta de comidas
     */
-    public List<Sucursal> buscarSucursalesPorPlazoleta(PlazoletaComida pc){
-        return pcr.search(pc.getId().getIdPlazoletaComidas());
+    public List<Sucursal> buscarSucursalesPorPlazoleta(String pcId){
+        List<Sucursal> ls=null;
+        List<PlazoletaComida> plazoletas =(List<PlazoletaComida>) pcr.findAll();
+        for(PlazoletaComida p : plazoletas){
+            if(p.getId().getIdPlazoletaComidas().equalsIgnoreCase(pcId))
+                ls=pcr.search(pcId);
+        }
+        return ls;
     }   
 }

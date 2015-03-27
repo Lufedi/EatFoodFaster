@@ -6,11 +6,10 @@
 package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPlazoleta;
-import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +27,7 @@ public class PlazoletaRestController {
     LogicaPlazoleta lp;
     
     @RequestMapping(value="/",method = RequestMethod.GET) 
-    public List<Sucursal> buscarSucursalesPorPlazoleta(@RequestBody PlazoletaComida pc)throws ResourceNotFoundException{
-        return lp.buscarSucursalesPorPlazoleta(pc);
+    public List<Sucursal> buscarSucursalesPorPlazoleta(@PathVariable String pcId)throws ResourceNotFoundException{
+        return lp.buscarSucursalesPorPlazoleta(pcId);
     }
 }
