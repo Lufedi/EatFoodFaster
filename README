@@ -7,3 +7,22 @@ Fabián Alvarez
 Jenni Barajas
 Luis Felipe Díaz
 Fernando Garcia
+
+
+
+REST
+
+
+REST 
+-Consultar productos
+// Consultar los productos ofrecidos en una sucursal
+Verbo : GET
+https://eatfoodfaster.herokuapp.com/rest/productos/{franquicia}/{producto}   
+
+//Consultar productos por nombre en todos los centros comerciales y en todas las sucursales
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/productos/{nombre} 
+
+//Consultar productos por nombre en un centro comercial y en una sucursal en especifica
+Verbo : GET
+https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{sucursal}/{nombre} 
