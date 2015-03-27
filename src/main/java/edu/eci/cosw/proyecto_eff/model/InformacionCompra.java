@@ -21,6 +21,11 @@ public class InformacionCompra {
     private int codigoSeguridad;
     private ProductoId[] idProductos;
 
+    public InformacionCompra() {
+    }
+    
+    
+
     public InformacionCompra(String correoUsuario, String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExperacion, int anioExpiracion, int codigoSeguridad, ProductoId[] idProductos) {
         this.correoUsuario = correoUsuario;
         this.opcionPago = opcionPago;
