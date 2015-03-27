@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
  *
  * @author luisfediaz
@@ -29,7 +30,7 @@ public class SucursalRestController {
     @Autowired
     LogicaSucursal ls;
     //http://www.leveluplunch.com/java/tutorials/014-post-json-to-spring-rest-webservice/
-     @RequestMapping(value="/pedido/{id}",method = RequestMethod.PUT   )        
+     @RequestMapping(value="/notificacion/pedido/listo/{id}",method = RequestMethod.PUT   )        
     public ResponseEntity<?> notificarPedidoListo(@PathVariable("id") int id  , 
             @RequestBody Estado estado) throws ResourceNotFoundException  {       
         try{ 
@@ -42,5 +43,4 @@ public class SucursalRestController {
     }
     
 }
-
   
