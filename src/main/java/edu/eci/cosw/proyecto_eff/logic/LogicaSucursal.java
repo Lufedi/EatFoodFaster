@@ -10,6 +10,7 @@ import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
+import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,12 +41,17 @@ public class LogicaSucursal {
     
     /**
      * 
-     * @param p : pedido realizado por el cliente
+     * 
+     * @param idPedido: Id del pedido al cual se le cambiara el estado de que ya
+     * le fue notificado a la sucursal
+     * @param e: Estado
+     * @throws edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException
      */
-    public void recibirNotificacion(Pedido p){
+    public void recibirNotificacion(int idPedido, Estado e) throws ResourceNotFoundException{
         //Debo retornal algo
+        Pedido p  = pr.findOne(idPedido);
         p.setEnviadoAsucursal(true);
-        p.setEstadoPedido(EstadosPedido.RECIBIDOENSUCURSAL);
+        p.setEstadoPedido(e.getEstado());
         pr.save(p);
     }
 

@@ -42,5 +42,14 @@ public class SucursalRestController {
         
     }
     
+    @RequestMapping(value="/notificacion/pedido/sucursal/{id}",method = RequestMethod.PUT)        
+    public ResponseEntity<?> notificarPedidoASucursal(@PathVariable("id") int id  , 
+            @RequestBody Estado estado) throws ResourceNotFoundException  {       
+         
+        ls.recibirNotificacion(id,estado);
+        return new ResponseEntity<>("REST API "+ estado + "id " + id , HttpStatus.ACCEPTED);
+    }
+    //
+    
 }
   

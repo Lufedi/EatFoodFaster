@@ -9,6 +9,8 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Estado;
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PedidoProducto;
@@ -24,6 +26,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
+import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
 import java.util.List;
 import java.util.Set;
 import static org.junit.Assert.assertEquals;
@@ -123,7 +126,7 @@ public class TestPedido {
     }
     
     @Test
-    public void testConsultarPedidoPorSucursalConYSinNotificar(){
+    public void testConsultarPedidoPorSucursalConYSinNotificar() throws ResourceNotFoundException{
         //deleteInfo();
         Cliente cliente= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
         cr.save(cliente);
@@ -163,7 +166,9 @@ public class TestPedido {
         ped1.getPedidosProductoses().add(new PedidoProducto(ped1, producto2));
         pedr.save(ped1);
         
-        ls.recibirNotificacion(ped1);
+        Estado e =  new Estado();
+        e.setEstado(EstadosPedido.RECIBIDOENSUCURSAL);
+        ls.recibirNotificacion(ped1.getIdPedidos(),e);
         
         List<Pedido> list1 = lp.consultarPedidosPorSucursalNotificados(sucursal.getIdSucursales());
         List<Pedido> list2 = lp.consultarPedidosPorSucursalSinNotificar(sucursal.getIdSucursales());

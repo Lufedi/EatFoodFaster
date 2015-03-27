@@ -8,6 +8,8 @@ package edu.eci.cosw.proyecto_eff.test.logic;
 import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Estado;
+import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
@@ -15,6 +17,7 @@ import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.ClienteRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -50,7 +53,7 @@ public class TestSucursal {
     }
     
     @Test
-    public void testRecibirNotificacion(){
+    public void testRecibirNotificacion() throws ResourceNotFoundException{
         
         Cliente c= new Cliente("fan@hot.com", "123456", "Fabian", "Alvarez", "310582");
         cr.save(c);
@@ -59,7 +62,9 @@ public class TestSucursal {
         Franquicia f = new Franquicia("El Corral");
         PlazoletaComida pc= new PlazoletaComida(new PlazoletaComidaId("CC Santafe", "Bogota"));
         Sucursal s= new Sucursal(f, pc, "12345");
-        ls.recibirNotificacion(p);
+        Estado e =  new Estado();
+        e.setEstado(EstadosPedido.RECIBIDOENSUCURSAL);
+        ls.recibirNotificacion(p.getIdPedidos(),e);
         
         
         Pedido p1 = lp.consultarPedidoPorId(p.getIdPedidos());

@@ -46,13 +46,7 @@ public class PedidosRestController {
     public List<Pedido> consultarPedidosDeSucursalNotificados(@PathVariable int idSucursal) throws ResourceNotFoundException  {       
         return lp.consultarPedidosPorSucursalNotificados(idSucursal);
     }
-    
-    @RequestMapping(value="/sucursal/recibirPedido",method = RequestMethod.PUT)        
-    public ResponseEntity<?> notificarPedidoASucursal(@RequestBody Pedido pedido) throws ResourceNotFoundException  {       
-         ls.recibirNotificacion(pedido);
-         return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-    
+   
     @RequestMapping(value="/",method = RequestMethod.GET)        
     public List<Pedido> consultarPedidos() throws ResourceNotFoundException  {       
         return lp.consultarPedidos();   

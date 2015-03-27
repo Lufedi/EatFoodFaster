@@ -26,7 +26,7 @@ public class PlazoletaRestController {
     @Autowired
     LogicaPlazoleta lp;
     
-    @RequestMapping(value="/{pcId}",method = RequestMethod.GET) 
+    @RequestMapping(value="/",method = RequestMethod.GET) 
     public List<Sucursal> buscarSucursalesPorPlazoleta(@PathVariable String pcId)throws ResourceNotFoundException{
         return lp.buscarSucursalesPorPlazoleta(pcId);
     }
