@@ -1,11 +1,11 @@
-Descripción del proyecto
+-Descripción del proyecto
 
 El objetivo de la empresa es brindar un modelo centralizado de compra de alimentos
  en los puntos de venta de distintas franquicias ubicadas en las diversas plazoletas 
  de comidas, reduciendo el tiempo requerido para hacer un pedido y brindando a las 
  franquicias un incremento en las ventas de dichos puntos de distribución.
 
-Justificación y antecedentes del proyecto
+-Justificación y antecedentes del proyecto
 
 El principal problema que tiene el usuario frente a una plazoleta de comidas,
  es la gran cantidad de tiempo que se invierte en buscar y comprar los 
@@ -25,15 +25,15 @@ Ejemplo: www.domiciliosbogota.com, www.hellofood.com, www.pedidosya.com.
 
 Integrantes 
 Fabián Alvarez
-Jenni Barajas
+Jennifer Barajas
 Luis Felipe Díaz
 Fernando Garcia
 
 
+- Url Despliegue del proyecto: https://eatfoodfaster.herokuapp.com
 
 REST 
 -Consultar productos
-
 // Consultar los productos ofrecidos en una sucursal
 Verbo : GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{franquicia}/{producto}   
@@ -46,8 +46,109 @@ https://eatfoodfaster.herokuapp.com/rest/productos/{nombre}
 Verbo : GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{sucursal}/{nombre} 
 
--Notificar Cliente
 
+-Consultar Sucursales
+//Se consultan las sucursales de una franquicia en especifica, por el nombre de la franquicia.
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/franquicia/{fId} 
+
+//Se consultan las sucursales de una plazoleta de comida en especifica, por el nombre del centro comercial.
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/plazoleta/{pcId} 
+
+
+-Perfil Cliente
+//Consultar un cliente en especifico segun su usuario (correo)
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/clientes/{correo} 
+
+//Registrar un nuevo cliente 
+Verbo: POST
+https://eatfoodfaster.herokuapp.com/rest/clientes/
+JSON:
+{
+ "correoCliente": "linatas@hotmail.com",
+ "contrasena": "43d1",
+ "nombre": "Lina",
+ "apellido": "Cortez",
+ "celular": "3138734529"
+}
+
+//Modificar un Algun dato de un cliente (menos el correo)
+Verbo: PUT
+https://eatfoodfaster.herokuapp.com/rest/clientes/
+{
+ "correoCliente": "linatas@hotmail.com",
+ "contrasena": "password",
+ "nombre": "Linita",
+ "apellido": "Cortez",
+ "celular": "3138734529"
+}
+
+
+-Pagos
+//Consultar todos los pagos realizados 
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pagos
+
+//Consultar un pago realizado por un identificador  
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pagos/{id}
+
+//Registrar un nuevo pago de un pedido 
+Verbo: POST
+https://eatfoodfaster.herokuapp.com/rest/pagos
+JSON:
+{
+ "correoUsuario":"daniel20@gmail.com",
+ "opcionPago":"master card",
+ "nombreCliente":"Daniel",
+ "apellidoCliente":"Cortez",
+ "numeroTarjeta":"987 654 321",
+ "mesExpiracion":1,
+ "anioExpiracion":2016,
+ "codigoSeguridad":1236,
+ "idProductos":[{
+ 		  "idProductos":"1",
+	  "sucursalesIdSucursales":14
+ },{
+	  "idProductos":"2",
+	  "sucursalesIdSucursales":17
+ },{
+	  "idProductos":"2",
+	  "sucursalesIdSucursales":17
+ }]
+}
+
+-Pedido
+//Consultar todos los pedidos relizados por la aplicación 
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pedidos/
+
+//Consulta un pedido especifico segun su Id
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pedidos/{idPedido}
+
+//Pedidos realizados a una sucursal en especifica
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pedidos/sucursal/{idSucursal}
+
+//Pedidos de una sucursal que aún no han sido notificados a la sucursal
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pedidos/sucursal/sinNotificar/{idSucursal}
+
+//Pedidos de una sucursal que ya fueron notificados a la sucursal
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/pedidos/sucursal/notificados/{idSucursal}
+
+-Notificar a Sucursal 
+//Notificar un pedido por su Id a una sucursal
+Verbo: PUT
+https://eatfoodfaster.herokuapp.com/rest/notificacion/pedido/sucursal/{id}
+JSON:
+{"estado":"pedido llego a sucursal"}
+
+-Notificar Cliente
 //Notificar a un cliente que su pedido está listo actualizando el estado del pedido
 Verbo : PUT
 http://eatfoodfaster.herokuapp.com/rest/notificacion/pedido/listo/{id}
