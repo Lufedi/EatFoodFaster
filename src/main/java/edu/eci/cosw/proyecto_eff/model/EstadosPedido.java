@@ -10,7 +10,7 @@ package edu.eci.cosw.proyecto_eff.model;
  * @author 2094808
  */
 public class EstadosPedido {
-    public static final String LISTO =  "Pediod listo";
+    public static final String LISTO =  "Pedido listo";
     public static final String NOTIFICADOACLIENTE =  "Notificado a cliente";
     public static final String RECIBIDOENSUCURSAL = "Pedido recibido en sucursal";
     public static final String ENVIADOASUCURSAL  = "Pedido enviado a sucursal";

@@ -1,5 +1,26 @@
 Descripción del proyecto
 
+El objetivo de la empresa es brindar un modelo centralizado de compra de alimentos
+ en los puntos de venta de distintas franquicias ubicadas en las diversas plazoletas 
+ de comidas, reduciendo el tiempo requerido para hacer un pedido y brindando a las 
+ franquicias un incremento en las ventas de dichos puntos de distribución.
+
+Justificación y antecedentes del proyecto
+
+El principal problema que tiene el usuario frente a una plazoleta de comidas,
+ es la gran cantidad de tiempo que se invierte en buscar y comprar los 
+ alimentos que desea a un precio determinado. Adicionalmente, la cantidad 
+ de recibos impresos, es un factor ambiental y económico que se busca reducir con este modelo.
+
+En algunos casos  los clientes cuando ven su restaurante de 
+preferencia con largas filas prefieren cambiar su opción de 
+compra ya sea porque tienen prisa u otro motivo.
+
+Actualmente, existen diversas aplicaciones basadas en modelos 
+centralizados de compras de alimentos, donde la idea central del 
+negocio se basa en la intermediación de domicilios de diversos restaurantes.
+Ejemplo: www.domiciliosbogota.com, www.hellofood.com, www.pedidosya.com.
+
 
 
 Integrantes 
@@ -10,11 +31,9 @@ Fernando Garcia
 
 
 
-REST
-
-
 REST 
 -Consultar productos
+
 // Consultar los productos ofrecidos en una sucursal
 Verbo : GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{franquicia}/{producto}   
@@ -26,3 +45,14 @@ https://eatfoodfaster.herokuapp.com/rest/productos/{nombre}
 //Consultar productos por nombre en un centro comercial y en una sucursal en especifica
 Verbo : GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{sucursal}/{nombre} 
+
+-Notificar Cliente
+
+//Notificar a un cliente que su pedido está listo actualizando el estado del pedido
+Verbo : PUT
+http://eatfoodfaster.herokuapp.com/rest/notificacion/pedido/listo/{id}
+JSON : 
+{"estado":"Pedido listo"}
+
+
+
