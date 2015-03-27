@@ -16,23 +16,22 @@ public class InformacionCompra {
     private String nombreCliente;
     private String apellidoCliente;
     private String numeroTarjeta;
-    private int mesExperacion;
+    private int mesExpiracion;
     private int anioExpiracion;
     private int codigoSeguridad;
     private ProductoId[] idProductos;
 
     public InformacionCompra() {
+    
     }
-    
-    
 
-    public InformacionCompra(String correoUsuario, String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExperacion, int anioExpiracion, int codigoSeguridad, ProductoId[] idProductos) {
+    public InformacionCompra(String correoUsuario, String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExpiracion, int anioExpiracion, int codigoSeguridad, ProductoId[] idProductos) {
         this.correoUsuario = correoUsuario;
         this.opcionPago = opcionPago;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
         this.numeroTarjeta = numeroTarjeta;
-        this.mesExperacion = mesExperacion;
+        this.mesExpiracion = mesExpiracion;
         this.anioExpiracion = anioExpiracion;
         this.codigoSeguridad = codigoSeguridad;
         this.idProductos = idProductos;
@@ -109,17 +108,17 @@ public class InformacionCompra {
     }
 
     /**
-     * @return the mesExperacion
+     * @return the mesExpiracion
      */
-    public int getMesExperacion() {
-        return mesExperacion;
+    public int getMesExpiracion() {
+        return mesExpiracion;
     }
 
     /**
-     * @param mesExperacion the mesExperacion to set
+     * @param mesExpiracion the mesExpiracion to set
      */
-    public void setMesExperacion(int mesExperacion) {
-        this.mesExperacion = mesExperacion;
+    public void setMesExpiracion(int mesExpiracion) {
+        this.mesExpiracion = mesExpiracion;
     }
 
     /**
@@ -163,6 +162,9 @@ public class InformacionCompra {
     public void setIdProductos(ProductoId[] idProductos) {
         this.idProductos = idProductos;
     }
-
+    
+    
+    
+    
     
 }

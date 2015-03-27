@@ -163,7 +163,7 @@ public class TestPago {
         pr.save(p3);
         
         ProductoId[] productoIds = new ProductoId[]{p1.getId(), p2.getId(), p3.getId()};
-        InformacionCompra ic = new InformacionCompra(cliente.getCorreoCliente(), "master card", cliente.getNombre(), cliente.getApellido(), "123 456 789", 1, 2018, 1234, productoIds);
+        InformacionCompra ic = new InformacionCompra(cliente.getCorreoCliente(), "master card", cliente.getNombre(), cliente.getApellido(), "123 456 789", 1, 2018, 1235, productoIds);
         boolean ok = lp.registrarPago(ic);
         List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),0);

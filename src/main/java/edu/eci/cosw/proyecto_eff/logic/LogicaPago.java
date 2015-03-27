@@ -90,7 +90,7 @@ public class LogicaPago {
         }
         boolean ok = true;
         for(String key: pedidos.keySet()){
-            ok = ok && compraEvaluator.ejecutarCompra(ic.getOpcionPago(), ic.getNombreCliente(), ic.getApellidoCliente(), ic.getNumeroTarjeta(), ic.getMesExperacion(), ic.getAnioExpiracion(), ic.getCodigoSeguridad(), getTotalPedido(pedidos.get(key)));
+            ok = ok && compraEvaluator.ejecutarCompra(ic.getOpcionPago(), ic.getNombreCliente(), ic.getApellidoCliente(), ic.getNumeroTarjeta(), ic.getMesExpiracion(), ic.getAnioExpiracion(), ic.getCodigoSeguridad(), getTotalPedido(pedidos.get(key)));
         }
         if(ok){
             for(String key: pedidos.keySet()){

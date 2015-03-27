@@ -16,7 +16,7 @@ public class DummyCompraEvaluator implements CompraEvaluator{
 
     @Override
     public boolean ejecutarCompra(String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExpiracion, int anioExpiracion, int codigoSeguridad, double totalCompra) {
-        return totalCompra%2==0;
+        return codigoSeguridad%2==0;
     }
 
     
