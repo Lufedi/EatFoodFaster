@@ -30,7 +30,7 @@ public class SucursalRestController {
     @Autowired
     LogicaSucursal ls;
     //http://www.leveluplunch.com/java/tutorials/014-post-json-to-spring-rest-webservice/
-     @RequestMapping(value="/notificacion/pedido/listo/{id}",method = RequestMethod.PUT   )        
+     @RequestMapping(value="/pedido/listo/{id}",method = RequestMethod.PUT   )        
     public ResponseEntity<?> notificarPedidoListo(@PathVariable("id") int id  , 
             @RequestBody Estado estado) throws ResourceNotFoundException  {       
         try{ 
@@ -42,7 +42,7 @@ public class SucursalRestController {
         
     }
     
-    @RequestMapping(value="/notificacion/pedido/sucursal/{id}",method = RequestMethod.PUT)        
+    @RequestMapping(value="/pedido/sucursal/{id}",method = RequestMethod.PUT)        
     public ResponseEntity<?> notificarPedidoASucursal(@PathVariable("id") int id  , 
             @RequestBody Estado estado) throws ResourceNotFoundException  {       
          
