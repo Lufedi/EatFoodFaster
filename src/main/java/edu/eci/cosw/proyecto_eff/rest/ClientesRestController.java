@@ -9,6 +9,7 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaCliente;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class ClientesRestController {
     LogicaCliente lc;
     
     @RequestMapping(value="/",method = RequestMethod.POST)
-    public void registrarCliente (@PathVariable Cliente c) throws OperationFailedException{
+    public void registrarCliente (@RequestBody  Cliente c) throws OperationFailedException{
         lc.registrarCliente(c);
     }
     
@@ -35,7 +36,7 @@ public class ClientesRestController {
     }
     
     @RequestMapping(value="/",method = RequestMethod.PUT)
-    public void modificarCliente (@PathVariable Cliente c) throws OperationFailedException{
+    public void modificarCliente (@RequestBody Cliente c) throws OperationFailedException{
         lc.modificarCliente(c);
     }
 }

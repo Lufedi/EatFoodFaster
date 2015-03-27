@@ -36,6 +36,7 @@ public class LogicaCliente {
         return cr.findOne(correoCliente);
     }
     
+    
     /**
      * @Obj : Modificar alguna informacion del cliente
      * @param cl: El cliente que se desea modificar, con los camios realizados
@@ -52,4 +53,6 @@ public class LogicaCliente {
         cr.save(clienteViejo);
 
     }
+    
+    
 }
