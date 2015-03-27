@@ -11,7 +11,9 @@ package edu.eci.cosw.proyecto_eff.model;
  */
 public class Estado {
     private String estado;
-
+    public Estado(){
+        
+    }
     public String getEstado() {
         return estado;
     }
