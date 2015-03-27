@@ -155,17 +155,17 @@ public class TestNotificarCliente {
         assertEquals(true ,  p.isNotificadoAcliente());
         assertEquals(EstadosPedido.NOTIFICADOACLIENTE ,  p.getEstadoPedido());
     }
-    @Test
+   // @Test
     /*
     PRE :  El pedido ha sido enviado y procesado en la sucursal y está listo para ser notificado al cliente
     */
-    public void validarEstado() throws OperationFailedException, IllegalArgumentException, IllegalAccessException{
+   /* public void validarEstado() throws OperationFailedException, IllegalArgumentException, IllegalAccessException{
          Estado e =  new Estado();
         e.setEstado(EstadosPedido.NOTIFICADOACLIENTE);
-          Estado f =  new Estado();
+         Estado f =  new Estado();
         f.setEstado("notificado a cliente");
         assertEquals(ls.validarEstado(e) , true);
         assertEquals(ls.validarEstado(f) , false);
         
-    }
+    }*/
 }
