@@ -89,7 +89,7 @@ https://eatfoodfaster.herokuapp.com/rest/clientes/
 -Pagos
 //Consultar todos los pagos realizados 
 Verbo: GET
-https://eatfoodfaster.herokuapp.com/rest/pagos
+https://eatfoodfaster.herokuapp.com/rest/pagos/
 
 //Consultar un pago realizado por un identificador  
 Verbo: GET
@@ -97,7 +97,7 @@ https://eatfoodfaster.herokuapp.com/rest/pagos/{id}
 
 //Registrar un nuevo pago de un pedido 
 Verbo: POST
-https://eatfoodfaster.herokuapp.com/rest/pagos
+https://eatfoodfaster.herokuapp.com/rest/pagos/
 JSON:
 {
  "correoUsuario":"daniel20@gmail.com",
