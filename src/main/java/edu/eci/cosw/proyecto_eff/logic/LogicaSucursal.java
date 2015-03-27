@@ -11,6 +11,7 @@ import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
+import java.lang.reflect.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,22 @@ public class LogicaSucursal {
         pr.save(p);
     }
 
-    
+    public  boolean validarEstado(Estado e) throws IllegalArgumentException, IllegalAccessException{
+       EstadosPedido ep =  new EstadosPedido();
+       Field[] a = EstadosPedido.class.getFields();
+       String temp;
+       for(Field s :  a){
+           temp   = (String) s.get(ep);
+           if( temp !=  null && temp.equals(e.getEstado())) return true;
+       } 
+       return false;
+    }
   
+    /*public static void main(String[] args) throws OperationFailedException, IllegalArgumentException, IllegalAccessException{
+          Estado e =  new Estado();
+        e.setEstado(EstadosPedido.NOTIFICADOACLIENTE);
+        boolean validarEstado = validarEstado(e);
+        
+    }*/
     
 }

@@ -16,6 +16,8 @@ public class EstadosPedido {
     public static final String ENVIADOASUCURSAL  = "Pedido enviado a sucursal";
     
     public static String estado;
-    
+    public EstadosPedido(){
+        
+    }
     public EstadosPedido(String estado){this.estado  =  estado;}
 }
