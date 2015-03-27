@@ -70,7 +70,7 @@ public class TestFranquicia {
         sucursal = new Sucursal(franquicia, plazoletaComida, "4444");
         sr.save(sucursal);
  
-        List<Sucursal> ls= lf.buscarSucursalesPorFranquicia(franquicia);
+        List<Sucursal> ls= lf.buscarSucursalesPorFranquicia(franquicia.getIdFranquicia());
         assertEquals(ls.size(),3);
     }
     

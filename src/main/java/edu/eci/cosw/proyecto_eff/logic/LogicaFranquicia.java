@@ -21,12 +21,20 @@ public class LogicaFranquicia {
     
     @Autowired
     private FranquiciaRepository fr;
+    
     /**
      * @Obj: Listar las sucursales disponibles de una franquicia
-     * @param f: franquicia a la que se le buscará sus sucursales
+     * @param fId: nombre de la franquicia a la que se le buscará sus sucursales
      * @return : lista de sucursales que pertenecen a la franquicia
      */
-    public List<Sucursal> buscarSucursalesPorFranquicia(Franquicia f){
-        return fr.search(f.getIdFranquicia());
+    
+    public List<Sucursal> buscarSucursalesPorFranquicia(String fId){
+        List<Sucursal> ls=null;
+        List<Franquicia> franquicias =(List<Franquicia>) fr.findAll();
+        for(Franquicia f : franquicias){
+            if(f.getIdFranquicia().equalsIgnoreCase(fId))
+                ls=fr.search(fId);
+        }
+        return ls;
     }
 }
