@@ -43,7 +43,7 @@ public class ProductosRestController {
     
  
     
-    @RequestMapping(value="/{centrocomercial}/{ciudad}/{sucursal}/{nombre}",method = RequestMethod.GET)        
+    @RequestMapping(value="/{centrocomercial}/{ciudad}/{nombre}",method = RequestMethod.GET)        
     public List<Producto> consultarPedidosPorNombreEnPlazoletaComidas(
             @PathVariable String  centrocomercial, 
             @PathVariable String ciudad ,

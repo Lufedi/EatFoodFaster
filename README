@@ -42,9 +42,9 @@ https://eatfoodfaster.herokuapp.com/rest/productos/{franquicia}/{producto}
 Verbo: GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{nombre} 
 
-//Consultar productos por nombre en un centro comercial y en una sucursal en especifica
+//Consultar productos por nombre en un centro comercial 
 Verbo : GET
-https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{sucursal}/{nombre} 
+https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{nombre} 
 
 
 -Consultar Sucursales
