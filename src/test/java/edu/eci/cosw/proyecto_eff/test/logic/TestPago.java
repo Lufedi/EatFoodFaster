@@ -8,7 +8,7 @@ import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
-import edu.eci.cosw.proyecto_eff.model.Pago;
+import edu.eci.cosw.proyecto_eff.model.InformacionCompra;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
@@ -70,7 +70,7 @@ public class TestPago {
     
     @Before
     public void setup(){
-         pr2.deleteAll();
+        pr2.deleteAll();
         pr1.deleteAll();
         pr.deleteAll();
         sr.deleteAll();
@@ -122,9 +122,10 @@ public class TestPago {
         Producto p3 = new Producto(new ProductoId("Pollo asado", s1.getIdSucursales()), c, s1, 15000, false, "pollo asado", new Float(0.0));
         pr.save(p3);
         
+        ProductoId[] productoIds = new ProductoId[]{p1.getId(), p2.getId(), p3.getId()};
+        InformacionCompra ic = new InformacionCompra(cliente.getCorreoCliente(), "master card", cliente.getNombre(), cliente.getApellido(), "123 456 789", 1, 2018, 1234, productoIds);
         
-        Producto[] productos = new Producto[]{p1, p2, p3};
-        boolean ok = lp.registrarPago(productos, cliente.getCorreoCliente(),"master card");
+        boolean ok = lp.registrarPago(ic);
         List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),2);
         List<Double> l2 = pr2.searchPagosDeCliente(cliente.getCorreoCliente());
@@ -161,9 +162,9 @@ public class TestPago {
         Producto p3 = new Producto(new ProductoId("Pollo broaster", s1.getIdSucursales()), c, s1, 15000, false, "pollo asado", new Float(1.0));
         pr.save(p3);
         
-        
-        Producto[] productos = new Producto[]{p1, p2, p3};
-        boolean ok = lp.registrarPago(productos, cliente.getCorreoCliente(),"master card");
+        ProductoId[] productoIds = new ProductoId[]{p1.getId(), p2.getId(), p3.getId()};
+        InformacionCompra ic = new InformacionCompra(cliente.getCorreoCliente(), "master card", cliente.getNombre(), cliente.getApellido(), "123 456 789", 1, 2018, 1234, productoIds);
+        boolean ok = lp.registrarPago(ic);
         List<Pedido> l = pr2.searchPedidosDeCliente(cliente.getCorreoCliente());
         assertEquals(l.size(),0);
     }

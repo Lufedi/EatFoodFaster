@@ -18,6 +18,6 @@ public interface CompraEvaluator {
      * @param tipoDePago: Tipo de pago seleccionado
      * @return true si el pago fue realizado correctamente, false en caso contrario
      */
-    public boolean ejecutarCompra(String sucursal, float total, String tipoDePago);
+    public boolean ejecutarCompra(String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExpiracion, int anioExpiracion, int codigoSeguridad, double totalCompra);
 
 }

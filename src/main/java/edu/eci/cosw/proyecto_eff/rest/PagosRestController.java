@@ -2,9 +2,12 @@ package edu.eci.cosw.proyecto_eff.rest;
 
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
+import edu.eci.cosw.proyecto_eff.model.InformacionCompra;
+import edu.eci.cosw.proyecto_eff.model.Pago;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.ProductoId;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,17 +28,19 @@ public class PagosRestController {
     @Autowired
     LogicaPago lp;
     
-    @Autowired
-    ProductoRepository pr;
-    
-    @RequestMapping(value="/ejemplo",method = RequestMethod.GET) 
-    public Producto[] consultarCliente()throws ResourceNotFoundException{
-        return new Producto[]{pr.findOne(new ProductoId("1", 14))};    
+    @RequestMapping(value="/",method = RequestMethod.GET)        
+    public List<Pago> consultarPagos() throws ResourceNotFoundException  {       
+        return lp.getPagos();
     }
     
-    @RequestMapping(value="/{correo}/metodoPago/{metodoPago}",method = RequestMethod.POST)   
-    public ResponseEntity<?> persist(@PathVariable("correo") String correo, @PathVariable("metodoPago") String metodoPago, @RequestBody Producto[] prods) throws OperationFailedException {
-        boolean ok = lp.registrarPago(prods, correo, metodoPago);
+    @RequestMapping(value="/{id}",method = RequestMethod.GET)        
+    public Pago consultarPagosPorId(@PathVariable int id) throws ResourceNotFoundException  {       
+        return lp.getPagoById(id);
+    }
+    
+    @RequestMapping(value="/",method = RequestMethod.POST)   
+    public ResponseEntity<?> persist(@RequestBody InformacionCompra ic) throws OperationFailedException {
+        boolean ok = lp.registrarPago(ic);
         if(!ok){
             throw new OperationFailedException();
         }

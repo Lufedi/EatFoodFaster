@@ -15,8 +15,10 @@ import org.springframework.stereotype.Service;
 public class DummyCompraEvaluator implements CompraEvaluator{
 
     @Override
-    public boolean ejecutarCompra(String sucursal, float total, String tipoDePago) {
-        return total%2==0;
+    public boolean ejecutarCompra(String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExpiracion, int anioExpiracion, int codigoSeguridad, double totalCompra) {
+        return totalCompra%2==0;
     }
+
+    
 
 }
