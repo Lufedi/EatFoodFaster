@@ -146,7 +146,7 @@ https://eatfoodfaster.herokuapp.com/rest/pedidos/sucursal/notificados/{idSucursa
 Verbo: PUT
 https://eatfoodfaster.herokuapp.com/rest/notificacion/pedido/sucursal/{id}
 JSON:
-{"estado":"pedido llego a sucursal"}
+{"estado":"Pedido recibido en sucursal"}
 
 -Notificar Cliente
 //Notificar a un cliente que su pedido está listo actualizando el estado del pedido
