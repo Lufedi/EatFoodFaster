@@ -39,7 +39,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author FabianAndres
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class SubirDatos {
     
     @Autowired
@@ -88,9 +88,9 @@ public class SubirDatos {
         Categoria categoria;
         
         //C.C Santa fe 
-        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("C.C. Santa fe", "Bogotá") , 1, 1, 1, 'W', 1, 1, 1, 'N' , 5);
+        plazoletaComida = new PlazoletaComida(new PlazoletaComidaId("AvChile", "Medellin") , 1, 1, 1, 'W', 1, 1, 1, 'N' , 5);
         pcr.save(plazoletaComida);
-        franquicia = new  Franquicia("Mc Donalds", new Float(1.3));
+        franquicia = new  Franquicia("Zun", new Float(1.3));
         fr.save(franquicia);
         sucursal = new Sucursal(franquicia, plazoletaComida, "1111");
         sr.save(sucursal);
@@ -113,11 +113,7 @@ public class SubirDatos {
                 categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
         pr.save(producto);
         
-        Pedido ped1= new Pedido(cliente, false, false,"esperando");
-        ped1.getPedidosProductoses().add(new PedidoProducto(ped1, producto));
-        pedr.save(ped1);
-        
-        ls.recibirNotificacion(ped1);
+
         
         
         //C.C BIMA
@@ -199,8 +195,15 @@ public class SubirDatos {
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
                 categoria, sucursal, 7800, true, "Sandwich italiano",0);
-        pr.save(producto);*/
+        pr.save(producto);
+        */
         
+        for( PlazoletaComida a : pcr.findAll()
+                ){
+            
+            a.getId().setCiudad("Bogota");
+            pcr.save(a);
+        }
         
         
         
