@@ -1,0 +1,34 @@
+<div ng-controller="controlpedidosSinNotificar as cc" >
+    <h1> Pedidos </h1>
+    <div class="table-responsive">
+        
+        <input type="number" ng-model="sucursal" class="form-control" id="exampleInputId1" placeholder="Enter id">
+        <select class="form-control" ng-model="correctlySelected" ng-options="opt as opt.label for opt in options">
+           
+        </select>
+        <button ng-click="cc.consultarSucursales()" class="btn btn-info">Consultar Sucursales</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>idPedidos</th>
+                    <th>enviadoAsucursal</th>
+                    <th>Obtener pedido</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="prod in lista">
+                    <td>{{prod.idPedidos}}</td>
+                    <td>{{prod.enviadoAsucursal}}</td>
+                    <td><button ng-click="cc.enviarPedido(prod.idPedidos)" class="btn btn-info">Obtener pedido</button></td>
+                    
+                </tr>
+            </tbody>
+            {{idPedidoEsco}}
+            {{sucursal}}
+            
+            <button ng-click="cc.consultar()" class="btn btn-info">Consultar pedidos de la sucursal</button>
+         
+        </table>
+    </div>
+</div>
