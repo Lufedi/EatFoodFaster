@@ -53,27 +53,22 @@
                     //$scope.lista=[1,2,3,4];
                     $scope.sucursal=0;
                     
-                    $scope.lista=[{idPedidos:0,
-                      enviadoAsucursal:false},{idPedidos:1,
-                      enviadoAsucursal:false}];
+                    $scope.lista=[];
                       
                     
                     $scope.idPedidoEsco;
-                    $scope.options = [
-                        { label: 'onee', value: 1 },
-                        { label: 'twoee', value: 2 }
-                      ];
+                    $scope.options = [];
                      $scope.correctlySelected = $scope.options[0];
                     
                     this.consultarSucursales=function(){
                         //Arreglar URL
-                        $http.get('rest/pedidos/sucursal/sinNotificar/'+$scope.sucursal).
+                        $http.get('rest/notificacion/').
                         //$http.get('https://eatfoodfaster.herokuapp.com/rest/pedidos/').
                         success(function(data, status, headers, config) {
                           // this callback will be called asynchronously
                           // when the response is available
                           $scope.options=data;
-                            
+                          $scope.correctlySelected = $scope.options[0];  
                                
                         }).
                         error(function(data, status, headers, config) {
@@ -89,15 +84,15 @@
                     
                     
                     this.consultar=function(){
-                     
-                        
-                        $http.get('rest/pedidos/sucursal/sinNotificar/'+$scope.sucursal).
-                        //$http.get('https://eatfoodfaster.herokuapp.com/rest/pedidos/').
+                     $scope.sucursal=$scope.correctlySelected.idSucursales;
+                      
+                        $http.get('rest/pedidos/sucursal/sinNotificar/'+$scope.sucursal).                       
                         success(function(data, status, headers, config) {
                           // this callback will be called asynchronously
                           // when the response is available
+                          alert("Success!");
                           $scope.lista=data;
-                            
+                        
                                
                         }).
                         error(function(data, status, headers, config) {
@@ -117,14 +112,13 @@
                     
                     this.enviarPedido=function(idPedido){
                         $scope.idPedidoEsco=idPedido;
-                        alert($scope.idPedidoEsco);
-                        $http.put('rest/notificacion/pedido/sucursal/'+$scope.idPedidoEsco,$scope.estado).
                         
+                        $http.put('rest/notificacion/pedido/sucursal/'+$scope.idPedidoEsco,$scope.estado).                       
                         success(function(data, status, headers, config) {
                           // this callback will be called asynchronously
                           // when the response is available
                                 alert("Success!");
-                            
+                            this.consultar();
                                
                         }).
                         error(function(data, status, headers, config) {

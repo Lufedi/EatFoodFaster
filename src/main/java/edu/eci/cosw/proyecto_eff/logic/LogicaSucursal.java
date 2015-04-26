@@ -8,10 +8,13 @@ package edu.eci.cosw.proyecto_eff.logic;
 import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
+import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
 import edu.eci.cosw.proyecto_eff.rest.OperationFailedException;
 import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
 import java.lang.reflect.Field;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,9 @@ public class LogicaSucursal {
     
     @Autowired
     PedidoRepository pr;
+    
+    @Autowired
+    SucursalRepository sr;
     
     /**
      * @param e estado
@@ -73,5 +79,8 @@ public class LogicaSucursal {
         boolean validarEstado = validarEstado(e);
         
     }*/
+    public List<Sucursal> consultarSucursales(){
+        return (List<Sucursal>)sr.findAll();
+    }
     
 }

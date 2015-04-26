@@ -10,6 +10,8 @@ import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.model.Producto;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +52,11 @@ public class SucursalRestController {
         return new ResponseEntity<>("REST API "+ estado + "id " + id , HttpStatus.ACCEPTED);
     }
     //
+    
+    @RequestMapping(value="/",method = RequestMethod.GET)        
+    public List<Sucursal> consultarSucursales() throws ResourceNotFoundException  {       
+        return ls.consultarSucursales();   
+    }
     
 }
   
