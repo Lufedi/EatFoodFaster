@@ -51,8 +51,8 @@
                 })
 
                 // route for the contact page
-                .when('/list', {
-                    templateUrl: 'catalogo.html'
+                .when('/foodcourts', {
+                    templateUrl: 'eff_plazoletas_comidas.html'
 
                 })
                 
