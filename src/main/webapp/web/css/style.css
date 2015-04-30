@@ -4070,15 +4070,17 @@ table.coupon-table td.fit-cell{
 	font-size:14px;
 }
 
-#newsletter input[type="text"], #newsletter input[type="submit"]{
+#newsletter input[type="text"], #newsletter input[type="submit"] ,  #newsletter input[type="button"]{
 	height:40px;
 }
 
-#newsletter input[type="submit"]{
+#newsletter input[type="submit"] , input[type="button"]{
 	font-size:16px;
 	position:relative;
 	top:1px;
 }
+
+
 
 .social-media ul{
 	padding:0;
@@ -4365,7 +4367,7 @@ input[type="text"], select{
 	-o-transition:background 0.3s;
 }
 
-input[type="submit"], input[type="reset"]{
+input[type="submit"], input[type="reset"] ,input[type="searchbutton"]{
 	background:#2ecc71;
 	color:#fff;
 	text-transform:uppercase;
@@ -4592,7 +4594,7 @@ input[type="checkbox"]:checked + label:before{
 		margin:0;
 		display:inline-block;
 	}
-	#newsletter input[type="submit"]{
+	#newsletter input[type="submit"] ,  input[type="button"]{
 		display:inline-block;
 	}
 	.social-media ul{
