@@ -4,12 +4,16 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+
 <div>
-    
+    <h1>Probando el controlador</h1>
+    <h2>{{txt}} asd</h2>
+
     <div class="row content">
         
         
-				
+
                 <div class="col-lg-12 col-md-12 col-sm-12">
                 	<div class="breadcrumbs">
                     	<p><a href="#">Inicio</a> <i class="icons icon-right-dir"></i> Categorias</p>
@@ -35,12 +39,16 @@ and open the template in the editor.
                                                                 
                                                                 
 							</div> -->
-                                                        <form id="newsletter">
+                            <form id="newsletter">
 									
-									<input type="text" name="newsletter-email" placeholder="Nombre del producto">
-                                                                        <input type="submit" name="newsletter-submit" value="Buscar">
-                                                        </form>
-                                                        <br>
+									<input type="search" name="newsletter-email" placeholder="Nombre del producto"
+                                           ng-model="nombreProducto">
+
+                                    <button ng-click="buscar()"
+
+                                            value="Buscar" >Buscar </button>
+                            </form>
+                              <br>
                                                         
                                                     
                        
