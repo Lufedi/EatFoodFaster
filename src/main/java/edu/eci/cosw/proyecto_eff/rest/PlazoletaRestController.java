@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPlazoleta;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,11 @@ public class PlazoletaRestController {
     public List<Sucursal> buscarSucursalesPorPlazoleta(@PathVariable String pcId)throws ResourceNotFoundException{
         return lp.buscarSucursalesPorPlazoleta(pcId);
     }
+    
+    
+    @RequestMapping(method = RequestMethod.GET) 
+    public List<PlazoletaComida> obtenerPlazoletasDeComidas()throws ResourceNotFoundException{
+        return lp.obtenerPlazoletasDeComidas();
+    }
+    
 }

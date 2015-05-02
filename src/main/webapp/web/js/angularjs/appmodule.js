@@ -13,7 +13,9 @@
     app.controller('ProductoCrtl',
         function($scope , $http , $location){
             $scope.productos = [];
-            $scope.txt = 'controladorfuncionando';
+            $scope.plazoletas = [];
+            $scope.franquicias = [];
+            //$scope.txt = 'controladorfuncionando';
 
             this.buscar =  function(){
                 alert('buscar');
@@ -21,7 +23,7 @@
 
             this.buscarProductos =  function(nombre){
                
-              $http.get('http://localhost:8084/EatFoodFaster/rest/productos/' + nombre)
+              $http.get('http://localhost:8000/EatFoodFaster/rest/productos/' + nombre)
                   .success(function (data, status, headers, config) {
                       //  alert('success'  +  data);
                       $scope.productos =  data;//adf
@@ -30,6 +32,31 @@
                       alert('error  consultado productos!') });
 
             };
+            
+            this.obtenerPlazoletas =  function(){
+               
+                    $http.get('http://localhost:8000/EatFoodFaster/rest/plazoleta')
+                  .success(function (data, status, headers, config) {
+                      
+                      
+                      $scope.plazoletas =  data;//adf
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado productos!') });
+            }
+            
+            this.buscarSucursales =  function(idPlazoleta){
+                
+                 $http.get('http://localhost:8000/EatFoodFaster/rest/plazoleta/' 
+                         + idPlazoleta.idPlazoletaComidas)
+                  .success(function (data, status, headers, config) {
+                       alert('success'  +  'http://localhost:8000/EatFoodFaster/rest/plazoleta/' 
+                         + idPlazoleta.idPlazoletaComidas);
+                      $scope.sucursales =  data;//adf
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado productos!') });
+            }
 
         }
     );

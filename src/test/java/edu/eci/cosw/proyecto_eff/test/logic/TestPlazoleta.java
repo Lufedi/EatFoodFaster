@@ -74,6 +74,7 @@ public class TestPlazoleta {
         sucursal = new Sucursal(franquicia, plazoletaComida, "2222");
         sr.save(sucursal);
         
+        System.out.println(plazoletaComida.getId().getIdPlazoletaComidas());
         List<Sucursal> ls= lp.buscarSucursalesPorPlazoleta(plazoletaComida.getId().getIdPlazoletaComidas());
         assertEquals(ls.size(),4);
     }

@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaFranquicia;
+import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,13 @@ public class FranquiciaRestController {
     public List<Sucursal> buscarSucursalesPorFranquicia(@PathVariable String fId)throws ResourceNotFoundException{
         return lf.buscarSucursalesPorFranquicia(fId);
     }
+    
+    
+    @RequestMapping(method = RequestMethod.GET) 
+    public List<Franquicia> obtenerFranquicias()throws ResourceNotFoundException{
+        return lf.obtenerFranquicias();
+    }
+    
+    
     
 }

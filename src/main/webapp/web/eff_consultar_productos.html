@@ -40,20 +40,15 @@ and open the template in the editor.
 							</div> -->
                            
 									
-                                        <input type="search" name="newsletter-email" placeholder="Nombre del producto"
-                                           ng-model="nombreProducto">
+        <input type="search" name="newsletter-email" 
+               placeholder="Nombre del producto" ng-model="nombreProducto">
                                                                       
-                                        <button ng-click="prd.buscarProductos(nombreProducto)"
+         <button ng-click="prd.buscarProductos(nombreProducto)"
                                             value="Buscar" >Buscar </button>
                             
-                            <br></br>
-                                                        
-                                                        
-                                                    
-                       
-                                                 
-                                                    
-                                                    <!-- Filter -->
+        <br></br>
+
+        <!-- Filter -->
                     <div class="row sidebar-box green">
                     
                     	<div class="col-lg-12 col-md-12 col-sm-12">
@@ -67,18 +62,16 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <label>Plazoleta de comidas </label><br>
-                                    <select class="chosen-select-full-width">
-                                            <option>Plazoleta 1</option>
-                                        <option>Plazoleta 1</option>
-                                        <option>Plazoleta 1</option>
-                                        <option>Plazoleta 1</option>
-                                        <option>Plazoleta 1</option>
-                                    </select>
-                                    
+                                        <select class="chosen-select-full-width" ng-init="prd.obtenerPlazoletas()">
+                                            <option> seleccione una opción</option>
+                                            <option  ng-repeat="plazoleta in plazoletas" ng-click="prd.buscarSucursales(plazoleta.id)">
+                                                {{plazoleta.id.idPlazoletaComidas}} - {{plazoleta.id.ciudad}}
+                                            </option>
+                                        </select>
                                     </div>
                                     
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <label>Categorias</label><br>
+                                    <div class="col-lg-4 col-md-4 col-sm-4" ng-show="false">
+                                        <label>Franquicias</label><br>
                                     <select class="chosen-select-full-width">
                                             <option>Category 1</option>
                                         <option>Category 1</option>
@@ -88,57 +81,18 @@ and open the template in the editor.
                                     </select>
                                     
                                     </div>
-                                        
-                                    
-                                
-                                
                                 </div>
-                            	
-                                
-                                
-                               
-                                
                             </div>
-                            
                         </div>
-                        
                     </div>
-                                                   
-							
+                                                   			
 	</div>
 	<!-- /Heading -->
                         
                         
         </div>
                      
-        <div class="row">
-                                            
-        <div class="col-lg-6 col-md-6 col-sm-6">
-                        	<div class="category-results">
-                            	<p>Results 1-6 of 6</p>
-                                <p>Show 
-                                <select class="chosen-select">
-                                	<option>1</option>
-                                   	<option>2</option>
-                                    <option>6</option>
-                                    <option>P10</option> 
-                                </select>
-                                per page
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                        	<div class="pagination">
-                            	<a href="#"><div class="previous"><i class="icons icon-left-dir"></i></div></a>
-                                <a href="#"><div class="page-button">1</div></a>
-                                <a href="#"><div class="page-button">2</div></a>
-                                <a href="#"><div class="page-button">3</div></a>
-                                <a href="#"><div class="next"><i class="icons icon-right-dir"></i></div></a>
-                            </div>
-                        </div>
-                        
-                   </div>
+       
                    
                    <div class="row"> 
                         <!-- Product Item -->
@@ -169,38 +123,8 @@ and open the template in the editor.
                             
                         </div>
                         <!-- Product Item -->
-                        
-                        
-                      
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="category-results">
-                                <p>Results 1-6 of 6</p>
-                                <p>Show 
-                                <select class="chosen-select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>6</option>
-                                    <option>P10</option> 
-                                </select>
-                                per page
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="pagination">
-                                <a href="#"><div class="previous"><i class="icons icon-left-dir"></i></div></a>
-                                <a href="#"><div class="page-button">1</div></a>
-                                <a href="#"><div class="page-button">2</div></a>
-                                <a href="#"><div class="page-button">3</div></a>
-                                <a href="#"><div class="next"><i class="icons icon-right-dir"></i></div></a>
-                            </div>
-                        </div>
-                        
                     </div>
-					
-					
-						
+                                    
 				</section>
 				<!-- /Main Content -->
 				
@@ -217,7 +141,7 @@ and open the template in the editor.
 							
 							<div class="sidebar-box-heading">
 								<i class="icons icon-folder-open-empty"></i>
-								<h4>Categorias</h4>
+								<h4>Plazoletas</h4>
 							</div>
 							
 							<div class="sidebar-box-content">
@@ -271,14 +195,6 @@ and open the template in the editor.
 				
 			</div>
 			<!-- /Content -->
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-    
 </div>
 
 

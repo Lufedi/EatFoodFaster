@@ -38,4 +38,8 @@ public class LogicaPlazoleta {
         }
         return ls;
     }   
+
+    public List<PlazoletaComida> obtenerPlazoletasDeComidas() {
+        return (List<PlazoletaComida>) pcr.findAll();
+    }
 }

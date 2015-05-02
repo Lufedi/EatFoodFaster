@@ -37,4 +37,8 @@ public class LogicaFranquicia {
         }
         return ls;
     }
+
+    public List<Franquicia> obtenerFranquicias() {
+        return (List<Franquicia>) fr.findAll();
+    }
 }

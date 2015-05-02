@@ -52,11 +52,9 @@ public class SucursalRestController {
         return new ResponseEntity<>("REST API "+ estado + "id " + id , HttpStatus.ACCEPTED);
     }
     //
-    
     @RequestMapping(value="/",method = RequestMethod.GET)        
     public List<Sucursal> consultarSucursales() throws ResourceNotFoundException  {       
         return ls.consultarSucursales();   
     }
-    
 }
   
