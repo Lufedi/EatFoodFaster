@@ -4,6 +4,7 @@
 
     <head>
         
+        
         <!-- Meta Tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +42,7 @@
     </head>
     
     
-    <body>
+    <body ng-controller="test as t">
 
 		
 		<!-- Container -->
@@ -491,6 +492,8 @@
 				
 				<!-- Lower Footer -->
 				<div class="col-lg-12 col-md-12 col-sm-12">
+                                    
+                                    <button ng-click="t.test()" >test</button>
 					
 					<div id="lower-footer">
 					

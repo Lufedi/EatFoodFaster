@@ -1,49 +1,17 @@
 (function () {
     var app = angular.module('eff', ['ngRoute']);
 
-    app.controller('ctrl1' ,  
-        function($scope ,  $http){
-            this.producto = {
-                nombre:'camisa',
-                idproducto:12,
-                precio:13
+    app.controller('test' ,  
+        function($scope){
+            
+            this.test =  function(){
+                alert('test');
             }
-            
-            
-            this.registrar = function (api) {
-               // alert("registrando un producto");
-            
-            $http.post('rest/products/' + api, this.producto)
-                    .success(function (data, status, headers, config) {
-                        alert('success');
-                     })
-                    .error(function (data, status, headers, config) {
-                        alert('error!') });
-            };
         }
     );
-    
-    app.controller('catalogoClr' ,
-        function($scope , $http){
-            $scope.productos = [];
-            
-            this.actualizar =  function(api){
-                //alert('rest/products/' + api + '/');
-                 $http.get('rest/products/' + api)
-                    .success(function (data, status, headers, config) {
-                     //  alert('success'  +  data);
-                        $scope.productos =  data;//adf
-                     })
-                    .error(function (data, status, headers, config) {
-                        alert('error!') });
-            
-            };
-            
-        }
-    );
-
+   
     app.controller('ProductoCrtl',
-        function($scope , $http){
+        function($scope , $http , $location){
             $scope.productos = [];
             $scope.txt = 'controladorfuncionando';
 
@@ -52,8 +20,8 @@
             };
 
             this.buscarProductos =  function(nombre){
-                alert('buscando  ' + nombre);
-              $http.get('/productos/' + nombre)
+               
+              $http.get('http://localhost:8084/EatFoodFaster/rest/productos/' + nombre)
                   .success(function (data, status, headers, config) {
                       //  alert('success'  +  data);
                       $scope.productos =  data;//adf
@@ -71,6 +39,7 @@
                 // route for the about page
                 .when('/consultarproductos', {
                     templateUrl: 'eff_consultar_productos.html',
+                    controllerAs: 'prd',
                     controller:  'ProductoCrtl'
                 })
 
