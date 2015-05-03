@@ -12,6 +12,12 @@
    
     app.controller('ProductoCrtl',
         function($scope , $http , $location){
+            
+            var port = 'http://localhost:8084/EatFoodFaster/';
+            $scope.filtro = false;
+            $scope.seccion;
+            $scope.plazoletaSelected;
+            $scope.franquiciaSelected;
             $scope.productos = [];
             $scope.plazoletas = [];
             $scope.franquicias = [];
@@ -21,9 +27,29 @@
                 alert('buscar');
             };
 
-            this.buscarProductos =  function(nombre){
+            this.buscarProductos =  function(nombre ,  plazoleta ,  franquicia){
                
-              $http.get('http://localhost:8000/EatFoodFaster/rest/productos/' + nombre)
+               
+               //set path
+               
+               var url ;
+               if(nombre != null){
+                   if( plazoleta != null){
+                       url = port + 'rest/productos/' + 
+                               plazoleta.id.idPlazoletaComidas+'/'+plazoleta.id.ciudad +'/'+nombre;
+                   }else if(franquicia != null){
+                       url = port + 'rest/productos/' + franquicia.idFranquicia + '/' + nombre;
+                   }else{
+                       url = port + 'rest/productos/' + nombre;
+                   }
+                   
+               }
+               console.log(url);
+               
+               
+               
+               
+              $http.get(url)
                   .success(function (data, status, headers, config) {
                       //  alert('success'  +  data);
                       $scope.productos =  data;//adf
@@ -33,29 +59,55 @@
 
             };
             
-            this.obtenerPlazoletas =  function(){
-               
-                    $http.get('http://localhost:8000/EatFoodFaster/rest/plazoleta')
-                  .success(function (data, status, headers, config) {
-                      
-                      
-                      $scope.plazoletas =  data;//adf
-                  })
-                  .error(function (data, status, headers, config) {
-                      alert('error  consultado productos!') });
+            this.obtenerDatos =  function(){
+                this.obtenerFranquicias();
+                this.obtenerPlazoletas();
             }
             
-            this.buscarSucursales =  function(idPlazoleta){
+            this.obtenerPlazoletas =  function(){
+               
+                    $http.get(port + 'rest/plazoleta')
+                  .success(function (data, status, headers, config) {
+                      $scope.plazoletas =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado plazoletas!') });
+            }
+            
+            this.obtenerFranquicias =  function(){
                 
-                 $http.get('http://localhost:8000/EatFoodFaster/rest/plazoleta/' 
+                   $http.get(port + 'rest/franquicia')
+                  .success(function (data, status, headers, config) {
+                      $scope.franquicias =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado franquicias!') });
+            }
+            
+            this.seleccionarPlazoleta =  function(plazoleta){
+                $scope.seccion =  plazoleta.id.idPlazoletaComidas + '-' + 
+                        plazoleta.id.ciudad;
+                $scope.plazoletaSelected =  plazoleta;
+                $scope.franquiciaSelected =  null;
+                $scope.filtro =  true;
+                $scope.productos = [];
+                 /*$http.get('http://localhost:8084/EatFoodFaster/rest/plazoleta/' 
                          + idPlazoleta.idPlazoletaComidas)
                   .success(function (data, status, headers, config) {
-                       alert('success'  +  'http://localhost:8000/EatFoodFaster/rest/plazoleta/' 
-                         + idPlazoleta.idPlazoletaComidas);
+                      // alert('success'  +  'http://localhost:8084/EatFoodFaster/rest/plazoleta/' 
+                       //  + idPlazoleta.idPlazoletaComidas);
                       $scope.sucursales =  data;//adf
                   })
                   .error(function (data, status, headers, config) {
-                      alert('error  consultado productos!') });
+                      alert('error  consultado productos!') });*/
+            }
+            this.seleccionarFranquicia =  function(franquicia){
+                
+                $scope.plazoletaSelected = null;
+                $scope.franquiciaSelected = franquicia;
+                $scope.seccion =  franquicia.idFranquicia;
+                $scope.filtro  =  false;
+                $scope.productos = [];
             }
 
         }

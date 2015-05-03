@@ -198,12 +198,12 @@ public class SubirDatos {
         pr.save(producto);
         */
         
-        for( PlazoletaComida a : pcr.findAll()
+        /*for( PlazoletaComida a : pcr.findAll()
                 ){
             
             a.getId().setCiudad("Bogota");
             pcr.save(a);
-        }
+        }*/
         
         
         

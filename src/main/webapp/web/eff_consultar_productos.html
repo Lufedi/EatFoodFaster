@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 
 
-<div>
+<div  ng-init="prd.obtenerDatos()">
     <!-- <h1>Probando el controlador</h1>
     <h2>{{txt}} asd</h2>
     <button ng-click="prd.buscar()" >buscar</button> -->
@@ -24,32 +24,23 @@ and open the template in the editor.
                         
                     <div class="row">
                     
+                        
+                        
+                        
                     	<!-- Heading -->
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                                
-                        <!-- Newsletter -->
-							
-								
-							
-							<!-- /Newsletter -->
-                        
-							<!-- <div class="carousel-heading">
-								<h4>Buscar</h4>
-                                                                
-                                                                
-							</div> -->
-                           
-									
-        <input type="search" name="newsletter-email" 
-               placeholder="Nombre del producto" ng-model="nombreProducto">
-                                                                      
-         <button ng-click="prd.buscarProductos(nombreProducto)"
+                            <h2> 
+                                {{seccion}}
+                            </h2>                    
+                            <input type="search" name="newsletter-email" 
+                            placeholder="Nombre del producto" ng-model="nombreProducto">
+                            <button ng-click="prd.buscarProductos(nombreProducto , plazoletaSelected , franquiciaSelected)"
                                             value="Buscar" >Buscar </button>
                             
-        <br></br>
+                            <br></br>
 
         <!-- Filter -->
-                    <div class="row sidebar-box green">
+        <div class="row sidebar-box green" ng-show="filtro">
                     
                     	<div class="col-lg-12 col-md-12 col-sm-12">
                         	
@@ -60,14 +51,22 @@ and open the template in the editor.
                             
                             <div class="sidebar-box-content sidebar-padding-box">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <label>Plazoleta de comidas </label><br>
-                                        <select class="chosen-select-full-width" ng-init="prd.obtenerPlazoletas()">
+                                    <div class="col-lg-4 col-md-4 col-sm-4" >
+                                        <label>Sucursales </label><br>
+                                        <!--<select class="chosen-select-full-width" ng-init="prd.obtenerPlazoletas()" ng-model="plazoletaSelected">
                                             <option> seleccione una opción</option>
-                                            <option  ng-repeat="plazoleta in plazoletas" ng-click="prd.buscarSucursales(plazoleta.id)">
+                                            <option  ng-repeat="plazoleta in plazoletas" ng-click="prd.buscarSucursales(plazoleta.id)"  >
                                                 {{plazoleta.id.idPlazoletaComidas}} - {{plazoleta.id.ciudad}}
                                             </option>
                                         </select>
+                                        {{plazoletaSelected}}-->
+                                        <select class="chosen-select-full-width" 
+                                               >
+                                            <option> seleccione una opción</option>
+                                           
+                                            
+                                        </select>
+                                        
                                     </div>
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-4" ng-show="false">
@@ -114,7 +113,7 @@ and open the template in the editor.
                             <div class="product-actions">
                                 <span class="add-to-cart">
                                     <span class="action-wrapper">
-                                                            <i class="icons icon-basket-2"></i>
+                                                            <i class="icons icon-eye-1"></i>
                                                             <span class="action-name">Add to cart</span>
                                                         </span >
                                 </span>
@@ -133,48 +132,21 @@ and open the template in the editor.
 				
 				<!-- Sidebar -->
 				<aside class="sidebar col-lg-3 col-md-3 col-sm-3  col-lg-pull-9 col-md-pull-9 col-sm-pull-9">
-					
 					<!-- Categories -->
 					<div class="row sidebar-box purple">
-						
 						<div class="col-lg-12 col-md-12 col-sm-12">
-							
 							<div class="sidebar-box-heading">
-								<i class="icons icon-folder-open-empty"></i>
-								<h4>Plazoletas</h4>
+								<i class="icons icon-food"></i>
+								<h4>Plazoletas  </h4>
 							</div>
-							
 							<div class="sidebar-box-content">
 								<ul>
-									<li><a href="#">Cameras &amp; Photography <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Computers &amp; Tablets <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Cell Phones &amp; Accessories <i class="icons icon-right-dir"></i></a>
-                                    	<ul class="sidebar-dropdown">
-                                        	<li>
-                                            	<ul>
-                                                	<li><a href="#">Cell phones &amp; Smartphone</a></li>
-                                                    <li><a href="#">Cell Phone Accessories</a></li>
-                                                    <li><a href="#">Headsets</a></li>
-                                                    <li><a href="#">Cases, Covers & Skins</a></li>
-                                                    <li><a href="#">Screen Protectors</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                            	<ul>
-                                                	<li><a href="#">Chargers & Cradles</a></li>
-                                                    <li><a href="#">Batteries</a></li>
-                                                    <li><a href="#">Cables & Adapters</a></li>
-                                                    <li><a href="#">All About Smartphones</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-									<li><a href="#">TV, Audio &amp; Surveillance <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Video Games &amp; Consoles <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Car Audio, Video &amp; GPS <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Best Sellers <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Shop by Brands <i class="icons icon-right-dir"></i></a></li>
-									<li><a class="purple" href="#">All Categories</a></li>
+									<li ng-repeat="plazoleta in plazoletas"  >
+                                                                          <a href="#/consultarproductos" data-ng-click="prd.seleccionarPlazoleta(plazoleta)">
+                                                                            {{plazoleta.id.idPlazoletaComidas}} - {{plazoleta.id.ciudad}} 
+                                                                                 <i class="icons icon-right-dir"></i>
+                                                                          </a>
+                                                                        </li>
 								</ul>
 							</div>
 							
@@ -182,14 +154,24 @@ and open the template in the editor.
 							
 					</div>
 					<!-- /Categories -->
-					
-					
-					
-					
-					
-					
-					
-					
+                                        <div class="row sidebar-box purple">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="sidebar-box-heading">
+								<i class="icons icon-shop-1"></i>
+								<h4>Restaurantes  </h4>
+							</div>
+							<div class="sidebar-box-content">
+								<ul>
+									<li ng-repeat="franquicia in franquicias"  >
+                                                                          <a href="#/consultarproductos" data-ng-click="prd.seleccionarFranquicia(franquicia)">
+                                                                            {{franquicia.idFranquicia}}
+                                                                                 <i class="icons icon-right-dir"></i>
+                                                                          </a>
+                                                                        </li>
+								</ul>
+							</div>
+						</div>	
+					</div>
 				</aside>
 				<!-- /Sidebar -->
 				
