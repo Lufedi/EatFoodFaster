@@ -56,4 +56,6 @@ public class Franquicia  implements java.io.Serializable {
 
 }
 
-
+class SucursalSinc{
+    
+}
