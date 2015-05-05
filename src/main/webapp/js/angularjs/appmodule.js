@@ -45,7 +45,7 @@ app.config(function ($routeProvider) {
     app.controller('ProductoCrtl',
         function($scope , $http , $location){
             
-            var port = 'http://localhost:8084/EatFoodFaster/';
+            //var port = 'http://localhost:8084/EatFoodFaster/';
             $scope.filtro = false;
             $scope.seccion;
             $scope.plazoletaSelected;
@@ -67,12 +67,12 @@ app.config(function ($routeProvider) {
                var url ;
                if(nombre != null){
                    if( plazoleta != null){
-                       url = port + 'rest/productos/' + 
+                       url = 'rest/productos/' + 
                                plazoleta.id.idPlazoletaComidas+'/'+plazoleta.id.ciudad +'/'+nombre;
                    }else if(franquicia != null){
-                       url = port + 'rest/productos/' + franquicia.idFranquicia + '/' + nombre;
+                       url =  'rest/productos/' + franquicia.idFranquicia + '/' + nombre;
                    }else{
-                       url = port + 'rest/productos/' + nombre;
+                       url = 'rest/productos/' + nombre;
                    }
                    
                }
@@ -98,7 +98,7 @@ app.config(function ($routeProvider) {
             
             this.obtenerPlazoletas =  function(){
                
-                    $http.get(port + 'rest/plazoleta')
+                    $http.get( 'rest/plazoleta')
                   .success(function (data, status, headers, config) {
                       $scope.plazoletas =  data;
                   })
@@ -108,7 +108,7 @@ app.config(function ($routeProvider) {
             
             this.obtenerFranquicias =  function(){
                 
-                   $http.get(port + 'rest/franquicia')
+                   $http.get('rest/franquicia')
                   .success(function (data, status, headers, config) {
                       $scope.franquicias =  data;
                   })
