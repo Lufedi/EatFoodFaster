@@ -10,6 +10,8 @@ import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,6 +38,20 @@ public class PlazoletaRestController {
     @RequestMapping(method = RequestMethod.GET) 
     public List<PlazoletaComida> obtenerPlazoletasDeComidas()throws ResourceNotFoundException{
         return lp.obtenerPlazoletasDeComidas();
+    }
+    
+     @RequestMapping(value="/{gradosLon}/{minutosLon}/{segundosLon}/{orientacionLon}/{gradosLat}/{minutosLat}/{segundosLat}/{orientacionLat}" ,method = RequestMethod.GET) 
+    public PlazoletaComida obtenerPlazoletasDeComidasPorPosicion(@PathVariable float gradosLon,
+                                                   @PathVariable float minutosLon,
+                                                   @PathVariable float segundosLon,
+                                                   @PathVariable char orientacionLon,
+                                                   @PathVariable float gradosLat,
+                                                   @PathVariable float minutosLat,
+                                                   @PathVariable float segundosLat,
+                                                   @PathVariable char orientacionLat)throws ResourceNotFoundException{
+        
+        PlazoletaComida pc= lp.obtenerPlazoletaPosicion(gradosLon, minutosLon, segundosLon, orientacionLon, gradosLat, minutosLat, segundosLat, orientacionLat);
+        return pc;
     }
     
 }

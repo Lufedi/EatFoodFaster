@@ -8,6 +8,7 @@ package edu.eci.cosw.proyecto_eff.logic;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComida;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
+import edu.eci.cosw.proyecto_eff.rest.ResourceNotFoundException;
 import java.util.AbstractList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,17 @@ public class LogicaPlazoleta {
     public List<PlazoletaComida> obtenerPlazoletasDeComidas() {
         return (List<PlazoletaComida>) pcr.findAll();
     }
+    
+    public PlazoletaComida obtenerPlazoletaPosicion(float gradosLon, float minutosLon, 
+            float segundosLon, char orientacionLon, float gradosLat, 
+            float minutosLat, float segundosLat, char orientacionLat) throws ResourceNotFoundException{
+        PlazoletaComida pc=null;
+        List<PlazoletaComida> list=pcr.buscarPorPosicion(gradosLon, minutosLon, segundosLon, orientacionLon, 
+                gradosLat, minutosLat, segundosLat, orientacionLat);
+        if(list.isEmpty())
+            throw new ResourceNotFoundException();
+        return list.get(0);
+    }
+    
+    
 }

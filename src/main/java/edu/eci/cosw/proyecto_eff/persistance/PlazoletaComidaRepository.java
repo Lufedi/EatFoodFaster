@@ -26,4 +26,31 @@ public interface PlazoletaComidaRepository extends CrudRepository<PlazoletaComid
      */
     @Query("Select s from Sucursal s inner join s.plazoletaComidas as pc where pc.id.idPlazoletaComidas = :id")
     public List<Sucursal> search(@Param("id") String plazoletaid);
+    
+    /**
+     * 
+     * @param gradosLon
+     * @param minutosLon
+     * @param segundosLon
+     * @param orienteacionLon
+     * @param gradosLat
+     * @param minutosLat
+     * @param segundosLat
+     * @param orientacionLat
+     * @return 
+     */
+    @Query("from PlazoletaComida where gradosLon=:gradosLon AND "
+                + "minutosLon=:minutosLon AND segundosLon - radio <=:segundosLon AND "
+                + "segundosLon + radio >=:segundosLon AND orientacionLon=:orientacionLon AND "
+                + "gradosLat=:gradosLat AND minutosLat=:minutosLat "
+                + "AND segundosLat - radio <=:segundosLat AND segundosLat + radio >=:segundosLat "
+                + "AND orientacionLat=:orientacionLat")
+    public List<PlazoletaComida> buscarPorPosicion(@Param("gradosLon") float gradosLon,
+                                                   @Param("minutosLon") float minutosLon,
+                                                   @Param("segundosLon") float segundosLon,
+                                                   @Param("orientacionLon") char orienteacionLon,
+                                                   @Param("gradosLat") float gradosLat,
+                                                   @Param("minutosLat") float minutosLat,
+                                                   @Param("segundosLat") float segundosLat,
+                                                   @Param("orientacionLat") char orientacionLat);
 }
