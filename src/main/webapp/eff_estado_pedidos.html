@@ -1,12 +1,12 @@
-<div ng-controller="controlpedidos as cc" >
+<div ng-init="cc.consultar()" >
     <h1> Pedidos </h1>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>idPedidos</th>
-                    <th>enviadoAsucursal</th>
-                    <th>notificadoAcliente</th>
+                    <th>id del Pedido</th>
+                    <th>Enviado A la Sucursal</th>
+                    <th>Notificado Al Cliente</th>
                 </tr>
             </thead>
 
@@ -17,7 +17,7 @@
                     <td>{{prod.notificadoAcliente}}</td>
                 </tr>
             </tbody>
-            <button ng-click="cc.consultar()" class="btn btn-info">Consultar productos</button>
+            
          
         </table>
     </div>

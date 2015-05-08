@@ -1,11 +1,11 @@
-<div ng-controller="controlpedidosSinNotificar as cc" >
+<div ng-init="cc.consultarSucursales()">
     <h1> Pedidos </h1>
     <div class="table-responsive">
   
         <select class="form-control" ng-model="correctlySelected" ng-options="opt as opt.idSucursales for opt in options">
            
         </select>
-        <button ng-click="cc.consultarSucursales()" class="btn btn-info">Consultar Sucursales</button>
+        
         
         <table class="table table-hover">
             <thead>

@@ -21,11 +21,15 @@ app.config(function ($routeProvider) {
                 
                  // rutar fabian
                 .when('/pedidosSinNotificar', {
-                    templateUrl: 'eff_notificacion_pedidos.html'
+                    templateUrl: 'eff_notificacion_pedidos.html',
+                    controllerAs: 'cc',
+                    controller:  'controlpedidosSinNotificar'
                 })
                 
                 .when('/estado', {
-                    templateUrl: 'eff_estado_pedidos.html'
+                    templateUrl: 'eff_estado_pedidos.html',
+                    controllerAs: 'cc',
+                    controller:  'controlpedidos'
                 });;
                 // rutas fabian end       
                   
@@ -150,40 +154,23 @@ app.config(function ($routeProvider) {
     app.controller('controlpedidos',
                 function($scope,$http){
                     
-                    $scope.lista=[1,2,3,4];
-                    $scope.error;
+                    $scope.lista=[];
                     this.consultar=function(){
-                     
-                        
                         $http.get('rest/pedidos/').
                         success(function(data, status, headers, config) {
-                          // this callback will be called asynchronously
-                          // when the response is available
                           $scope.lista=data;
-                            
-                               
                         }).
                         error(function(data, status, headers, config) {
-                          // called asynchronously if an error occurs
-                          // or server returns response with an error status.
-                          alert("error!");
-                          
                           alert(status);
-                          error=data;
-                          alert(error);
-                        });
-                        
-                        
-                        
+                        });  
                     };
-                }
-                                   
+                }                                   
     );
+    /*---------------------------------------------------------------------*/
     
     app.controller('controlpedidosSinNotificar',
                 function($scope,$http){
                     
-                    //$scope.lista=[1,2,3,4];
                     $scope.sucursal=0;
                     
                     $scope.lista=[];
@@ -191,28 +178,18 @@ app.config(function ($routeProvider) {
                     
                     $scope.idPedidoEsco;
                     $scope.options = [];
-                     $scope.correctlySelected = $scope.options[0];
+                    $scope.correctlySelected = $scope.options[0];
                     
                     this.consultarSucursales=function(){
-                        //Arreglar URL
                         $http.get('rest/notificacion/').
-                        //$http.get('https://eatfoodfaster.herokuapp.com/rest/pedidos/').
                         success(function(data, status, headers, config) {
-                          // this callback will be called asynchronously
-                          // when the response is available
                           $scope.options=data;
                           $scope.correctlySelected = $scope.options[0];  
                                
                         }).
                         error(function(data, status, headers, config) {
-                          // called asynchronously if an error occurs
-                          // or server returns response with an error status.
-                          alert("error!");
-                          
-                          alert(status);
-                          
-                        });
-                        
+                          alert(status);                          
+                        });                        
                     };
                     
                     
@@ -221,24 +198,12 @@ app.config(function ($routeProvider) {
                       
                         $http.get('rest/pedidos/sucursal/sinNotificar/'+$scope.sucursal).                       
                         success(function(data, status, headers, config) {
-                          // this callback will be called asynchronously
-                          // when the response is available
-                          alert("Success!");
                           $scope.lista=data;
-                        
-                               
                         }).
                         error(function(data, status, headers, config) {
-                          // called asynchronously if an error occurs
-                          // or server returns response with an error status.
                           alert("error!");
-                          
-                          alert(status);
-                          
+                          alert(status);                          
                         });
-                        
-                        
-                        
                     };
                     
                     $scope.estado={estado:"Pedido recibido en sucursal"};
@@ -250,7 +215,7 @@ app.config(function ($routeProvider) {
                         success(function(data, status, headers, config) {
                           // this callback will be called asynchronously
                           // when the response is available
-                                alert("Success!");
+                            alert("Success!");
                             this.consultar();
                                
                         }).
