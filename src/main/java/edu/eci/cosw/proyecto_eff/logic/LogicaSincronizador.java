@@ -7,6 +7,8 @@ package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
 import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
+import edu.eci.cosw.proyecto_eff.model.Producto;
+import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.FranquiciaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
@@ -39,7 +41,16 @@ public class LogicaSincronizador {
     @Autowired
     FranquiciaRepository fr;
     
-    
+    /**
+     * Metodo de sincronizacion con las franquicias que se han inscrito al servicio
+     * de EFF
+     * PRE: Las franquicias y sus sucursales deben estar debidamente registradas en el 
+     * sistema de EFF
+     *
+     * @param franquicias lista de franquicias a sincronizar
+     * 
+     * POS: Se han registrado las actualizaciones de los productos con EFF
+     */
     public void sincronizar(ArrayList<Franquicia> franquicias){
         String rest =  new String(uri);
         for(Franquicia franquicia  : franquicias){
@@ -57,10 +68,21 @@ public class LogicaSincronizador {
     }
     
     public void adapterFranquicia(FranquiciaSync fs){
+        Sucursal sucsel =  null;
+        Franquicia frasel = fr.findOne(fs.nombreFranquicia);
         
+        ArrayList<Sucursal> sucursales =  (ArrayList<Sucursal>)sr.findAll();
         for(SucursalSync sucSync : fs.sucursales){
-            sr.save(new Sucursal(fr.findOne(fs.nombreFranquicia) ,
-                    pcr.findOne(new PlazoletaComidaId(sucSync.nombreSucursal , "" ) ));
+           for(Sucursal s :  sucursales){
+               if(s.getFranquicias().getIdFranquicia().equals(fs.nombreFranquicia))
+                   sucsel =  s;
+           }
+            
+           for(ProductoSync proSync : sucSync.productos){
+               Producto p =  new Producto(null, null, sucsel, proSync.precio, false, proSync.descripcion,
+                       0, proSync.imagen);
+               pr.save(p);
+           } 
         }
         
     }
@@ -80,5 +102,5 @@ class ProductoSync{
     public String nombreProducto;
     public String descripcion;
     public int precio;
-    public String  image;
+    public String  imagen;
 }
