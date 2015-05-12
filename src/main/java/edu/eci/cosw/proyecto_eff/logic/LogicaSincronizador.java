@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Franquicia;
+import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.persistance.FranquiciaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
@@ -57,6 +58,10 @@ public class LogicaSincronizador {
     
     public void adapterFranquicia(FranquiciaSync fs){
         
+        for(SucursalSync sucSync : fs.sucursales){
+            sr.save(new Sucursal(fr.findOne(fs.nombreFranquicia) ,
+                    pcr.findOne(new PlazoletaComidaId(sucSync.nombreSucursal , "" ) ));
+        }
         
     }
 }
@@ -75,4 +80,5 @@ class ProductoSync{
     public String nombreProducto;
     public String descripcion;
     public int precio;
+    public String  image;
 }
