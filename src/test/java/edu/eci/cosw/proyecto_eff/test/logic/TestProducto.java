@@ -83,13 +83,13 @@ public class TestProducto {
         categoria = new Categoria("Perro Caliente");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
+                categoria, sucursal, 10000, true, "perro sencillo en combo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
+                categoria, sucursal, 15000, true, "perro ranchero en combo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
+                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0), "url");
         pr.save(producto);
         
         
@@ -104,13 +104,13 @@ public class TestProducto {
         categoria = new Categoria("Burrito");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 9000, false, "burrito mixto grande", 0);
+                categoria, sucursal, 9000, false, "burrito mixto grande", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 13000, true, "burrito mixto grande combo", 0);
+                categoria, sucursal, 13000, true, "burrito mixto grande combo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "burrito pollo combo especial", new Float(2.0));
+                categoria, sucursal, 15000, true, "burrito pollo combo especial", new Float(2.0), "url");
         pr.save(producto);
         franquicia = new  Franquicia("Q-bano", new Float(1.3));
         fr.save(franquicia);
@@ -119,13 +119,13 @@ public class TestProducto {
         categoria = new Categoria("Sandwich");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 7000, false, "Sandwich de atun sencillo", 0);
+                categoria, sucursal, 7000, false, "Sandwich de atun sencillo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 11000, true, "Sandwich de atun en combo", 0);
+                categoria, sucursal, 11000, true, "Sandwich de atun en combo", 0, "url");
         pr.save(producto);
        producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 8500, false, "Sandwich BBQ ", new Float(2.0));
+                categoria, sucursal, 8500, false, "Sandwich BBQ ", new Float(2.0), "url");
         pr.save(producto);
         
         
@@ -140,10 +140,10 @@ public class TestProducto {
         categoria = new Categoria("Sushi");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 24000, true, "Ojo de tigre en combo", 0);
+                categoria, sucursal, 24000, true, "Ojo de tigre en combo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 16000, true, "Clasico x 12 rollos ", 0);
+                categoria, sucursal, 16000, true, "Clasico x 12 rollos ", 0, "url");
         pr.save(producto);
         franquicia = new  Franquicia("See", new Float(1.3));
         fr.save(franquicia);
@@ -152,10 +152,10 @@ public class TestProducto {
         categoria = new Categoria("Cazuela de mariscos");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 32000, true, "Cazuela de mariscos en combo especial", 0);
+                categoria, sucursal, 32000, true, "Cazuela de mariscos en combo especial", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 8500, true, "Cazuela pequeña en  combo",0);
+                categoria, sucursal, 8500, true, "Cazuela pequeña en  combo",0, "url");
         pr.save(producto);
         
         franquicia = new  Franquicia("Jenos pizza", new Float(1.3));
@@ -165,13 +165,13 @@ public class TestProducto {
         categoria = new Categoria("Pizza");
         cr.save(categoria);
         producto = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "Pizza Napolitana en combo", 0);
+                categoria, sucursal, 15000, true, "Pizza Napolitana en combo", 0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "Pizza mexicana en combo",0);
+                categoria, sucursal, 15000, true, "Pizza mexicana en combo",0, "url");
         pr.save(producto);
         producto = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 7800, true, "Sandwich italiano",0);
+                categoria, sucursal, 7800, true, "Sandwich italiano",0, "url");
         pr.save(producto);
         
     

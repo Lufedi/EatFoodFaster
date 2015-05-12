@@ -34,12 +34,15 @@ public class Producto  implements java.io.Serializable {
      private String descripcion;
      private float porcentajeDescuento;
      private byte[] imagen;
+     private String urlImagen ;
 
     public Producto() {
     }
 
 	
-    public Producto(ProductoId id,Categoria categorias, Sucursal sucursales, float precio, boolean esCombo, String descripcion, float porcentajeDescuento) {
+    public Producto(ProductoId id,Categoria categorias, Sucursal sucursales, 
+            float precio, boolean esCombo, String descripcion,
+            float porcentajeDescuento ,  String urlImagen) {
         this.id = id;
         this.categorias = categorias;
         this.sucursales = sucursales;
@@ -47,9 +50,12 @@ public class Producto  implements java.io.Serializable {
         this.esCombo = esCombo;
         this.descripcion = descripcion;
         this.porcentajeDescuento = porcentajeDescuento;
+        this.urlImagen =  urlImagen;
     }
     
-    public Producto(ProductoId id, Categoria categorias, Sucursal sucursales, float precio, boolean esCombo, String descripcion, float porcentajeDescuento, byte[] imagen) {
+    public Producto(ProductoId id, Categoria categorias, Sucursal sucursales,
+            float precio, boolean esCombo, String descripcion, 
+            float porcentajeDescuento, byte[] imagen ,  String urlImagen) {
        this.id = id;
        this.categorias = categorias;
        this.sucursales = sucursales;
@@ -58,6 +64,7 @@ public class Producto  implements java.io.Serializable {
        this.descripcion = descripcion;
        this.porcentajeDescuento = porcentajeDescuento;
        this.imagen = imagen;
+       this.urlImagen =  urlImagen;
     }
     
     @EmbeddedId
@@ -143,6 +150,16 @@ public class Producto  implements java.io.Serializable {
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
+    
+    @Column(name="ulrimagen")
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+    
 
 
 }

@@ -96,13 +96,13 @@ public class TestPedido {
         categoria = new Categoria("Perro Caliente");
         catr.save(categoria);
         Producto producto1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
+                categoria, sucursal, 10000, true, "perro sencillo en combo", 0 , "url");
         pr.save(producto1);
         Producto producto2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
+                categoria, sucursal, 15000, true, "perro ranchero en combo", 0, "url");
         pr.save(producto2);
         Producto producto3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
+                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0), "url");
         pr.save(producto3);
         
         ped.getPedidosProductoses().add(new PedidoProducto(ped, producto1) );
@@ -149,13 +149,13 @@ public class TestPedido {
         categoria = new Categoria("Perro Caliente");
         catr.save(categoria);
         Producto producto1 = new Producto(new ProductoId("1", sucursal.getIdSucursales()),
-                categoria, sucursal, 10000, true, "perro sencillo en combo", 0);
+                categoria, sucursal, 10000, true, "perro sencillo en combo", 0, "url");
         pr.save(producto1);
         Producto producto2 = new Producto(new ProductoId("2", sucursal.getIdSucursales()),
-                categoria, sucursal, 15000, true, "perro ranchero en combo", 0);
+                categoria, sucursal, 15000, true, "perro ranchero en combo", 0, "url");
         pr.save(producto2);
         Producto producto3 = new Producto(new ProductoId("3", sucursal.getIdSucursales()),
-                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0));
+                categoria, sucursal, 18000, true, "perro doble  salchicha alemana combo", new Float(2.0), "url");
         pr.save(producto3);
         
         ped.getPedidosProductoses().add(new PedidoProducto(ped, producto1) );

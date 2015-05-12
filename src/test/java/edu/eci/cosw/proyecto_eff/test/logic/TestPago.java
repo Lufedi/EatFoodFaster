@@ -110,16 +110,19 @@ public class TestPago {
         sr.save(s);
         Categoria c = new Categoria("comida rapida");
         cr1.save(c);
-        Producto p1 = new Producto(new ProductoId("pizza de carne", s.getIdSucursales()), c, s, 10000, false, "pizza con trozos de carne", new Float(0.0));
+        Producto p1 = new Producto(new ProductoId("pizza de carne", s.getIdSucursales()),
+                c, s, 10000, false, "pizza con trozos de carne", new Float(0.0) , "url");
         pr.save(p1);
         
         Franquicia f1 = new Franquicia("PPC", new Float(10.0));
         fr.save(f1);
         Sucursal s1 = new Sucursal(f1, pc, "54321");
         sr.save(s1);
-        Producto p2 = new Producto(new ProductoId("hamburguesa", s1.getIdSucursales()), c, s1, 12000, false, "hamburguesa con carne de res", new Float(0.0));
+        Producto p2 = new Producto(new ProductoId("hamburguesa", s1.getIdSucursales()), 
+                c, s1, 12000, false, "hamburguesa con carne de res", new Float(0.0) , "url");
         pr.save(p2);
-        Producto p3 = new Producto(new ProductoId("Pollo asado", s1.getIdSucursales()), c, s1, 15000, false, "pollo asado", new Float(0.0));
+        Producto p3 = new Producto(new ProductoId("Pollo asado", s1.getIdSucursales()), 
+                c, s1, 15000, false, "pollo asado", new Float(0.0), "url");
         pr.save(p3);
         
         ProductoId[] productoIds = new ProductoId[]{p1.getId(), p2.getId(), p3.getId()};
@@ -150,16 +153,19 @@ public class TestPago {
         sr.save(s);
         Categoria c = new Categoria("comidas rapidas");
         cr1.save(c);
-        Producto p1 = new Producto(new ProductoId("pizza de pollo", s.getIdSucursales()), c, s, 10000, false, "pizza con trozos de carne", new Float(3.0));
+        Producto p1 = new Producto(new ProductoId("pizza de pollo",
+                s.getIdSucursales()), c, s, 10000, false, "pizza con trozos de carne", new Float(3.0), "url");
         pr.save(p1);
         
         Franquicia f1 = new Franquicia("PPC", new Float(1.3));
         fr.save(f1);
         Sucursal s1 = new Sucursal(f1, pc, "54321");
         sr.save(s1);
-        Producto p2 = new Producto(new ProductoId("hamburguesa de pollo", s1.getIdSucursales()), c, s1, 12000, false, "hamburguesa con carne de pollo", new Float(2.0));
+        Producto p2 = new Producto(new ProductoId("hamburguesa de pollo",
+                s1.getIdSucursales()), c, s1, 12000, false, "hamburguesa con carne de pollo", new Float(2.0), "url");
         pr.save(p2);
-        Producto p3 = new Producto(new ProductoId("Pollo broaster", s1.getIdSucursales()), c, s1, 15000, false, "pollo asado", new Float(1.0));
+        Producto p3 = new Producto(new ProductoId("Pollo broaster", s1.getIdSucursales())
+                , c, s1, 15000, false, "pollo asado", new Float(1.0), "url");
         pr.save(p3);
         
         ProductoId[] productoIds = new ProductoId[]{p1.getId(), p2.getId(), p3.getId()};

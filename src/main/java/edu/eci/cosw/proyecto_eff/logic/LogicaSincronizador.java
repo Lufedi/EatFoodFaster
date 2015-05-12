@@ -51,15 +51,14 @@ public class LogicaSincronizador {
             } catch (URISyntaxException ex) {
                 Logger.getLogger(LogicaSincronizador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        
-            
-            
         }
         
     }
     
-     
+    public void adapterFranquicia(FranquiciaSync fs){
+        
+        
+    }
 }
 
 class FranquiciaSync{
