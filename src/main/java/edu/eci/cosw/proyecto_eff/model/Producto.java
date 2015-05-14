@@ -33,7 +33,6 @@ public class Producto  implements java.io.Serializable {
      private boolean esCombo;
      private String descripcion;
      private float porcentajeDescuento;
-     private byte[] imagen;
      private String urlImagen ;
 
     public Producto() {
@@ -51,20 +50,6 @@ public class Producto  implements java.io.Serializable {
         this.descripcion = descripcion;
         this.porcentajeDescuento = porcentajeDescuento;
         this.urlImagen =  urlImagen;
-    }
-    
-    public Producto(ProductoId id, Categoria categorias, Sucursal sucursales,
-            float precio, boolean esCombo, String descripcion, 
-            float porcentajeDescuento, byte[] imagen ,  String urlImagen) {
-       this.id = id;
-       this.categorias = categorias;
-       this.sucursales = sucursales;
-       this.precio = precio;
-       this.esCombo = esCombo;
-       this.descripcion = descripcion;
-       this.porcentajeDescuento = porcentajeDescuento;
-       this.imagen = imagen;
-       this.urlImagen =  urlImagen;
     }
     
     @EmbeddedId
@@ -139,16 +124,6 @@ public class Producto  implements java.io.Serializable {
     
     public void setPorcentajeDescuento(float porcentajeDescuento) {
         this.porcentajeDescuento = porcentajeDescuento;
-    }
-    
-    
-    @Column(name="imagen")
-    public byte[] getImagen() {
-        return this.imagen;
-    }
-    
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
     }
     
     @Column(name="urlimagen")
