@@ -112,7 +112,7 @@ public class LogicaSincronizador {
                Categoria c;
                for(ProductoSync proSync : sucSync.productos){
                    p = lp.obtenerProducto(proSync.nombreProducto);
-                   c = lc.obtenerCateogia(proSync.descripcion);
+                //   c = lc.obtenerCateogia(proSync.descripcion);
                    
                    if(p == null){
                         p =  new Producto(new ProductoId((size++)+""

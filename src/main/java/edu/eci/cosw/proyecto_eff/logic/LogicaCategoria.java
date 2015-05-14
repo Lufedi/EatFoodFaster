@@ -20,8 +20,8 @@ public class LogicaCategoria {
     CategoriaRepository cr;
     
     
-    public Categoria obtenerCategoria(String categoria){
+  /*  public Categoria obtenerCategoria(String categoria){
         
-    }
+    }*/
     
 }
