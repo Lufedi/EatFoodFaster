@@ -256,9 +256,18 @@ public class SubirDatos {
     @Test
     public void sincronizarProductos(){
         
-       Franquicia f =  fr.findOne("SUBWAY");
-       sincronizador.sincronizar(f);
-        
+        String [] franquicias =  new String[]{
+            "SUBWAY",
+            "McDonals",
+            "pizzaHut",
+            "KFC",
+            "BURGERKING"
+        };
+        Franquicia f;
+        for(String franquicia : franquicias){
+            f= fr.findOne(franquicia);
+            sincronizador.sincronizar(f);
+        } 
     }
     
 }
