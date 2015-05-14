@@ -23,6 +23,7 @@ public class Categoria  implements java.io.Serializable {
      
 
     public Categoria() {
+        this.idCategorias = "por definir";
     }
 
 	

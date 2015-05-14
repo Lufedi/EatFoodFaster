@@ -151,7 +151,7 @@ public class Producto  implements java.io.Serializable {
         this.imagen = imagen;
     }
     
-    @Column(name="ulrimagen")
+    @Column(name="urlimagen")
     public String getUrlImagen() {
         return urlImagen;
     }

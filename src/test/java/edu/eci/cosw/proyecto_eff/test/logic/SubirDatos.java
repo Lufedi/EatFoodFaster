@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.test.logic;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaProducto;
+import edu.eci.cosw.proyecto_eff.logic.LogicaSincronizador;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
 import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.model.Cliente;
@@ -24,6 +25,7 @@ import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
 import edu.eci.cosw.proyecto_eff.persistance.SucursalRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
@@ -69,10 +71,27 @@ public class SubirDatos {
     @Autowired
     LogicaSucursal ls;
     
+    @Autowired
+    LogicaSincronizador sincronizador;
     
      @Before  
     public void setUp()
     {
+      /*  Franquicia f;
+        f  =  new Franquicia("McDonals", (float) 0.0);
+        fr.save(f);
+        f  =  new Franquicia("SUBWAY", (float) 0.0);
+        fr.save(f);
+        f  =  new Franquicia("pizzaHut", (float) 0.0);
+        fr.save(f);
+        f  =  new Franquicia("KFC", (float) 0.0);
+        fr.save(f);
+        f  =  new Franquicia("KFC", (float) 0.0);
+        fr.save(f);
+        f  =  new Franquicia("BURGERKING", (float) 0.0);
+        fr.save(f);
+*/
+
         /*Cliente cliente= new Cliente("fandres@hotmail.com", "123456", "Fabian", "Alvarez", "310582");
         crr.save(cliente);
         Pedido ped= new Pedido(cliente,false, false, "Pedido sin todavia enviarse a la sucursal");
@@ -234,5 +253,12 @@ public class SubirDatos {
         
     }
     
+    @Test
+    public void sincronizarProductos(){
+        
+       Franquicia f =  fr.findOne("SUBWAY");
+       sincronizador.sincronizar(f);
+        
+    }
     
 }

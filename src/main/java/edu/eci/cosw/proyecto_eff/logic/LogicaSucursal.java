@@ -83,4 +83,17 @@ public class LogicaSucursal {
         return (List<Sucursal>)sr.findAll();
     }
     
+    /**
+     * Obtener sucursal por franquicia y plazoleta de comidas
+     */
+    public Sucursal obtenerSucursal(String franquiciaId , String plazoletaId){
+        Sucursal sucsel = null;
+        for(Sucursal s :  sr.findAll()){
+            if(s.getFranquicias().getIdFranquicia().equals(franquiciaId)
+            && s.getPlazoletaComidas().getId().getIdPlazoletaComidas().equals(plazoletaId))
+            sucsel =  s;
+        }
+        return sucsel;
+    }
+    
 }

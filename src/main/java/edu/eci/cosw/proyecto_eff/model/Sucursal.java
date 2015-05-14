@@ -35,6 +35,12 @@ public class Sucursal  implements java.io.Serializable {
     }
 
 	
+    public Sucursal(Franquicia franquicias, PlazoletaComida plazoletaComidas) {
+        this.franquicias = franquicias;
+        this.plazoletaComidas = plazoletaComidas;
+        this.contrasena = "1234";
+    }
+    
     public Sucursal(Franquicia franquicias, PlazoletaComida plazoletaComidas, String contrasena) {
         this.franquicias = franquicias;
         this.plazoletaComidas = plazoletaComidas;
@@ -85,6 +91,7 @@ public class Sucursal  implements java.io.Serializable {
         this.contrasena = contrasena;
     }
 
+    
 }
 
 

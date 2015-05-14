@@ -11,6 +11,7 @@ import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,20 @@ public class LogicaProducto {
      */
     public List<Producto> consultarProductoPorFranquicia( String franquicia  ,  String nombre){
         return  pr.searchPorFranquicia("%"+nombre+"%", franquicia);
+    }
+    
+    
+    
+    /**
+     * Localizar producto por descripcion
+     */
+    public Producto obtenerProducto(String descripcion){
+        Producto p =  null;
+        ArrayList<Producto> productos =  (ArrayList<Producto>)pr.findAll();
+        for(Producto prod : productos){
+            if(prod.getDescripcion().equals(descripcion))
+                p =  prod;             
+        }
+        return p;
     }
 }
