@@ -53,7 +53,7 @@ public class IndexActivity extends ActionBarActivity
                 objfFragment = new FoodFragment();
                 break;
             case 2:
-                objfFragment = new StoreFragment();
+                objfFragment = new ShoppingCartFragment();
                 break;
             case 3:
                 objfFragment = new StoreFragment();
