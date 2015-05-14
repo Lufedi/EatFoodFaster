@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.proyecto_eff.logic;
 
+import edu.eci.cosw.proyecto_eff.model.Categoria;
 import edu.eci.cosw.proyecto_eff.persistance.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,9 @@ public class LogicaCategoria {
     CategoriaRepository cr;
     
     
-  /*  public Categoria obtenerCategoria(String categoria){
+    public Categoria obtenerCategoria(String nombreCategoria){
         
-    }*/
+        return cr.findOne(nombreCategoria);
+    }
     
 }

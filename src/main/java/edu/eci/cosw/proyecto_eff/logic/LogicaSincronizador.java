@@ -12,6 +12,7 @@ import edu.eci.cosw.proyecto_eff.model.PlazoletaComidaId;
 import edu.eci.cosw.proyecto_eff.model.Producto;
 import edu.eci.cosw.proyecto_eff.model.ProductoId;
 import edu.eci.cosw.proyecto_eff.model.Sucursal;
+import edu.eci.cosw.proyecto_eff.persistance.CategoriaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.FranquiciaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.PlazoletaComidaRepository;
 import edu.eci.cosw.proyecto_eff.persistance.ProductoRepository;
@@ -52,6 +53,11 @@ public class LogicaSincronizador {
     @Autowired
     LogicaProducto lp;
     
+    @Autowired
+    LogicaCategoria lc;
+    
+    @Autowired
+    CategoriaRepository cr;
     /**
      * Metodo de sincronizacion con las franquicias que se han inscrito al servicio
      * de EFF
@@ -112,23 +118,25 @@ public class LogicaSincronizador {
                Categoria c;
                for(ProductoSync proSync : sucSync.productos){
                    p = lp.obtenerProducto(proSync.nombreProducto);
-                //   c = lc.obtenerCateogia(proSync.descripcion);
-                   
+                   c = lc.obtenerCategoria(proSync.descripcion);
+                   if(c ==  null){
+                      c =  new Categoria(proSync.descripcion);
+                      cr.save(c);
+                   }
                    if(p == null){
                         p =  new Producto(new ProductoId((size++)+""
-                                , sucsel.getIdSucursales()), new Categoria(proSync.descripcion), sucsel,
+                                , sucsel.getIdSucursales()), c, sucsel,
                                 proSync.precio, false, proSync.nombreProducto,
                                 0, proSync.imagen);
-                        
-                        System.out.println("se ha agregado el producto "  + proSync.nombreProducto);
                    }else{
                        p.setDescripcion(proSync.nombreProducto);
                        p.setPrecio(proSync.precio);
                        p.setUrlImagen(proSync.imagen);
-                       p.setCategorias(new Categoria(proSync.descripcion));
+                       p.setCategorias(c);
                        System.out.println("se ha actualizado el producto " + proSync.nombreProducto );
                    }
                     pr.save(p);
+                    System.out.println("se ha agregado el producto "  + proSync.nombreProducto);
                } 
                
             }
