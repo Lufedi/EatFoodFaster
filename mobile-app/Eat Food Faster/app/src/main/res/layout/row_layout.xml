@@ -5,21 +5,25 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/icon"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:id="@+id/iconProd"
+        android:layout_width="55dp"
+        android:layout_height="match_parent"
         android:src="@drawable/ic_drawer">
     </ImageView>
 
     <TextView
-        android:layout_width="252dp"
+        android:layout_width="154dp"
         android:layout_height="match_parent"
-        android:id="@+id/nombre" />
+        android:id="@+id/nombreProd" />
 
     <TextView
-        android:layout_width="93dp"
+        android:layout_width="115dp"
         android:layout_height="match_parent"
-        android:id="@+id/precio" />
+        android:id="@+id/precioProd" />
 
-
-</LinearLayout> 
+    <Button
+        android:layout_width="32dp"
+        android:layout_height="33dp"
+        android:background="@drawable/deleteicon"
+        android:id="@+id/buttonDeleteSC"/>
+</LinearLayout>

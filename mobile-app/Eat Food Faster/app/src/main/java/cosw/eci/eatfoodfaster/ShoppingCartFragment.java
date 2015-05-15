@@ -11,23 +11,26 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleAdapter;
+import android.widget.ArrayAdapter;
 
-public class ShoppingCartFragment extends ListFragment {
+public class ShoppingCartFragment extends ListFragment{
+
+    private static ArrayList<Product> shoppingCart = new ArrayList<>();
+    private ArrayAdapter adapter;
+
+    static{
+        for(int i =0; i<10;i++){
+            shoppingCart.add(new Product(("producto"+i),"franquicia",(10000+i),"http://web-images.chacha.com/images/Quiz/1397/which-pizza-topping-are-you-jul-17-2013-1-600x400.jpg"));
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
-        for(int i=0;i<30;i++){
-            HashMap<String, String> hm = new HashMap<String,String>();
-            hm.put("nombre", "Country : " + i);
-            hm.put("precio", ""+i);
-            aList.add(hm);
-        }
-        String[] from = {"nombre","precio"};
-        int[] to = {R.id.nombre, R.id.precio};
-        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.row_layout, from, to);
+        final ProductAdapter adapter = new ProductAdapter(getActivity(), R.layout.row_layout, shoppingCart);
         setListAdapter(adapter);
         return inflater.inflate(R.layout.shopping_cart_layout, container, false);
     }
+
+
 }
