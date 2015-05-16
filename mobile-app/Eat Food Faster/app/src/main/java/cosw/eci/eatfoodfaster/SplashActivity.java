@@ -75,19 +75,19 @@ public class SplashActivity extends Activity implements LocationListener {
         int Grados, Minutos,segundos;
         String resultado;
 
-        System.out.println("Convierte Decimales a Grados Minutos Y segundos");
+       // System.out.println("Convierte Decimales a Grados Minutos Y segundos");
 
 
         Grados=(int)(Decimal); //Parte Entera del Decimal
 
-        System.out.println("Los Grados Son  "+Grados);
+        //System.out.println("Los Grados Son  "+Grados);
         Min= (Decimal-Grados); //Se le resta el resultado para Obtener los Min
         Minutos=Math.abs((int)(Min*60)); //El Anterior se Multiplica por 60 y se obtienen los Minutos
-        System.out.println("Los Minutos   "+Minutos);
+        //System.out.println("Los Minutos   "+Minutos);
         Min1=Math.abs(Min*60); //Se hace el Anterior Proceso con Los Minutos
         seg=Math.abs((Min1-Minutos));
         segundos=(int)(seg*60);
-        System.out.println("Los segundos son    "+segundos);
+        //System.out.println("Los segundos son    "+segundos);
         //Nota:Los Valores que Tienen Valor Absoluto, se hizo para que el Menos
         //De la Operacion no afectara el Resultado.
         int signo     = (Decimal < 0) ? -1 : 1;
@@ -95,7 +95,7 @@ public class SplashActivity extends Activity implements LocationListener {
                 ((signo > 0) ? "N" : "S") :
                 ((signo > 0) ? "E" : "W");
         if (Grados< 0)Grados=Grados*-1;
-        System.out.println("El resultado es  "+Grados+"°" +" "+Minutos+"'"+" "+segundos+"''"+" "+direccion);
+        //System.out.println("El resultado es  "+Grados+"°" +" "+Minutos+"'"+" "+segundos+"''"+" "+direccion);
         resultado=Grados+"/"+Minutos+"/"+segundos+"/"+direccion+"/";
         return resultado;
     }
@@ -146,12 +146,17 @@ public class SplashActivity extends Activity implements LocationListener {
             //Tenga en cuenta que para esto deben tener la referencia de la Actividad
             //para poder hacer el ‘findViewById‘
 
-            localizacion=result;
-            TextView textView= (TextView)findViewById(R.id.textView3);
-            textView.setText(result);
-            Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-            startActivity(i);
-            finish();
+            if(result.contains("404 Not Found")){
+                Toast toast;
+                toast = Toast.makeText(getApplicationContext(), "Usted no se encuentra en ningun centro comercial :( lo siento T_T", Toast.LENGTH_LONG );
+                toast.show();
+            }
+            else{
+                localizacion=result;
+                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
         }
     };
 
