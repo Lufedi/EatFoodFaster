@@ -9,6 +9,7 @@ import android.location.LocationManager;
 import android.app.Activity;
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GeoActivity extends Activity implements LocationListener{
 
@@ -78,7 +79,9 @@ public class GeoActivity extends Activity implements LocationListener{
 
     @Override
     public void onProviderDisabled(String provider) {
-        // TODO Auto-generated method stub
+        Toast toast;
+        toast = Toast.makeText(getApplicationContext(), "encienda su localizador", Toast.LENGTH_LONG );
+        toast.show();
 
     }
 
