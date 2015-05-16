@@ -15,10 +15,10 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,900,700italic,500italic' rel='stylesheet' type='text/css'>
 		
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+                <link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="css/style.css">
+                <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="css/fontello.css">
    		<link rel="stylesheet" href="css/animation.css">
 		<link rel="stylesheet" href="css/chosen.css">
@@ -30,6 +30,10 @@
 		<!--[if IE 7]>
 			<link rel="stylesheet" href="css/fontello-ie7.css">
 		<![endif]-->
+                
+        <script src="js/angularjs/angular.min.js"></script>
+        <script src="js/angularjs/angular-route.js"></script>
+        <script src="js/angularjs/appmodule.js"></script>
         
     </head>
     
@@ -51,21 +55,21 @@
 							
 							<nav id="top-navigation" class="col-lg-7 col-md-7 col-sm-7">
 								<ul class="pull-left">
-									<li><a href="create_an_account.html">My Account</a></li>
-									<li><a href="orders_list.html">List Order</a></li>
+									<li><a href="create_an_account.html">Mi cuenta</a></li>
+									<li><a href="orders_list.html">Mi orden</a></li>
 									<li><a href="order_info.html">Checkout</a></li>
-									<li><a href="text_page.html">About Us</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="text_page.html">Sobre nosotros</a></li>
+									<li><a href="contact.html">Contactenos</a></li>
 								</ul>
 							</nav>
 							
 							<nav class="col-lg-5 col-md-5 col-sm-5">
 								<ul class="pull-right">
-									<li class="purple"><a href="#"><i class="icons icon-user-3"></i> Login</a>
+									<li class="purple"><a href="#"><i class="icons icon-user-3"></i> Ingresar</a>
 										<ul id="login-dropdown" class="box-dropdown">
 											<li>
                                             	<div class="box-wrapper">
-                                                    <h4>LOGIN</h4>
+                                                    <h4>INGRESAR</h4>
                                                     <div class="iconic-input">
                                                         <input type="text" placeholder="Username">
                                                         <i class="icons icon-user-3"></i>
@@ -74,28 +78,28 @@
                                                         <input type="text" placeholder="Password">
                                                         <i class="icons icon-lock"></i>
                                                     </div>
-                                                    <input type="checkbox" id="loginremember"> <label for="loginremember">Remember me</label>
+                                                    <input type="checkbox" id="loginremember"> <label for="loginremember">Recordarme</label>
                                                     <br>
                                                     <br>
                                                     <div class="pull-left">
                                                         <input type="submit" class="orange" value="Login">
                                                     </div>
                                                     <div class="pull-right">
-                                                        <a href="#">Forgot your password?</a>
-														<br>
-                                                        <a href="#">Forgot your username?</a>
+                                                        <a href="#">He olvidado mi contraseña</a>
+                                                        <br>
+                                                        <a href="#">He olvidado mi usuario</a>
 														<br>
                                                     </div>
                                                     <br class="clearfix">
                                                 </div>
 												<div class="footer">
-													<h4 class="pull-left">NEW CUSTOMER?</h4>
+													<h4 class="pull-left">SOY NUEVO</h4>
 													<a class="button pull-right" href="create_an_account.html">Create an account</a>
 												</div>
 											</li>
 										</ul>
 									</li>
-									<li><a href="#"><i class="icons icon-lock"></i> Create an Account</a></li>
+									<li><a href="#"><i class="icons icon-lock"></i> Crear una cuenta</a></li>
 								</ul>
 							</nav>
 							
@@ -191,56 +195,8 @@
                                                 </div>
 											</li>
 										</ul>
-                                    </li>
-									<li><a class="flag" href="#"><span class="english-flag"></span>English</a>
-                                    	<ul class="box-dropdown parent-arrow">
-											<li>
-                                            	<div class="box-wrapper no-padding parent-border">
-                                                    <table class="language-table">
-                                                    	<tr>
-                                                        	<td class="flag"><span class="english-flag"></span></td>
-                                                            <td class="country"><a href="#">English</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td class="flag"><span class="german-flag"></span></td>
-                                                            <td class="country"><a href="#">German</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td class="flag"><span class="french-flag"></span></td>
-                                                            <td class="country"><a href="#">French</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td class="flag"><span class="italian-flag"></span></td>
-                                                            <td class="country"><a href="#">Italian</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td class="flag"><span class="spanish-flag"></span></td>
-                                                            <td class="country"><a href="#">Spanish</a></td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-											</li>
-										</ul>
-                                    	
-                                    </li>
-									<li><a href="#"><i class="icons icon-dollar"></i>US Dollar</a>
-                                    	<ul class="box-dropdown parent-arrow">
-											<li>
-                                            	<div class="box-wrapper no-padding parent-border">
-                                                    <table class="currency-table">
-                                                    	<tr>
-                                                        	<td><a href="#">$ US Dollar</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td><a href="#">€ Euro</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                        	<td><a href="#">£ Pound</a></td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-											</li>
-										</ul>
+                 
+	
                                     </li>
 								</ul>
 							</nav>
@@ -258,8 +214,8 @@
 							<li class="home-green">
 								<a href="home_v1.html">
 									<i class="icons icon-shop-1"></i>
-									<span class="nav-caption">Home</span>
-									<span class="nav-description">Variety of Layouts</span>
+									<span class="nav-caption">Inicio</span>
+									<span class="nav-description">Vamos a comer</span>
 								</a>
 								
 								<ul class="normal-dropdown normalAnimation">
@@ -301,37 +257,19 @@
 							</li>
 							
 							<li class="red">
-								<a href="#">
-									<i class="icons icon-camera-7"></i>
-									<span class="nav-caption">Cameras</span>
-									<span class="nav-description">Photo & Video</span>
+								<a href="#foodcourts">
+									<i class="icons icon-food"></i>
+									<span class="nav-caption">Plazoletas de comidas</span>
+									<span class="nav-description">Restaurantes</span>
 								</a>
 								
 								<ul class="wide-dropdown normalAniamtion">
 									<li>
 										<ul>
-											<li><span class="nav-caption">Digital Cameras</span></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Digital SLR</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Point &amp; Shoot</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Spy, Miniature</a></li>
-										</ul>
-									</li>
-									<li>
-										<ul>
-											<li><span class="nav-caption">Digital Cameras</span></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Background Material</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Continuous Lighting</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Flash Lighting</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Light Meters</a></li>
-										</ul>
-									</li>
-									<li>
-										<ul>
-											<li><span class="nav-caption">Digital Cameras</span></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Batteries</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Cables &amp; Adapters</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Camcorder Tapes &amp; Discs</a></li>
-											<li><a href="#"><i class="icons icon-right-dir"></i> Cases, Bags &amp; Covers</a></li>
+											<li><span class="nav-caption">Plazoletas de Comidas</span></li>
+											<li><a href="#"><i class="icons icon-right-dir"></i> Donde nos puedes encontrar </a></li> <!-- Sucursales por Centro Comercia-->
+											<li><a href="#"><i class="icons icon-right-dir"></i> Que puedes comer</a></li> <!-- Sucursales por Franquicia-->
+								
 										</ul>
 									</li>
 								</ul>
@@ -339,18 +277,18 @@
 							</li>
 							
 							<li class="blue">
-								<a href="category_v2.html">
-									<i class="icons icon-desktop-3"></i>
-									<span class="nav-caption">Computers</span>
-									<span class="nav-description">Laptops & Tablets</span>
+								<a href="#consultarproductos">
+									<i class="icons icon-search-1"></i>
+									<span class="nav-caption">Buscar</span>
+									<span class="nav-description">Encuentra tus comidas</span>
 								</a>
 							</li>
 							
 							<li class="orange">
 								<a href="category_v1.html">
 									<i class="icons icon-mobile-6"></i>
-									<span class="nav-caption">Cell phones</span>
-									<span class="nav-description">Phones & Accessories</span>
+									<span class="nav-caption">Carrito </span>
+									<span class="nav-description">Mi orden</span>
 								</a>
 							</li>
 							
@@ -358,15 +296,45 @@
 								<a href="blog.html">
 									<i class="icons icon-pencil-7"></i>
 									<span class="nav-caption">Blog</span>
-									<span class="nav-description">News & Reviews</span>
+									<span class="nav-description">Noticias & reseñas</span>
 								</a>
 							</li>
 							
 							<li class="purple">
 								<a href="contact.html">
 									<i class="icons icon-location-7"></i>
-									<span class="nav-caption">Contact</span>
-									<span class="nav-description">Store Locations</span>
+									<span class="nav-caption">Contacto</span>
+									<span class="nav-description"></span>
+								</a>
+							</li><li class="blue">
+								<a href="#consultarproductos">
+									<i class="icons icon-search-1"></i>
+									<span class="nav-caption">Buscar</span>
+									<span class="nav-description">Encuentra tus comidas</span>
+								</a>
+							</li>
+							
+							<li class="orange">
+								<a href="category_v1.html">
+									<i class="icons icon-mobile-6"></i>
+									<span class="nav-caption">Carrito </span>
+									<span class="nav-description">Mi orden</span>
+								</a>
+							</li>
+							
+							<li class="green">
+								<a href="blog.html">
+									<i class="icons icon-pencil-7"></i>
+									<span class="nav-caption">Blog</span>
+									<span class="nav-description">Noticias & reseñas</span>
+								</a>
+							</li>
+							
+							<li class="purple">
+								<a href="contact.html">
+									<i class="icons icon-location-7"></i>
+									<span class="nav-caption">Contacto</span>
+									<span class="nav-description"></span>
 								</a>
 							</li>
 							
@@ -431,11 +399,11 @@
                         <div class="col-lg-12 col-md-12 col-sm-12">
                         	
                             <div class="carousel-heading no-margin">
-                                <h4>Your account details</h4>
+                                <h4>Detalles de tu cuenta</h4>
                             </div>
                             
                             <div class="page-content">
-                            	<p>If you are already registered please login directly here</p>
+                            	<p>Si ya esta registrador, por favor inicie sesion aqui</p>
                                 <div class="row">
                                 	<div class="col-lg-6 col-md-6 col-sm-6">
                                     	<div class="iconic-input">
@@ -452,7 +420,7 @@
                                     </div>
                                 </div>
                                 
-                                <input type="checkbox" id="login-remember-2"> <label for="login-remember-2">Remember me</label>
+                                <input type="checkbox" id="login-remember-2"> <label for="login-remember-2">Recordarme</label>
                                 <br/><br/>
                                 <div class="row">
                                 	<div class="col-lg-6 col-md-6 col-sm-6 align-left">
@@ -460,9 +428,9 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 align-right">
                                         <small>
-											<a class="align-right" href="#">Forgot your password?</a>
+											<a class="align-right" href="#">He olvidado mi Contraseña</a>
 											<br>
-											<a class="align-right" href="#">Forgot your username?</a>
+											<a class="align-right" href="#">He olvidado mi Usuario</a>
 											<br>
 										</small>
                                     </div>
@@ -480,18 +448,27 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 register-account">
                         	
                             <div class="carousel-heading no-margin">
-                                <h4>Register</h4>
+                                <h4>Registro</h4>
                             </div>
                             
                             <div class="page-content">
                             	<div class="row">
                                 	
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                    	<p><strong>Shopper information</strong></p>
+                                    	<p><strong>Datos de Cuenta</strong></p>
                                     </div>
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>E-Mail*</p>
+                                    	<p>Correo*</p>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                    	<input type="text">
+                                    </div>	
+                                   
+                                <div class="row">
+                                    
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    	<p>Contraseña*</p>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8">
                                     	<input type="text">
@@ -502,65 +479,21 @@
                                 <div class="row">
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Username*</p>
+                                    	<p>Confirme su contraseña*</p>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8">
                                     	<input type="text">
                                     </div>	
                                     
                                 </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Displayed name*</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Password</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Confirm Password</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>I agree to the terms of service</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="checkbox" id="i-agree-to-terms"><label for="i-agree-to-terms"></label>
-                                    </div>	
-                                    
-                                </div>
-                                
+                               
                                 <div class="row">
                                 
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                    	<p><strong>Bill to</strong></p>
+                                    	<p><strong>Información General</strong></p>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Company Name</p>
+                                    	<p>Nombres</p>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8">
                                     	<input type="text">
@@ -571,21 +504,7 @@
                                 <div class="row">
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Title</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<select class="chosen-select">
-                                        	<option>Mr</option>
-                                            <option>Mrs</option>
-                                        </select>
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>First name</p>
+                                    	<p>Appellidos</p>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8">
                                     	<input type="text">
@@ -596,125 +515,16 @@
                                 <div class="row">
                                     
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Middle Name</p>
+                                    	<p>Celular</p>
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8">
                                     	<input type="text">
                                     </div>	
                                     
                                 </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Last Name</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Address 1</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Address 2</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>ZIP / Postal Code</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>City</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Country</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>State / Province / Region</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Phone</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>Mobile Phone</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    	<p>FAX</p>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8">
-                                    	<input type="text">
-                                    </div>	
-                                    
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                    	<input class="big" type="submit" value="Register">
-                                        <input class="big" type="reset" value="Cancel">
+                                    	<input class="big" type="submit" value="Registrar">
+                                        <input class="big" type="reset" value="Cancelar">
                                     </div>
                                     
                                 </div>
@@ -730,49 +540,18 @@
                 
                 
                 <!-- Sidebar -->
-				<aside class="sidebar col-lg-3 col-md-3 col-sm-3 right-sidebar">
-					
+				<aside class="sidebar col-lg-3 col-md-3 col-sm-3  col-lg-pull-9 col-md-pull-9 col-sm-pull-9">
 					<!-- Categories -->
 					<div class="row sidebar-box purple">
-						
 						<div class="col-lg-12 col-md-12 col-sm-12">
-							
 							<div class="sidebar-box-heading">
-								<i class="icons icon-folder-open-empty"></i>
-								<h4>Categories</h4>
+								<i class="icons icon-food"></i>
+								<h4>Plazoletas  </h4>
 							</div>
-							
 							<div class="sidebar-box-content">
 								<ul>
-									<li><a href="#">Cameras &amp; Photography <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Computers &amp; Tablets <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Cell Phones &amp; Accessories <i class="icons icon-right-dir"></i></a>
-                                    	<ul class="sidebar-dropdown">
-                                        	<li>
-                                            	<ul>
-                                                	<li><a href="#">Cell phones &amp; Smartphone</a></li>
-                                                    <li><a href="#">Cell Phone Accessories</a></li>
-                                                    <li><a href="#">Headsets</a></li>
-                                                    <li><a href="#">Cases, Covers & Skins</a></li>
-                                                    <li><a href="#">Screen Protectors</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                            	<ul>
-                                                	<li><a href="#">Chargers & Cradles</a></li>
-                                                    <li><a href="#">Batteries</a></li>
-                                                    <li><a href="#">Cables & Adapters</a></li>
-                                                    <li><a href="#">All About Smartphones</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-									<li><a href="#">TV, Audio &amp; Surveillance <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Video Games &amp; Consoles <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Car Audio, Video &amp; GPS <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Best Sellers <i class="icons icon-right-dir"></i></a></li>
-									<li><a href="#">Shop by Brands <i class="icons icon-right-dir"></i></a></li>
-									<li><a class="purple" href="#">All Categories</a></li>
+									<li ng-repeat="plazoleta in plazoletas"  >         
+                                                                        </li>
 								</ul>
 							</div>
 							
@@ -780,117 +559,20 @@
 							
 					</div>
 					<!-- /Categories -->
-                    
-                    
-                    
-                    <!-- Compare Products -->
-					<div class="row sidebar-box blue">
-						
+                                        <div class="row sidebar-box purple">
 						<div class="col-lg-12 col-md-12 col-sm-12">
-							
 							<div class="sidebar-box-heading">
-                            	<i class="icons icon-docs"></i>
-								<h4>Compare Products</h4>
+								<i class="icons icon-shop-1"></i>
+								<h4>Restaurantes  </h4>
 							</div>
 							<div class="sidebar-box-content">
-                                <table class="compare-table">
-                                    
-                                    <tr>
-                                        <td class="product-thumbnail"><img src="img/products/sample1.jpg" alt="Product1"></td>
-                                        <td class="product-info">
-                                            <p><a href="#">Lorem ipsum dolor sit amet</a></p>
-                                            <a class="remove">Remove</a>
-                                        </td>
-                                    </tr>
-                                    
-                                </table>
-                                <div class="padding-box">
-                                	<a class="button grey">Go to compare</a>
-                                </div>
+								<ul>
+									<li ng-repeat="franquicia in franquicias"  > 
+                                                                        </li>
+								</ul>
 							</div>
-						</div>
-						
+						</div>	
 					</div>
-					<!-- /Compare Products -->
-					
-					
-					<!-- Carousel -->
-					<div class="row sidebar-box">
-						
-						<div class="col-lg-12 col-md-12 col-sm-12 sidebar-carousel">
-							
-							<!-- Slider -->
-							<section class="sidebar-slider">
-								<div class="sidebar-flexslider">
-									<ul class="slides">
-										<li>
-											<a href="#"><img src="img/sidebar-slide1.jpg" alt="Slide1"/></a>
-										</li>
-										<li>
-											<a href="#"><img src="img/sidebar-slide2.jpg" alt="Slide1"/></a>
-										</li>
-										<li>
-											<a href="#"><img src="img/sidebar-slide3.jpg" alt="Slide1"/></a>
-										</li>
-									</ul>
-								</div>
-								<div class="slider-nav"></div>
-							</section>
-							<!-- /Slider -->
-                            
-						</div>
-						
-					</div>
-					<!-- /Carousel -->
-					
-					
-					<!-- Bestsellers -->
-					<div class="row sidebar-box red">
-						
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							
-							<div class="sidebar-box-heading">
-                            <i class="icons icon-award-2"></i>
-								<h4>Bestsellers</h4>
-							</div>
-							
-							<div class="sidebar-box-content">
-								<table class="bestsellers-table">
-									
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="img/products/sample1.jpg" alt="Product1"></a></td>
-										<td class="product-info">
-											<p><a href="#">Lorem ipsum dolor sit amet</a></p>
-											<span class="price">$550.00</span>
-										</td>
-									</tr>
-									
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="img/products/sample2.jpg" alt="Product1"></a></td>
-										<td class="product-info">
-											<p><a href="#">Lorem ipsum dolor sit amet</a></p>
-											<span class="price">$550.00</span>
-										</td>
-									</tr>
-									
-									<tr>
-										<td class="product-thumbnail"><a href="#"><img src="img/products/sample3.jpg" alt="Product1"></a></td>
-										<td class="product-info">
-											<p><a href="#">Lorem ipsum dolor sit amet</a></p>
-                                            <div class="rating readonly-rating" data-score="4"></div>
-											<span class="price"><del>$650.00</del> $550.00</span>
-										</td>
-									</tr>
-									
-								</table>
-							</div>
-							
-						</div>
-						
-					</div>
-					<!-- /Bestsellers -->
-					
-                    
 				</aside>
                 <!-- /Sidebar -->
                 
@@ -1007,12 +689,10 @@
 							<div class="col-lg-3 col-md-3 col-sm-6">
 								<h4>Information</h4>
 								<ul>
-									<li><a href="#"><i class="icons icon-right-dir"></i> About Us</a></li>
-									<li><a href="#"><i class="icons icon-right-dir"></i> New Collection</a></li>
-									<li><a href="#"><i class="icons icon-right-dir"></i> Bestsellers</a></li>
-									<li><a href="#"><i class="icons icon-right-dir"></i> Manufacturers</a></li>
-									<li><a href="#"><i class="icons icon-right-dir"></i> Privacy Policy</a></li>
-									<li><a href="#"><i class="icons icon-right-dir"></i> Terms &amp; Conditions</a></li>
+									<li><a href="#"><i class="icons icon-right-dir"></i> Acerca de Nosotros</a></li>
+									<li><a href="#"><i class="icons icon-right-dir"></i> Nuevas Plazoletas</a></li>
+									<li><a href="#"><i class="icons icon-right-dir"></i> Politicas de Privacidad</a></li>
+									<li><a href="#"><i class="icons icon-right-dir"></i> Terminos &amp; Condiciones</a></li>
 								</ul>
 							</div>
 							<!-- /Information -->
