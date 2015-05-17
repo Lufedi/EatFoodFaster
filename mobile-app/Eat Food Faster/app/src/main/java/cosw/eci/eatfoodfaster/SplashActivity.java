@@ -35,13 +35,14 @@ public class SplashActivity extends Activity implements LocationListener {
 
     private static int SPLASH_TIME_OUT = 10000;
     private static String localizacion="";
+    LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
 
@@ -59,8 +60,13 @@ public class SplashActivity extends Activity implements LocationListener {
 
         String resultado=longitud+latitud;
 
-        if(at.getStatus()==AsyncTask.Status.PENDING)
+        if(at.getStatus()==AsyncTask.Status.PENDING) {
             at.execute(new String[]{resultado});
+        }
+        if(localizacion!="" && !localizacion.contains("404 Not Found")){
+            locationManager.removeUpdates(this);
+
+        }
 
     }
     /**
@@ -152,6 +158,10 @@ public class SplashActivity extends Activity implements LocationListener {
                 toast.show();
             }
             else{
+                Toast toast;
+                toast = Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG );
+                toast.show();
+
                 localizacion=result;
                 Intent i = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(i);
