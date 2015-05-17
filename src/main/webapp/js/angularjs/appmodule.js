@@ -29,8 +29,16 @@ app.config(function ($routeProvider) {
                     templateUrl: 'eff_estado_pedidos.html',
                     controllerAs: 'cc',
                     controller:  'controlpedidos'
+                })
+                // rutas fabian end   
+                
+                // rutar Jenni
+                .when('/', {
+                    templateUrl: 'create_an_account.html',
+                    controllerAs: 'cl',
+                    controller:  'controlRegistro'
                 });;
-                // rutas fabian end       
+                // rutas jenni end 
                   
 
     });
@@ -228,6 +236,29 @@ app.config(function ($routeProvider) {
                 }
                                    
     );
+    
+    /*---------------------------------------------------------------------*/
+    app.controller('controlRegistro',
+                function($scope,$http){
+                    this.detalleCliente={
+                     correoCliente:'',
+                     contrasena:'',
+                     nombre: '',
+                     apellido: '',
+                     celular: ''
+                    };
+            
+                    this.registrar=function(){
+                    //accion
+                    $http.post('rest/clientes', this.detalleCliente).
+                    success(function (data, status, headers, config) {
+                        alert('success!');
+                    }).
+                    error(function (data, status, headers, config) {
+                        alert('error!');
+                    });
+                };
+            });
     
     /*---------------------------------------------------------------------*/
 
