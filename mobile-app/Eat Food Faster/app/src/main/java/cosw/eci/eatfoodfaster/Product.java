@@ -47,4 +47,9 @@ public class Product {
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
     }
+
+    @Override
+    public String toString() {
+        return this.idProducto;
+    }
 }
