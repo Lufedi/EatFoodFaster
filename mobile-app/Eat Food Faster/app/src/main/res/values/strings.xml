@@ -3,7 +3,7 @@
 
     <string name="title_section1">Plazoletas</string>
     <string name="title_section2">Comidas</string>
-    <string name="title_section3">Carrito de compras</string>
+    <string name="title_shopping_cart">Carrito de compras</string>
     <string name="title_section4">Cerrar sesión</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

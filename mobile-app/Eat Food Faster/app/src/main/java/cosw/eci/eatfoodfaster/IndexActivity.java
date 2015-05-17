@@ -53,9 +53,6 @@ public class IndexActivity extends ActionBarActivity
                 objfFragment = new FoodFragment();
                 break;
             case 2:
-                objfFragment = new ShoppingCartFragment();
-                break;
-            case 3:
                 objfFragment = new StoreFragment();
                 break;
 
@@ -75,9 +72,6 @@ public class IndexActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-            case 4:
                 mTitle = getString(R.string.title_section4);
                 break;
         }
@@ -107,7 +101,9 @@ public class IndexActivity extends ActionBarActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_shopping_cart) {
+            Intent i = new Intent(this, ShoppingCartActivity.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
