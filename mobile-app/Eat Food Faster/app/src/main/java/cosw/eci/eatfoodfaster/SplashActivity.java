@@ -34,7 +34,7 @@ import java.io.InputStreamReader;
 public class SplashActivity extends Activity implements LocationListener {
 
     private static int SPLASH_TIME_OUT = 10000;
-    private static String localizacion="";
+    public static String localizacion="";
     LocationManager locationManager;
 
     @Override
