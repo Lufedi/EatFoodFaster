@@ -15,9 +15,8 @@ app.config(function ($routeProvider) {
                 .when('/foodcourts', {
                     templateUrl: 'eff_plazoletas_comidas.html'
 
-                })
-                
-                //rutas felipe end 
+                })      
+                //rutas felipe end º
                 
                  // rutar fabian
                 .when('/pedidosSinNotificar', {
