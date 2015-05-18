@@ -16,8 +16,8 @@
                        {{prod.idPedidos}}
                     </td>
                     <td>
-                        <span ng-show="{{prod.enviadoAsucursal}}" class="label label-danger">sin enviar</span>
-                        <span ng-show="{{!prod.enviadoAsucursal}}" class="label label-success">enviado</span>
+                        <span ng-show="{{!prod.enviadoAsucursal}}" class="label label-danger">sin enviar</span>
+                        <span ng-show="{{prod.enviadoAsucursal}}" class="label label-success">enviado</span>
                     </td>
                     <td> 
                         <button ng-disabled="{{prod.notificadoAcliente}}"
