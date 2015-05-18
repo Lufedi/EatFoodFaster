@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -192,9 +193,9 @@ class Logica extends AsyncTask<String, Void , String> {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject =  jsonArray.getJSONObject(i);
                 p =  new Product(jsonObject.getString("descripcion"),
-                                 "" ,
-                                Double.parseDouble(jsonObject.getString("precio")),
-                                jsonObject.getString("urlImagen"));
+                                 jsonObject.getJSONObject("sucursales").getJSONObject("franquicias").getString("idFranquicia") ,
+                                 Double.parseDouble(jsonObject.getString("precio")),
+                                 jsonObject.getString("urlImagen"));
 
                 System.out.println("objeto con " + jsonArray.getJSONObject(i).getString("descripcion"));
                 products.add(p);
@@ -232,19 +233,51 @@ class ProductoAdapter extends ArrayAdapter<Product> {
         }
         // Lookup view for data population
         TextView name = (TextView) convertView.findViewById(R.id.product_name);
-        TextView price = (TextView) convertView.findViewById(R.id.product_bbvalue);
-        ImageView image  = (ImageView)convertView.findViewById(R.id.productImage);
+        TextView price = (TextView) convertView.findViewById(R.id.product_mrpvalue);
+        TextView franquicia  = (TextView) convertView.findViewById(R.id.product_mrp);
+        Button button = (Button)convertView.findViewById(R.id.add_cart);
+        //ImageView image  = (ImageView)convertView.findViewById(R.id.productImage);
 
 
         // Populate the data into the template view using the data object
         name.setText(product.getIdProducto());
         price.setText(product.getPrecio() + "");
+        franquicia.setText(product.getIdFranquicia());
+        button.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          //Programar agregar al carrito
+                                      }
+                                    }
+                                );
 
-       // try {
-            System.out.println("looking for " + product.getUrlImagen());
-            Drawable drawable = this.LoadImageFromWebOperations(product.getUrlImagen());
 
-            image.setBackground(drawable);
+            // try {
+            // System.out.println("looking for " + product.getUrlImagen());
+            //Drawable drawable = this.LoadImageFromWebOperations(product.getUrlImagen());
+            //image.setBackground(drawable);
+        final View row =  convertView;
+        AsyncTask<String, Void, Bitmap> task = new AsyncTask<String, Void, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(String... params) {
+                String urldisplay = params[0];
+                Bitmap mIcon11 = null;
+                try {
+                    InputStream in = new java.net.URL(urldisplay).openStream();
+                    mIcon11 = BitmapFactory.decodeStream(in);
+                } catch (Exception e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+                return mIcon11;
+            }
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                ((ImageView) row.findViewById(R.id.productImage)).setImageBitmap(bitmap);
+            }
+        };
+        task.execute(product.getUrlImagen());
+
         /*}catch(Exception e){
             image.setImageResource(R.drawable.cart_low);
             System.out.println("por defecto");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:background="#FFFFFF"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -9,10 +9,11 @@
 
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="5dp"
+        android:src="@drawable/cart_low"
         android:layout_marginLeft = "5dp"
         android:layout_alignParentTop="true"
         />
@@ -33,53 +34,35 @@
         android:id="@+id/product_mrp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/productImage"
-        android:layout_below="@+id/product_name"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
         android:text="Franquicia:"
         android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:layout_alignBottom="@+id/productImage"
+        android:layout_alignStart="@+id/product_bb" />
 
     <TextView
         android:id="@+id/product_mrpvalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/product_mrp"
-        android:layout_below="@+id/product_name"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:text="Rs 100"
         android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:layout_alignTop="@+id/product_bb"
+        android:layout_toEndOf="@+id/product_mrp" />
 
     <TextView
         android:id="@+id/product_bb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/product_mrpvalue"
-        android:layout_below="@+id/product_name"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:text="Price:"
+        android:text="Precio : $"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000"
-        android:textSize="14dp" />
-
-    <TextView
-        android:id="@+id/product_bbvalue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/product_bb"
-        android:layout_below="@+id/product_name"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="Rs 95"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:layout_above="@+id/add_cart"
+        android:layout_alignStart="@+id/product_name" />
 
     <Button
         android:id="@+id/add_cart"
@@ -90,8 +73,10 @@
         android:gravity="center"
         android:drawableLeft="@drawable/cart_low"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_alignBottom="@+id/product_bbvalue"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginStart="25dp"
+        android:layout_alignBaseline="@+id/product_mrp"
+        android:layout_alignBottom="@+id/product_mrp"
+        android:layout_toEndOf="@+id/product_mrpvalue" />
 
 </RelativeLayout>
 
