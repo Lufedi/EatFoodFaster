@@ -81,7 +81,7 @@ public class SplashActivity extends Activity implements LocationListener {
         int Grados, Minutos,segundos;
         String resultado;
 
-        // System.out.println("Convierte Decimales a Grados Minutos Y segundos");
+       // System.out.println("Convierte Decimales a Grados Minutos Y segundos");
 
 
         Grados=(int)(Decimal); //Parte Entera del Decimal

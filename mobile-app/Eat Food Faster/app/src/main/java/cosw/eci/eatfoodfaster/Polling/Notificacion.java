@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -109,31 +110,22 @@ class LogicaNotificacion extends AsyncTask<String, Void , String> {
     @Override
     protected String doInBackground(String... params) {
         String estado =  this.readResourceContent(params[0]);
-
+        String res = "not success";
         try{
             JSONObject jsonObject =  new JSONObject(estado);
             estado =  jsonObject.getString("estado");
+            System.out.println("estado : " + estado);
             if(estado.equals(EstadoPedido.NOTIFICADOACLIENTE)){
-                AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-                alertDialog.setTitle("Pedido listo");
-                alertDialog.setMessage("Su pedido esta  listo, puede pasar a caja y recogerlo");
-                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                            //detener el polling
-                    }
-                });
-                alertDialog.setIcon(R.drawable.icon);
-                alertDialog.show();
-
-                pedidoRecibido();
+                res = "success";
+                pedidoRecibido(params[0]);
             }
         }catch(JSONException e){
 
         }
-        return "succes";
+        return res;
     }
 
-    public void pedidoRecibido(){
+    public void pedidoRecibido(String idPedido){
 
         try {
         //construir un objeto jSON
@@ -167,9 +159,25 @@ class LogicaNotificacion extends AsyncTask<String, Void , String> {
             alarmMgr.cancel(alarmIntent);
         }
     }
+
     @Override
     protected void onPostExecute(String result){
         //cambiar el estado del pedido a recibido por el cliente
+        if (  result.equals("success")){
+            /*AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+            alertDialog.setTitle("Pedido listo");
+            alertDialog.setMessage("Su pedido esta  listo, puede pasar a caja y recogerlo");
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    //detener el polling
+                }
+            });
+            alertDialog.setIcon(R.drawable.icon);
+            alertDialog.show();
+            */
+
+            Toast.makeText(context, "Si pedido esta listo", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
