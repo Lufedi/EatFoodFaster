@@ -167,20 +167,21 @@ app.config(function ($routeProvider) {
     app.controller('controlpedidos',
                 function($scope,$http){
                     
-                    this.notificarCliente=function(idPedido){
+                    this.notificarCliente=function(pedido){
                         $scope.estado={estado:"Notificado a cliente"};  
-                        $http.put('rest/notificacion/pedido/listo/'+idPedido,$scope.estado).                       
+                        $http.put('rest/notificacion/pedido/listo/'+pedido.idPedidos,$scope.estado).                       
                         success(function(data, status, headers, config) {
                           // this callback will be called asynchronously
                           // when the response is available
-                  
+                          alert('Pedido ' +  pedido.idPedidos + ' notificado a cliente ')
                         }).
                         error(function(data, status, headers, config) {
                           // called asynchronously if an error occurs
                           // or server returns response with an error status.
                           alert("error notificando el pedido");
-
                         });
+                        pedido.notificadoAcliente = !pedido.notificadoAcliente;
+                       
                     };
                     
                     $scope.lista=[];

@@ -22,7 +22,7 @@
                     <td> 
                         <button ng-disabled="{{prod.notificadoAcliente}}"
                                 ng-show="{{!prod.notificadoAcliente}}"
-                                ng-click="cc.notificarCliente(prod)" 
+                                ng-click="cc.notificarCliente(prod.idPedidos)" 
                                 class="btn btn-info">Notificar pedido Listo</button>
                                 
                          <span ng-show="{{prod.notificadoAcliente}}" class="label label-success">notificado</span>

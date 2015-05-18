@@ -2,7 +2,11 @@
     <h1> Pedidos </h1>
     <div class="table-responsive">
   
-        <select class="form-control" ng-model="correctlySelected" ng-options="opt as opt.idSucursales for opt in options">
+        <select class="form-control" ng-model="correctlySelected" ng-options="
+        opt as 
+        opt.idSucursales + ' ' + 
+        opt.franquicias.idFranquicia + ' ' +  
+        opt.plazoletaComidas.id.idPlazoletaComidas  for opt in options">
            
         </select>
         
