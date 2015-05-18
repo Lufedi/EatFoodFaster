@@ -6,6 +6,7 @@
 package edu.eci.cosw.proyecto_eff.logic;
 
 import edu.eci.cosw.proyecto_eff.model.Cliente;
+import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.EstadosPedido;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import edu.eci.cosw.proyecto_eff.persistance.PedidoRepository;
@@ -49,6 +50,12 @@ public class LogicaPedido {
        //return pr.search(c.getCorreoCliente());
         return pr.searchBySucursalNotificados(idSucursal);
         //return null;
+    }
+
+    public Estado consultarEstadoPedido(int idPedido) {
+        Pedido p = pr.findOne(idPedido);
+        return new Estado((p != null)?p.getEstadoPedido():"null");
+        
     }
 
 

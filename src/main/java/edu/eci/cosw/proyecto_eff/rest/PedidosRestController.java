@@ -7,6 +7,7 @@ package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPedido;
 import edu.eci.cosw.proyecto_eff.logic.LogicaSucursal;
+import edu.eci.cosw.proyecto_eff.model.Estado;
 import edu.eci.cosw.proyecto_eff.model.Pedido;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,10 @@ public class PedidosRestController {
         return lp.consultarPedidoPorId(idPedido);  
     }
     
+    @RequestMapping(value="/estado/{idPedido}" , method = RequestMethod.GET)
+    public Estado consultarEstadoPedido(@PathVariable int idPedido) throws ResourceNotFoundException  {       
+        return  lp.consultarEstadoPedido(idPedido);  
+    }
    
     
     

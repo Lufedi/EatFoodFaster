@@ -1,8 +1,11 @@
 package cosw.eci.eatfoodfaster;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -45,6 +48,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cosw.eci.eatfoodfaster.Polling.CustomAlarm;
+import cosw.eci.eatfoodfaster.Polling.TimeAlarm;
+
 
 /**
  * Created by fercho on 5/7/15.
@@ -73,6 +79,10 @@ public class FoodFragment extends Fragment {
 
     Logica logica ;
 
+
+    public static AlarmManager alarmManager;
+    public static PendingIntent pendingIntent;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,11 +93,15 @@ public class FoodFragment extends Fragment {
 
 
 
+        //CustomAlarm customAlarm  =  new CustomAlarm();
+        alarmManager = (AlarmManager)rootView.getContext().getSystemService(Context.ALARM_SERVICE);
+        Intent intent =  new Intent(rootView.getContext() , TimeAlarm.class);
+        pendingIntent =  PendingIntent.getBroadcast(rootView.getContext() , 0 ,  intent , 0);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP , 60000,60000,pendingIntent);
+
+
 
         // Adding items to listview
-
-
-
         //agregando el listener al boton de buscar
         searchButton = (ImageButton) rootView.findViewById(R.id.imageButton2);
 
@@ -101,8 +115,6 @@ public class FoodFragment extends Fragment {
                         "ImageButton is clicked! searching for " + searchExpr, Toast.LENGTH_SHORT).show();
                 logica = new Logica(rootView, getActivity());
                 logica.execute(new String[]{searchExpr});
-
-
             }
 
 

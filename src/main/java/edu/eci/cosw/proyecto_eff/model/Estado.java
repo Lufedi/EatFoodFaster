@@ -14,6 +14,9 @@ public class Estado {
     public Estado(){
         
     }
+    public Estado(String estado){
+        this.estado =  estado;
+    }
     public String getEstado() {
         return estado;
     }

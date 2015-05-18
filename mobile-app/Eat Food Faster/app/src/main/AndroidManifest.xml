@@ -35,6 +35,9 @@
             android:name=".BuyActivity"
             android:label="@string/title_activity_buy" >
         </activity>
+
+        <receiver android:name=".Polling.TimeAlarm" />
+
     </application>
 
 </manifest>
