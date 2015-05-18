@@ -37,6 +37,12 @@ app.config(function ($routeProvider) {
                     templateUrl: 'create_an_account.html',
                     controllerAs: 'cl',
                     controller:  'controlRegistro'
+                })
+                
+                .when('/consultarSucursales', {
+                    templateUrl: 'prueba.html',
+                    controllerAs: 'suc',
+                    controller:  'SucursalCrtl'
                 });;
                 // rutas jenni end 
                   
@@ -240,6 +246,7 @@ app.config(function ($routeProvider) {
     /*---------------------------------------------------------------------*/
     app.controller('controlRegistro',
                 function($scope,$http){
+                    //crear un controlador para login 
                     this.detalleCliente={
                      correoCliente:'',
                      contrasena:'',
@@ -247,6 +254,8 @@ app.config(function ($routeProvider) {
                      apellido: '',
                      celular: ''
                     };
+                    
+                    
             
                     this.registrar=function(){
                     //accion
@@ -261,6 +270,37 @@ app.config(function ($routeProvider) {
             });
     
     /*---------------------------------------------------------------------*/
+    app.controller('SucursalCrtl',
+        function($scope , $http , $location){
+            
+            $scope.plazoletas = [];
+            $scope.franquicias = [];
+            
+            this.cargarDatos =  function(){
+                this.cargarFranquicias();
+                this.cargarPlazoletas();
+            }
+            
+             this.cargarPlazoletas =  function(){
+               
+                    $http.get( 'rest/plazoleta')
+                  .success(function (data, status, headers, config) {
+                      $scope.plazoletas =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado plazoletas!') });
+            }
+            
+            this.cargarFranquicias =  function(){
+                
+                   $http.get('rest/franquicia')
+                  .success(function (data, status, headers, config) {
+                      $scope.franquicias =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado franquicias!') });
+            }
+        });
 
 })();
 
