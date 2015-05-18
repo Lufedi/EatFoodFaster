@@ -12,9 +12,21 @@
 
             <tbody>
                 <tr ng-repeat="prod in lista">
-                    <td>{{prod.idPedidos}}</td>
-                    <td>{{prod.enviadoAsucursal}}</td>
-                    <td>{{prod.notificadoAcliente}}</td>
+                    <td>
+                       {{prod.idPedidos}}
+                    </td>
+                    <td>
+                        <span ng-show="{{prod.enviadoAsucursal}}" class="label label-danger">sin enviar</span>
+                        <span ng-show="{{!prod.enviadoAsucursal}}" class="label label-success">enviado</span>
+                    </td>
+                    <td> 
+                        <button ng-disabled="{{prod.notificadoAcliente}}"
+                                ng-show="{{!prod.notificadoAcliente}}"
+                                ng-click="cc.notificarCliente(prod.idPedidos)" 
+                                class="btn btn-info">Notificar pedido Listo</button>
+                                
+                         <span ng-show="{{prod.notificadoAcliente}}" class="label label-success">notificado</span>
+                    </td>
                 </tr>
             </tbody>
             

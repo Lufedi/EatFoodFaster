@@ -167,6 +167,22 @@ app.config(function ($routeProvider) {
     app.controller('controlpedidos',
                 function($scope,$http){
                     
+                    this.notificarCliente=function(idPedido){
+                        $scope.estado={estado:"Notificado a cliente"};  
+                        $http.put('rest/notificacion/pedido/listo/'+idPedido,$scope.estado).                       
+                        success(function(data, status, headers, config) {
+                          // this callback will be called asynchronously
+                          // when the response is available
+                  
+                        }).
+                        error(function(data, status, headers, config) {
+                          // called asynchronously if an error occurs
+                          // or server returns response with an error status.
+                          alert("error notificando el pedido");
+
+                        });
+                    };
+                    
                     $scope.lista=[];
                     this.consultar=function(){
                         $http.get('rest/pedidos/').
@@ -205,6 +221,7 @@ app.config(function ($routeProvider) {
                         });                        
                     };
                     
+               
                     
                     this.consultar=function(){
                      $scope.sucursal=$scope.correctlySelected.idSucursales;
@@ -219,9 +236,10 @@ app.config(function ($routeProvider) {
                         });
                     };
                     
-                    $scope.estado={estado:"Pedido recibido en sucursal"};
+                    
                     
                     this.enviarPedido=function(idPedido){
+                        $scope.estado={estado:"Pedido recibido en sucursal"};
                         $scope.idPedidoEsco=idPedido;
                         
                         $http.put('rest/notificacion/pedido/sucursal/'+$scope.idPedidoEsco,$scope.estado).                       

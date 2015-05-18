@@ -20,8 +20,7 @@
                 <tr ng-repeat="prod in lista">
                     <td>{{prod.idPedidos}}</td>
                     <td>{{prod.enviadoAsucursal}}</td>
-                    <td><button ng-click="cc.enviarPedido(prod.idPedidos)" class="btn btn-info">Obtener pedido</button></td>
-                    
+                    <td><button  ng-click="cc.enviarPedido(prod.idPedidos)" class="btn btn-info">Obtener pedido</button></td> 
                 </tr>
             </tbody>
             <button ng-click="cc.consultar()" class="btn btn-info">Consultar pedidos de la sucursal</button>
