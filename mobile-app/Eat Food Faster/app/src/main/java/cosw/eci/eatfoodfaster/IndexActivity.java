@@ -53,6 +53,9 @@ public class IndexActivity extends ActionBarActivity
                 objfFragment = new FoodFragment();
                 break;
             case 2:
+                objfFragment = new PedidoFragment();
+                break;
+            case 3:
                 objfFragment = new StoreFragment();
                 break;
 
@@ -72,6 +75,9 @@ public class IndexActivity extends ActionBarActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
+                mTitle = getString(R.string.title_section_pedido);
+                break;
+            case 4:
                 mTitle = getString(R.string.title_section4);
                 break;
         }
