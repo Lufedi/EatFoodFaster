@@ -2,6 +2,11 @@ package cosw.eci.eatfoodfaster;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -32,6 +39,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -67,10 +76,6 @@ public class FoodFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_search,container, false);
-        // Listview Data
-        String products[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
-                "iPhone 4S", "Samsung Galaxy Note 800",
-                "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro"};
 
 
         inputSearch = (EditText) rootView.findViewById(R.id.searchView1);
@@ -88,12 +93,12 @@ public class FoodFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String searchExpr ;
-                EditText t =  (EditText) rootView.findViewById(R.id.searchView1);
+                String searchExpr;
+                EditText t = (EditText) rootView.findViewById(R.id.searchView1);
                 searchExpr = t.getText().toString();
-                Toast.makeText( getActivity(),
+                Toast.makeText(getActivity(),
                         "ImageButton is clicked! searching for " + searchExpr, Toast.LENGTH_SHORT).show();
-                logica =  new Logica(rootView , getActivity());
+                logica = new Logica(rootView, getActivity());
                 logica.execute(new String[]{searchExpr});
 
 
@@ -102,11 +107,6 @@ public class FoodFragment extends Fragment {
 
         });
         //
-
-
-
-
-
         return rootView;
     }
 
@@ -114,21 +114,34 @@ public class FoodFragment extends Fragment {
 }
 
 class Logica extends AsyncTask<String, Void , String> {
-    String[] productos;
+    ArrayList<Product> products;
     View v ;
     FragmentActivity fa;
     public Logica(View v ,FragmentActivity fa ){
         this.v = v;
         this.fa = fa;
+        products =  new ArrayList<>();
 
     }
 
     String URI = "http://eatfoodfaster.herokuapp.com/rest/productos/";
 
     public String readResourceContent(String producto) {
+
+        String ciudad = "" , cc = "";
+        try{
+            JSONObject jsonObject =  new JSONObject(SplashActivity.localizacion);
+            jsonObject =  jsonObject.getJSONObject("id");
+            ciudad =  jsonObject.getString("ciudad") + "/";
+            cc = jsonObject.getString("idPlazoletaComidas")+"/";
+        }catch(JSONException e){
+
+        }
+        
         StringBuilder builder = new StringBuilder();
         HttpClient client = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(URI + producto);
+        HttpGet httpGet = new HttpGet(URI + cc  +ciudad + producto);
+        System.out.println("buscando en  " + URI + cc  +ciudad + producto);
         try {
             HttpResponse response = client.execute(httpGet);
             StatusLine statusLine = response.getStatusLine();
@@ -170,14 +183,21 @@ class Logica extends AsyncTask<String, Void , String> {
     @Override
     protected String doInBackground(String... params) {
         String res;
+        Product p;
         res = this.readResourceContent(params[0]);
         try {
             JSONObject jsonObject;
             JSONArray jsonArray = new JSONArray(res);
-            productos =  new String[res.length()];
+
             for (int i = 0; i < jsonArray.length(); i++) {
-                System.out.println("objeto con " + jsonArray.getJSONObject(i).getString("descripcion" ));
-                productos[i] = jsonArray.getJSONObject(i).getString("descripcion");
+                jsonObject =  jsonArray.getJSONObject(i);
+                p =  new Product(jsonObject.getString("descripcion"),
+                                 "" ,
+                                Double.parseDouble(jsonObject.getString("precio")),
+                                jsonObject.getString("urlImagen"));
+
+                System.out.println("objeto con " + jsonArray.getJSONObject(i).getString("descripcion"));
+                products.add(p);
             }
         } catch (JSONException e) {
         }
@@ -186,9 +206,80 @@ class Logica extends AsyncTask<String, Void , String> {
 
     @Override
     protected void onPostExecute(String result){
+        System.out.println("vamos a sincronizar " );
+        ProductoAdapter productAdapter =  new ProductoAdapter(fa,products);
         ListView lv = (ListView) v.findViewById(R.id.listview_search);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(fa,R.layout.listtwo_searchresults, R.id.product_name , productos);
-        lv.setAdapter(adapter);
+        lv.clearChoices();
+        lv.setAdapter(productAdapter);
+
+    }
+}
+
+
+class ProductoAdapter extends ArrayAdapter<Product> {
+
+    public ProductoAdapter(Context context, ArrayList<Product> products) {
+        super(context, 0, products);
     }
 
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Get the data item for this position
+        Product product = getItem(position);
+        // Check if an existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.listtwo_searchresults, parent, false);
+        }
+        // Lookup view for data population
+        TextView name = (TextView) convertView.findViewById(R.id.product_name);
+        TextView price = (TextView) convertView.findViewById(R.id.product_bbvalue);
+        ImageView image  = (ImageView)convertView.findViewById(R.id.productImage);
+
+
+        // Populate the data into the template view using the data object
+        name.setText(product.getIdProducto());
+        price.setText(product.getPrecio() + "");
+
+       // try {
+            System.out.println("looking for " + product.getUrlImagen());
+            Drawable drawable = this.LoadImageFromWebOperations(product.getUrlImagen());
+
+            image.setBackground(drawable);
+        /*}catch(Exception e){
+            image.setImageResource(R.drawable.cart_low);
+            System.out.println("por defecto");
+        }*/
+
+
+        // Return the completed view to render on screen
+        return convertView;
+    }
+
+
+    public static Drawable LoadImageFromWebOperations(String url) {
+
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    /*public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input = connection.getInputStream();
+
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+    }*/
+
 }
+
+
+
+
+

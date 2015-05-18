@@ -15,7 +15,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft = "5dp"
         android:layout_alignParentTop="true"
-        android:src="@drawable/cart_low" />
+        />
 
     <TextView
         android:id="@+id/product_name"
@@ -37,7 +37,7 @@
         android:layout_below="@+id/product_name"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
-        android:text="MRP:"
+        android:text="Franquicia:"
         android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="14dp" />
@@ -63,7 +63,7 @@
         android:layout_below="@+id/product_name"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
-        android:text="BB Price:"
+        android:text="Price:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000"
         android:textSize="14dp" />
