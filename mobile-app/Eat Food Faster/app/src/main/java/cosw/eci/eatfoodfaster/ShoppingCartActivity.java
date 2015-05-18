@@ -22,10 +22,14 @@ public class ShoppingCartActivity extends ActionBarActivity{
 
     private static ArrayList<Product> shoppingCart = new ArrayList<>();
 
-    static {
-        for(int i =0; i<10;i++){
-            shoppingCart.add(new Product(("producto"+i),"franquicia",(10000+i),"http://web-images.chacha.com/images/Quiz/1397/which-pizza-topping-are-you-jul-17-2013-1-600x400.jpg"));
-        }
+    public static void agregarAlCarrito(Product product){
+        shoppingCart.add(product);
+    }
+
+    public static double getTotalCarrito(){
+        double total = 0;
+        for (int i=0;i<shoppingCart.size();i++)total+=shoppingCart.get(i).getPrecio();
+        return total;
     }
 
     @Override
@@ -61,9 +65,14 @@ public class ShoppingCartActivity extends ActionBarActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.action_shopping_cart_checkin){
-            Intent i = new Intent(this, BuyActivity.class);
-            startActivity(i);
-            return true;
+            if(shoppingCart.isEmpty()){
+                Toast.makeText(getApplicationContext(),"No hay productos en el carrito de compras",Toast.LENGTH_LONG).show();
+                return true;
+            }else{
+                Intent i = new Intent(this, BuyActivity.class);
+                startActivity(i);
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }

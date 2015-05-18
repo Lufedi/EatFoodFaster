@@ -6,7 +6,116 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="cosw.eci.eatfoodfaster.BuyActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="numero tarjeta"
+        android:id="@+id/textViewNumTarjeta"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextNumTarjeta"
+        android:layout_below="@+id/textViewNumTarjeta"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visa"
+        android:id="@+id/radioButtonVisa"
+        android:checked="false"
+        android:layout_alignTop="@+id/radioButtonMastercard"
+        android:layout_toEndOf="@+id/radioButtonMastercard"
+        android:onClick="swapNombre" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mastercard"
+        android:id="@+id/radioButtonMastercard"
+        android:checked="false"
+        android:layout_below="@+id/textViewNomTarjeta"
+        android:layout_alignParentStart="true"
+        android:onClick="swapNombre" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:id="@+id/textViewNomTarjeta"
+        android:layout_below="@+id/editTextNumTarjeta"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo"
+        android:id="@+id/textViewTipoTarjeta"
+        android:layout_below="@+id/radioButtonVisa"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="debito"
+        android:id="@+id/radioButtonDebito"
+        android:checked="false"
+        android:layout_below="@+id/textViewTipoTarjeta"
+        android:layout_alignParentStart="true"
+        android:onClick="swapTipo" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="credito"
+        android:id="@+id/radioButtonCredito"
+        android:layout_alignTop="@+id/radioButtonDebito"
+        android:layout_toEndOf="@+id/radioButtonDebito"
+        android:checked="false"
+        android:onClick="swapTipo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Codigo de seguridad"
+        android:id="@+id/textViewCodSeguridad"
+        android:layout_below="@+id/radioButtonDebito"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextCodSeguridad"
+        android:layout_below="@+id/textViewCodSeguridad"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comprar"
+        android:id="@+id/buttonComprar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:onClick="comprarCarrito" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total :"
+        android:id="@+id/textViewTotalBuy"
+        android:layout_below="@+id/editTextCodSeguridad"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp"
+        android:layout_toStartOf="@+id/radioButtonCredito"
+        android:layout_alignEnd="@+id/radioButtonVisa" />
 </RelativeLayout>

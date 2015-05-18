@@ -6,14 +6,16 @@ package cosw.eci.eatfoodfaster;
 public class Product {
     private String idProducto;
     private String idFranquicia;
+    private String descripcion;
     private double precio;
     private String urlImagen;
 
-    public Product(String idProducto, String idFranquicia, double precio, String urlImagen) {
+    public Product(String idProducto, String idFranquicia,String descripcion, double precio, String urlImagen) {
         this.idProducto = idProducto;
         this.idFranquicia = idFranquicia;
         this.precio = precio;
         this.urlImagen = urlImagen;
+        this.descripcion=descripcion;
     }
 
     public String getIdProducto() {
@@ -46,6 +48,14 @@ public class Product {
 
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override

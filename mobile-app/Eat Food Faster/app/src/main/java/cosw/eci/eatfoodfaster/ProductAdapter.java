@@ -51,7 +51,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                 notifyDataSetChanged();
             }
         });
-        ((TextView) row.findViewById(R.id.nombreProd)).setText(data.get(position).getIdProducto());
+        ((TextView) row.findViewById(R.id.nombreProd)).setText(data.get(position).getDescripcion());
         ((TextView) row.findViewById(R.id.precioProd)).setText(data.get(position).getPrecio()+"");
         final View finalRow = row;
         AsyncTask<String, Void, Bitmap> task = new AsyncTask<String, Void, Bitmap>() {
