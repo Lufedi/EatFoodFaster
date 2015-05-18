@@ -11,88 +11,26 @@ package edu.eci.cosw.proyecto_eff.model;
  */
 public class InformacionCompra {
     
-    private String correoUsuario;
-    private String opcionPago;
-    private String nombreCliente;
-    private String apellidoCliente;
     private String numeroTarjeta;
-    private int mesExpiracion;
-    private int anioExpiracion;
+    private String nombreTarjeta;
+    private String tipoPago;
     private int codigoSeguridad;
+    private String correoUsuario;
     private ProductoId[] idProductos;
 
     public InformacionCompra() {
-    
     }
 
-    public InformacionCompra(String correoUsuario, String opcionPago, String nombreCliente, String apellidoCliente, String numeroTarjeta, int mesExpiracion, int anioExpiracion, int codigoSeguridad, ProductoId[] idProductos) {
-        this.correoUsuario = correoUsuario;
-        this.opcionPago = opcionPago;
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
+    public InformacionCompra(String numeroTarjeta, String nombreTarjeta, String tipoPago, int codigoSeguridad, String correoUsuario, ProductoId[] idProductos) {
         this.numeroTarjeta = numeroTarjeta;
-        this.mesExpiracion = mesExpiracion;
-        this.anioExpiracion = anioExpiracion;
+        this.nombreTarjeta = nombreTarjeta;
+        this.tipoPago = tipoPago;
         this.codigoSeguridad = codigoSeguridad;
+        this.correoUsuario = correoUsuario;
         this.idProductos = idProductos;
     }
-
-    /**
-     * @return the correoUsuario
-     */
-    public String getCorreoUsuario() {
-        return correoUsuario;
-    }
-
-    /**
-     * @param correoUsuario the correoUsuario to set
-     */
-    public void setCorreoUsuario(String correoUsuario) {
-        this.correoUsuario = correoUsuario;
-    }
-
-    /**
-     * @return the opcionPago
-     */
-    public String getOpcionPago() {
-        return opcionPago;
-    }
-
-    /**
-     * @param opcionPago the opcionPago to set
-     */
-    public void setOpcionPago(String opcionPago) {
-        this.opcionPago = opcionPago;
-    }
-
-    /**
-     * @return the nombreCliente
-     */
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    /**
-     * @param nombreCliente the nombreCliente to set
-     */
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
-    /**
-     * @return the apellidoCliente
-     */
-    public String getApellidoCliente() {
-        return apellidoCliente;
-    }
-
-    /**
-     * @param apellidoCliente the apellidoCliente to set
-     */
-    public void setApellidoCliente(String apellidoCliente) {
-        this.apellidoCliente = apellidoCliente;
-    }
-
+    
+    
     /**
      * @return the numeroTarjeta
      */
@@ -108,31 +46,31 @@ public class InformacionCompra {
     }
 
     /**
-     * @return the mesExpiracion
+     * @return the nombreTarjeta
      */
-    public int getMesExpiracion() {
-        return mesExpiracion;
+    public String getNombreTarjeta() {
+        return nombreTarjeta;
     }
 
     /**
-     * @param mesExpiracion the mesExpiracion to set
+     * @param nombreTarjeta the nombreTarjeta to set
      */
-    public void setMesExpiracion(int mesExpiracion) {
-        this.mesExpiracion = mesExpiracion;
+    public void setNombreTarjeta(String nombreTarjeta) {
+        this.nombreTarjeta = nombreTarjeta;
     }
 
     /**
-     * @return the anioExpiracion
+     * @return the tipoPago
      */
-    public int getAnioExpiracion() {
-        return anioExpiracion;
+    public String getTipoPago() {
+        return tipoPago;
     }
 
     /**
-     * @param anioExpiracion the anioExpiracion to set
+     * @param tipoPago the tipoPago to set
      */
-    public void setAnioExpiracion(int anioExpiracion) {
-        this.anioExpiracion = anioExpiracion;
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
     }
 
     /**
@@ -150,6 +88,20 @@ public class InformacionCompra {
     }
 
     /**
+     * @return the correoUsuario
+     */
+    public String getCorreoUsuario() {
+        return correoUsuario;
+    }
+
+    /**
+     * @param correoUsuario the correoUsuario to set
+     */
+    public void setCorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
+    }
+
+    /**
      * @return the idProductos
      */
     public ProductoId[] getIdProductos() {
@@ -162,6 +114,9 @@ public class InformacionCompra {
     public void setIdProductos(ProductoId[] idProductos) {
         this.idProductos = idProductos;
     }
+
+    
+  
     
     
     

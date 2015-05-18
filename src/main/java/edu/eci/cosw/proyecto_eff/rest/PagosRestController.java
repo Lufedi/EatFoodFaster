@@ -35,13 +35,9 @@ public class PagosRestController {
         return lp.getPagoById(id);
     }
     
-    @RequestMapping(value="/",method = RequestMethod.POST)   
-    public ResponseEntity<?> guardarPago(@RequestBody InformacionCompra ic) throws OperationFailedException {
-        boolean ok = lp.registrarPago(ic);
-        if(!ok){
-            throw new OperationFailedException();
-        }
-        return new ResponseEntity<>(HttpStatus.CREATED);
-     }
+    @RequestMapping(value="/",method = RequestMethod.POST)
+    public String guardarPago(@RequestBody InformacionCompra ic) throws OperationFailedException {
+        return lp.registrarPago(ic);
+    }
     
 }
