@@ -5,6 +5,8 @@
  */
 package edu.eci.cosw.proyecto_eff.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author fercho
@@ -12,13 +14,16 @@ package edu.eci.cosw.proyecto_eff.model;
 public class InformacionTransaccion {
     private String Resultado;
     private int codTransaccion;
+    private ArrayList<Integer> pedidos;
 
     public InformacionTransaccion() {
     }
+    
 
-    public InformacionTransaccion(String Resultado, int codTransaccion) {
+    public InformacionTransaccion(String Resultado, int codTransaccion, ArrayList<Integer> pedidos) {
         this.Resultado = Resultado;
         this.codTransaccion = codTransaccion;
+        this.pedidos = pedidos;
     }
 
     public String getResultado() {
@@ -37,5 +42,12 @@ public class InformacionTransaccion {
         this.codTransaccion = codTransaccion;
     }
 
+    public ArrayList<Integer> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Integer> pedidos) {
+        this.pedidos = pedidos;
+    }
     
 }

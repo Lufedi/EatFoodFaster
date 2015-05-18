@@ -3,6 +3,7 @@ package edu.eci.cosw.proyecto_eff.rest;
 
 import edu.eci.cosw.proyecto_eff.logic.LogicaPago;
 import edu.eci.cosw.proyecto_eff.model.InformacionCompra;
+import edu.eci.cosw.proyecto_eff.model.InformacionTransaccion;
 import edu.eci.cosw.proyecto_eff.model.Pago;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class PagosRestController {
     }
     
     @RequestMapping(value="/",method = RequestMethod.POST)
-    public String guardarPago(@RequestBody InformacionCompra ic) throws OperationFailedException {
+    public InformacionTransaccion guardarPago(@RequestBody InformacionCompra ic) throws OperationFailedException {
         return lp.registrarPago(ic);
     }
     

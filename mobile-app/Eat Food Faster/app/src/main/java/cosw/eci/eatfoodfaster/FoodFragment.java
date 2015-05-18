@@ -193,6 +193,7 @@ class Logica extends AsyncTask<String, Void , String> {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject =  jsonArray.getJSONObject(i);
                 p =  new Product(jsonObject.getJSONObject("id").getString("idProductos"),
+                                 jsonObject.getJSONObject("id").getInt("sucursalesIdSucursales"),
                                  jsonObject.getJSONObject("sucursales").getJSONObject("franquicias").getString("idFranquicia") ,
                                  jsonObject.getString("descripcion"),
                                  Double.parseDouble(jsonObject.getString("precio")),
@@ -244,13 +245,13 @@ class ProductoAdapter extends ArrayAdapter<Product> {
         // Populate the data into the template view using the data object
         name.setText(product.getDescripcion());
         price.setText(product.getPrecio() + "");
-        franquicia.setText(product.getIdFranquicia());
+        franquicia.setText(product.getFranquicia());
         button.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
                                           Integer index = (Integer) v.getTag();
                                           ShoppingCartActivity.agregarAlCarrito(getItem(index));
-                                          Toast.makeText(getContext(),"agregado al carrito: "+getItem(index).getIdProducto(),Toast.LENGTH_SHORT).show();
+                                          Toast.makeText(getContext(),"agregado al carrito: "+getItem(index).getDescripcion(),Toast.LENGTH_SHORT).show();
                                       }
                                     }
                                 );

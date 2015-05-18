@@ -20,10 +20,14 @@ import android.widget.Toast;
 
 public class ShoppingCartActivity extends ActionBarActivity{
 
-    private static ArrayList<Product> shoppingCart = new ArrayList<>();
+    public static ArrayList<Product> shoppingCart = new ArrayList<>();
 
     public static void agregarAlCarrito(Product product){
         shoppingCart.add(product);
+    }
+
+    public static void vaciarCarrito(){
+        shoppingCart.clear();
     }
 
     public static double getTotalCarrito(){
@@ -50,9 +54,7 @@ public class ShoppingCartActivity extends ActionBarActivity{
     }
 
     public void calcularTotal(){
-        double total = 0;
-        for (int i=0;i<shoppingCart.size();i++)total+=shoppingCart.get(i).getPrecio();
-        ((TextView)findViewById(R.id.textViewPrice)).setText(total + "");
+        ((TextView)findViewById(R.id.textViewPrice)).setText(getTotalCarrito()+"");
     }
 
     @Override

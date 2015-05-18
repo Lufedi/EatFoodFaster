@@ -81,7 +81,7 @@ public class LogicaPago {
      * @throws edu.eci.cosw.proyecto_eff.rest.OperationFailedException
      * @Obj : guardar un pedido de un usuario  
      */
-    public String registrarPago(InformacionCompra ic) throws OperationFailedException {
+    public InformacionTransaccion registrarPago(InformacionCompra ic) throws OperationFailedException {
         Cliente c = clienteRepository.findOne(ic.getCorreoUsuario());
         Hashtable<String, Pedido> pedidos = new Hashtable<>();
         ProductoId[] idProductos = ic.getIdProductos();
@@ -118,6 +118,7 @@ public class LogicaPago {
         if(ok){
             for(String key: pedidos.keySet()){
                 pedidoRepository.save(pedidos.get(key));
+                it.getPedidos().add(pedidos.get(key).getIdPedidos());
                 Pago pago = new Pago(pedidos.get(key), new Date(System.currentTimeMillis()), getTotalPedido(pedidos.get(key)), ic.getTipoPago());
                 pagoRepository.save(pago);
             }
@@ -127,7 +128,8 @@ public class LogicaPago {
                 rt.postForEntity(urlFormatted, HttpEntity.EMPTY, Object.class);
             }
         }
-        return it.getResultado();
+        
+        return it;
     }
     
     private InformacionTransaccion parseStringToInformacionTransaccion(String responseString){
@@ -135,7 +137,8 @@ public class LogicaPago {
         String[] partes = responseString.split(",");
         String[] resultado = partes[0].split("=");
         String[] codTransaccion = partes[1].split("=");
-        return new InformacionTransaccion(resultado[1], Integer.parseInt(codTransaccion[1]));
+        InformacionTransaccion it = new InformacionTransaccion(resultado[1], Integer.parseInt(codTransaccion[1]), new ArrayList<Integer>());
+        return it;
     }
     
     

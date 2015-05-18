@@ -5,17 +5,19 @@ package cosw.eci.eatfoodfaster;
  */
 public class Product {
     private String idProducto;
-    private String idFranquicia;
+    private int idSucursal;
+    private String franquicia;
     private String descripcion;
     private double precio;
     private String urlImagen;
 
-    public Product(String idProducto, String idFranquicia,String descripcion, double precio, String urlImagen) {
+    public Product(String idProducto, int idSucursal,String franquicia, String descripcion, double precio, String urlImagen) {
         this.idProducto = idProducto;
-        this.idFranquicia = idFranquicia;
+        this.idSucursal = idSucursal;
+        this.franquicia=franquicia;
+        this.descripcion=descripcion;
         this.precio = precio;
         this.urlImagen = urlImagen;
-        this.descripcion=descripcion;
     }
 
     public String getIdProducto() {
@@ -26,12 +28,12 @@ public class Product {
         this.idProducto = idProducto;
     }
 
-    public String getIdFranquicia() {
-        return idFranquicia;
+    public int getIdSucursal() {
+        return idSucursal;
     }
 
-    public void setIdFranquicia(String idFranquicia) {
-        this.idFranquicia = idFranquicia;
+    public void setIdSucursal(int idSucursal) {
+        this.idSucursal = idSucursal;
     }
 
     public double getPrecio() {
@@ -58,8 +60,12 @@ public class Product {
         this.descripcion = descripcion;
     }
 
-    @Override
-    public String toString() {
-        return this.idProducto;
+    public String getFranquicia() {
+        return franquicia;
     }
+
+    public void setFranquicia(String franquicia) {
+        this.franquicia = franquicia;
+    }
+
 }
