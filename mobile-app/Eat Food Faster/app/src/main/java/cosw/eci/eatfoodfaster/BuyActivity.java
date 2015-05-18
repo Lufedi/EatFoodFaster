@@ -1,5 +1,6 @@
 package cosw.eci.eatfoodfaster;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -22,8 +23,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class BuyActivity extends ActionBarActivity {
+
+    public static ArrayList<Integer> pedidos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +122,22 @@ public class BuyActivity extends ActionBarActivity {
 
             @Override
             protected void onPostExecute(String s) {
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                try{
+                    JSONObject response = new JSONObject(s);
+                    JSONArray list = response.getJSONArray("pedidos");
+                    for (int i=0;i<list.length();i++)pedidos.add(list.getInt(i));
+                    Toast.makeText(getApplicationContext(),response.getString("resultado"),Toast.LENGTH_LONG).show();
+                    if(response.getInt("codTransaccion")!=0){
+                        ShoppingCartActivity.vaciarCarrito();
+                        Toast.makeText(getApplicationContext(),pedidos.toString(),Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(BuyActivity.this, IndexActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         };
         task.execute(json);
