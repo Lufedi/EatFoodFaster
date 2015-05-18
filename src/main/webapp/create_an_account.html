@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="text">
+                            <input type="text" ng-model="cl.detalleCliente.correoCliente">
                         </div>
                     </div>
 
@@ -71,20 +71,10 @@
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="password">
+                            <input type="password" ng-model="cl.detalleCliente.contrasena">
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <p>Confirme su contraseña*</p>
-                        </div>
-
-                        <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="password">
-                        </div>
-                    </div>
-
+                    
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <p><strong>Información General</strong></p>
@@ -95,7 +85,7 @@
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="text">
+                            <input type="text" ng-model="cl.detalleCliente.nombre">
                         </div>
                     </div>
 
@@ -105,7 +95,7 @@
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="text">
+                            <input type="text" ng-model="cl.detalleCliente.apellido">
                         </div>
                     </div>
 
@@ -115,12 +105,12 @@
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            <input type="text">
+                            <input type="text" ng-model="cl.detalleCliente.celular">
                         </div>
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <input class="big" type="submit" value="Registrar">
+                        <input class="big" type="submit" value="Registrar" ng-click="cl.registrar()">
                         <input class="big" type="reset" value="Cancelar">
                     </div>
                 </div>

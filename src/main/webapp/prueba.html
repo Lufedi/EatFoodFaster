@@ -23,7 +23,7 @@
                     	<!-- Heading -->
                     <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2> 
-                                {{seccion}}
+                                {{seleccion}}
                             </h2>                    
                           
                             
@@ -50,6 +50,22 @@
                         
                         
         </div>
+<!-- ---------------------->
+<div class="row"> 
+                        <!-- Product Item -->
+                        <div class="col-lg-4 col-md-4 col-sm-4 product" ng-repeat="sucu in sucursales">
+                            
+                            
+                            <div class="product-info">
+                                <h5><a href="#/consultarSucursales">{{sucu.franquicias.idFranquicia}}</a></h5>
+                                <p>{{sucu.plazoletaComidas.id.idPlazoletaComidas}}</p>
+                                <p>{{sucu.plazoletaComidas.id.ciudad}}</p>
+                            </div>  
+                        </div>
+                        <!-- Product Item -->
+                    </div>
+
+<!-- ---------------------->
         </section>
 				<!-- /Main Content -->
 				
@@ -65,7 +81,7 @@
 							<div class="sidebar-box-content">
 								<ul>
 									<li ng-repeat="plazoleta in plazoletas"  > 
-                                                                          <a href="#/consultarSucursales" data-ng-click="prd.seleccionarPlazoleta(plazoleta)">
+                                                                          <a href="#/consultarSucursales" data-ng-click="suc.plazoletaSeleccionada(plazoleta)">
                                                                             {{plazoleta.id.idPlazoletaComidas}} - {{plazoleta.id.ciudad}} 
                                                                                  <i class="icons icon-right-dir"></i>
                                                                           </a>
@@ -86,7 +102,7 @@
 							<div class="sidebar-box-content">
 								<ul>
 									<li ng-repeat="franquicia in franquicias"  >
-                                                                          <a href="#/consultarSucursales" data-ng-click="prd.seleccionarFranquicia(franquicia)">
+                                                                          <a href="#/consultarSucursales" data-ng-click="suc.franquiciaSeleccionada(franquicia)">
                                                                             {{franquicia.idFranquicia}}
                                                                                  <i class="icons icon-right-dir"></i>
                                                                           </a>

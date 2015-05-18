@@ -33,7 +33,7 @@ app.config(function ($routeProvider) {
                 // rutas fabian end   
                 
                 // rutar Jenni
-                .when('/', {
+                .when('/crearCuenta', {
                     templateUrl: 'create_an_account.html',
                     controllerAs: 'cl',
                     controller:  'controlRegistro'
@@ -264,7 +264,7 @@ app.config(function ($routeProvider) {
     /*---------------------------------------------------------------------*/
     app.controller('controlRegistro',
                 function($scope,$http){
-                    //crear un controlador para login 
+                    //crear un controlador para registro
                     this.detalleCliente={
                      correoCliente:'',
                      contrasena:'',
@@ -272,17 +272,17 @@ app.config(function ($routeProvider) {
                      apellido: '',
                      celular: ''
                     };
-                    
-                    
+
             
                     this.registrar=function(){
                     //accion
-                    $http.post('rest/clientes', this.detalleCliente).
+                    //alert(detalleCliente.correoCliente + detalleCliente.nombre +'holiiii');
+                    $http.post('rest/clientes/', this.detalleCliente).
                     success(function (data, status, headers, config) {
-                        alert('success!');
+                        alert('Registro Exitoso!');
                     }).
                     error(function (data, status, headers, config) {
-                        alert('error!');
+                        alert('error al regisrar!');
                     });
                 };
             });
@@ -291,8 +291,10 @@ app.config(function ($routeProvider) {
     app.controller('SucursalCrtl',
         function($scope , $http , $location){
             
+            $scope.seleccion;
             $scope.plazoletas = [];
             $scope.franquicias = [];
+            $scope.sucursales=[];
             
             this.cargarDatos =  function(){
                 this.cargarFranquicias();
@@ -317,6 +319,28 @@ app.config(function ($routeProvider) {
                   })
                   .error(function (data, status, headers, config) {
                       alert('error  consultado franquicias!') });
+            }
+            
+            this.franquiciaSeleccionada =  function(franquicia){
+                   $scope.seleccion= franquicia.idFranquicia;
+                   $http.get('rest/franquicia/'+ franquicia.idFranquicia)
+                  .success(function (data, status, headers, config) {
+                      $scope.sucursales =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado sucursales por franquicia!') });
+            }
+            
+           this.plazoletaSeleccionada =  function(plazoleta){
+                   $scope.seleccion =  plazoleta.id.idPlazoletaComidas + '-' + 
+                        plazoleta.id.ciudad;
+                
+                   $http.get('rest/plazoleta/'+ plazoleta.id.idPlazoletaComidas)
+                  .success(function (data, status, headers, config) {
+                      $scope.sucursales =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado sucursales por Centro Comercial!') });
             }
         });
 
