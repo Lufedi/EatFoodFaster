@@ -277,7 +277,6 @@ app.config(function ($routeProvider) {
             
                     this.registrar=function(){
                     //accion
-                    //alert(detalleCliente.correoCliente + detalleCliente.nombre +'holiiii');
                     $http.post('rest/clientes/', this.detalleCliente).
                     success(function (data, status, headers, config) {
                         alert('Registro Exitoso!');
