@@ -46,6 +46,7 @@ public class RegisterActivity extends ActionBarActivity {
         job.put("nombre",nom);
         job.put("apellido",ap);
         job.put("celular",cel);
+        LoginActivity.email=cor;
 
         AsyncTask<JSONObject,Integer,String> clienteAsync = new AsyncTask<JSONObject,Integer,String>(){
             @Override
@@ -68,7 +69,11 @@ public class RegisterActivity extends ActionBarActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(reqResponse.length()==0){
+                return reqResponse;
+            }
+            @Override
+            protected void onPostExecute(String s) {
+                if(s.length()==0){
                     Intent in = new Intent(RegisterActivity.this,IndexActivity.class);
                     startActivity(in);
                 }
@@ -77,7 +82,6 @@ public class RegisterActivity extends ActionBarActivity {
                     toast = Toast.makeText(getApplicationContext(), "error al agregar el Cliente", Toast.LENGTH_LONG );
                     toast.show();
                 }
-                return reqResponse.length()==0?"Cliente agregado correctamente":"error al agregar el Cliente";
             }
         };
         clienteAsync.execute(job);
