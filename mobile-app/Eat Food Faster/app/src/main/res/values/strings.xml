@@ -18,4 +18,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_buy">Compra</string>
     <string name="title_section_pedido">Pedidos</string>
+    <string name="title_activity_register">Register</string>
 </resources>
