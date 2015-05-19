@@ -60,7 +60,9 @@
         android:gravity="center"
         android:textSize="20dip"
         android:textColor="#0b84aa"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="86dp"
+        android:layout_below="@+id/buttonLogin"
+        android:layout_alignParentStart="true"
+        android:onClick="registrarse" />
 
 </RelativeLayout>

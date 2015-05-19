@@ -41,7 +41,8 @@
         android:text="Registrar"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="15dip"
-        android:paddingRight="15dip" />
+        android:paddingRight="15dip"
+        android:onClick="crearUsuario" />
 
     <TextView android:id="@+id/link_to_login"
         android:layout_width="fill_parent"
@@ -51,7 +52,8 @@
         android:text="Ya tienes cuenta! Accede!"
         android:gravity="center"
         android:textSize="20dip"
-        android:textColor="#0b84aa"/>
+        android:textColor="#0b84aa"
+        android:onClick="loguearse" />
 
     <TextView android:id="@+id/register_error"
         android:layout_width="fill_parent"

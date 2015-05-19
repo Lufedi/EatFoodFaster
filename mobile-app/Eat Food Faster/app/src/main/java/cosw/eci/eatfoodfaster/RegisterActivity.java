@@ -1,6 +1,7 @@
 package cosw.eci.eatfoodfaster;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -70,5 +71,10 @@ public class RegisterActivity extends ActionBarActivity {
             }
         };
         clienteAsync.execute(job);
+    }
+
+    public void loguearse (View mv){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -26,4 +26,9 @@ public class LoginActivity extends Activity {
         startActivity(i);
         finish();
     }
+
+    public void registrarse (View mv){
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivity(intent);
+    }
 }
