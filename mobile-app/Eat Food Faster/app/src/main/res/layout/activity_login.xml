@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Registrate!"
         android:id="@+id/button"
-        android:onClick="iniciarSesion"
+        android:onClick="registrarse"
         android:background="#ff66ddff"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
