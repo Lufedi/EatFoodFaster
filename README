@@ -46,6 +46,9 @@ https://eatfoodfaster.herokuapp.com/rest/productos/{nombre}
 Verbo : GET
 https://eatfoodfaster.herokuapp.com/rest/productos/{centrocomercial}/{ciudad}/{nombre} 
 
+//Consultar una plazoleta de comida por medio de la geoposicion
+Verbo: GET
+https://eatfoodfaster.herokuapp.com/rest/plazoleta/{gradosLon}/{minutosLon}/{segundosLon}/{orientacionLon}/{gradosLat}/{minutosLat}/{segundosLat}/{orientacionLat}
 
 -Consultar Sucursales
 //Se consultan las sucursales de una franquicia en especifica, por el nombre de la franquicia.
