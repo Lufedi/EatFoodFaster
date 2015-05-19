@@ -40,48 +40,6 @@ public class StoreFragment extends Fragment {
     public static String pc;
     public static ArrayList<String> items=new ArrayList<String>();
 
-    AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
-        @Override
-        protected String doInBackground(Void... params) {
-            StringBuilder builder = new StringBuilder();
-            HttpClient client = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://eatfoodfaster.herokuapp.com/rest/plazoleta/" + StoreFragment.pc + "/");
-            try {
-                HttpResponse response = client.execute(httpGet);
-                StatusLine statusLine = response.getStatusLine();
-                HttpEntity entity = response.getEntity();
-                InputStream content = entity.getContent();
-                BufferedReader reader =
-                        new BufferedReader(new InputStreamReader(content));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    builder.append(line);
-                }
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-                Log.e(PedidoFragment.class.toString(),
-                        "GET request failed" + e.getLocalizedMessage());
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e(PedidoFragment.class.toString(),
-                        "GET request failed"+e.getLocalizedMessage());
-            }
-            return builder.toString();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            try {
-                JSONArray json = new JSONArray(s);
-                for(int i=0;i<json.length();i++){
-                    StoreFragment.items.add(json.getJSONObject(i).getJSONObject("franquicias").getString("idFranquicia"));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -90,17 +48,63 @@ public class StoreFragment extends Fragment {
             jsonObject =  jsonObject.getJSONObject("id");
             StoreFragment.pc = jsonObject.getString("idPlazoletaComidas");
         }catch(JSONException e){
-
+            e.printStackTrace();
         }
+        AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                StringBuilder builder = new StringBuilder();
+                HttpClient client = new DefaultHttpClient();
+                HttpGet httpGet = new HttpGet("https://eatfoodfaster.herokuapp.com/rest/plazoleta/" + StoreFragment.pc + "/");
+                try {
+                    HttpResponse response = client.execute(httpGet);
+                    StatusLine statusLine = response.getStatusLine();
+                    HttpEntity entity = response.getEntity();
+                    InputStream content = entity.getContent();
+                    BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(content));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        builder.append(line);
+                    }
+                } catch (ClientProtocolException e) {
+                    e.printStackTrace();
+                    Log.e(PedidoFragment.class.toString(),
+                            "GET request failed" + e.getLocalizedMessage());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(PedidoFragment.class.toString(),
+                            "GET request failed"+e.getLocalizedMessage());
+                }
+                return builder.toString();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                try {
+                    JSONArray json = new JSONArray(s);
+                    for(int i=0;i<json.length();i++){
+                        if(!StoreFragment.items.contains(json.getJSONObject(i).getJSONObject("franquicias").getString("idFranquicia"))){
+                            StoreFragment.items.add(json.getJSONObject(i).getJSONObject("franquicias").getString("idFranquicia"));
+                        }
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
         task.execute();
+
         View rootView = inflater.inflate(R.layout.store_fragment_layout, container, false);
         ListView listView = (ListView) rootView.findViewById(android.R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.franquicias_row, items);
+        ArrayAdapter<String> adapter = new FranquiciaAdapter(getActivity(), R.layout.franquicias_row, items);
         listView.setAdapter(adapter);
         return rootView;
     }
 }
- class FranquiciaAdapter extends ArrayAdapter<String>{
+
+class FranquiciaAdapter extends ArrayAdapter<String>{
      public FranquiciaAdapter(Context context, int resource, List<String> objects) {
          super(context, resource, objects);
 
@@ -111,7 +115,7 @@ public class StoreFragment extends Fragment {
          View row = convertView;
          LayoutInflater inflater = ((Activity)getContext()).getLayoutInflater();
          row = inflater.inflate(R.layout.franquicias_row, parent, false);
-         ((TextView)row.findViewById(R.id.fran)).append(" "+getItem(position));
+         ((TextView)row.findViewById(R.id.fran)).append(" " + getItem(position));
          return row;
      }
   }
