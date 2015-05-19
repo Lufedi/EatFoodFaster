@@ -1,6 +1,8 @@
 package cosw.eci.eatfoodfaster;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,30 +31,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fercho on 5/7/15.
  */
 public class StoreFragment extends Fragment {
-    String pc=null;
-    ArrayList<String> items = new ArrayList<String>();
-
-    View rootView;
+    public static String pc;
+    public static ArrayList<String> items=new ArrayList<String>();
 
     AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
         @Override
         protected String doInBackground(Void... params) {
-            try {
-                JSONObject jsonObject = new JSONObject(SplashActivity.localizacion);
-                jsonObject = jsonObject.getJSONObject("id");
-                pc = jsonObject.getString("idPlazoletaComidas");
-            } catch (JSONException e) {
-
-            }
-
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://eatfoodfaster.herokuapp.com/rest/plazoleta/" + pc + "/");
+            HttpGet httpGet = new HttpGet("https://eatfoodfaster.herokuapp.com/rest/plazoleta/" + StoreFragment.pc + "/");
             try {
                 HttpResponse response = client.execute(httpGet);
                 StatusLine statusLine = response.getStatusLine();
@@ -70,17 +64,17 @@ public class StoreFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.e(PedidoFragment.class.toString(),
-                        "GET request failed" + e.getLocalizedMessage());
+                        "GET request failed"+e.getLocalizedMessage());
             }
             return builder.toString();
         }
+
         @Override
         protected void onPostExecute(String s) {
-
             try {
                 JSONArray json = new JSONArray(s);
                 for(int i=0;i<json.length();i++){
-                    items.add(json.getJSONObject(i).getJSONObject("franquicias").getString("idFranquicia"));
+                    StoreFragment.items.add(json.getJSONObject(i).getJSONObject("franquicias").getString("idFranquicia"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -91,13 +85,35 @@ public class StoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        task.execute();
-        View rootView = inflater.inflate(R.layout.store_fragment_layout,container, false);
-        ListView listView = (ListView)rootView.findViewById(android.R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,items);
+        try{
+            JSONObject jsonObject =  new JSONObject(SplashActivity.localizacion);
+            jsonObject =  jsonObject.getJSONObject("id");
+            StoreFragment.pc = jsonObject.getString("idPlazoletaComidas");
+        }catch(JSONException e){
 
+        }
+        task.execute();
+        View rootView = inflater.inflate(R.layout.store_fragment_layout, container, false);
+        ListView listView = (ListView) rootView.findViewById(android.R.id.list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.franquicias_row, items);
         listView.setAdapter(adapter);
         return rootView;
     }
-
 }
+ class FranquiciaAdapter extends ArrayAdapter<String>{
+     public FranquiciaAdapter(Context context, int resource, List<String> objects) {
+         super(context, resource, objects);
+
+     }
+
+     @Override
+     public View getView(final int position, View convertView, ViewGroup parent) {
+         View row = convertView;
+         LayoutInflater inflater = ((Activity)getContext()).getLayoutInflater();
+         row = inflater.inflate(R.layout.franquicias_row, parent, false);
+         ((TextView)row.findViewById(R.id.fran)).append(" "+getItem(position));
+         return row;
+     }
+  }
+
+

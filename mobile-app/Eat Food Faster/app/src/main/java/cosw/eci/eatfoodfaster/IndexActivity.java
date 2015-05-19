@@ -56,14 +56,18 @@ public class IndexActivity extends ActionBarActivity
                 objfFragment = new PedidoFragment();
                 break;
             case 3:
-                objfFragment = new StoreFragment();
+                Intent i=new Intent(this,LoginActivity.class);
+                startActivity(i);
+                finish();
                 break;
 
         }
+        if(position<3){
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, objfFragment)
                 .commit();
+        }
     }
 
     public void onSectionAttached(int number) {
