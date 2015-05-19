@@ -1,8 +1,6 @@
 (function () {
     var app = angular.module('eff', ['ngRoute']);
-
-
-
+    
 app.config(function ($routeProvider) {
         $routeProvider
 
@@ -14,9 +12,13 @@ app.config(function ($routeProvider) {
                 })
                 .when('/foodcourts', {
                     templateUrl: 'eff_plazoletas_comidas.html'
-
-                })      
-                //rutas felipe end º
+                })
+                .when('/home' , {
+                    templateUrl: 'eff_home.html',
+                    controller: 'controlHome',
+                    controllerAs:'home'
+                })
+                //rutas felipe end 
                 
                  // rutar fabian
                 .when('/pedidosSinNotificar', {
@@ -43,6 +45,11 @@ app.config(function ($routeProvider) {
                     templateUrl: 'prueba.html',
                     controllerAs: 'suc',
                     controller:  'SucursalCrtl'
+                })
+                .otherwise({
+                    templateUrl:'eff_home.html',
+                    controller: 'controlHome',
+                    controllerAs:'home'
                 });;
                 // rutas jenni end 
                   
@@ -105,7 +112,7 @@ app.config(function ($routeProvider) {
                   })
                   .error(function (data, status, headers, config) {
                       alert('error  consultado productos!') });
-
+                      
             };
             
             this.obtenerDatos =  function(){
@@ -163,6 +170,21 @@ app.config(function ($routeProvider) {
     );
     
 
+    app.controller('controlHome' , 
+            function($scope, $http){
+                $scope.res = [];
+                //var URI = "http://eatfoodfaster.herokuapp.com/";
+                this.buscarProductos = function(){
+                   $http.get('rest/productos/CentroComercialPanama/Bogota/Pollo')
+                  .success(function (data, status, headers, config) {
+                      $scope.res =  data;
+                  })
+                  .error(function (data, status, headers, config) {
+                      alert('error  consultado franquicias!') });
+                }
+                
+                
+    });
     /*---------------------------------------------------------------------*/
     app.controller('controlpedidos',
                 function($scope,$http){
