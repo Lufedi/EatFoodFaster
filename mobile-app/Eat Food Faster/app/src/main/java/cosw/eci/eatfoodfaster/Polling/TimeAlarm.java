@@ -7,6 +7,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
+
+import cosw.eci.eatfoodfaster.BuyActivity;
 import cosw.eci.eatfoodfaster.R;
 
 
@@ -21,8 +23,11 @@ public class TimeAlarm  extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
         System.out.println(" ejecutando la alarma ");
-        LogicaNotificacion ln =  new LogicaNotificacion(context);
-        ln.execute("14");
+        LogicaNotificacion ln ;
+
+        for(int  i = 0 ; i < BuyActivity.pedidos.size() ; i++){
+            (new LogicaNotificacion(context)).execute(BuyActivity.pedidos.get(i)  + "");
+        }
         /*nm = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         CharSequence from = "Nothin";

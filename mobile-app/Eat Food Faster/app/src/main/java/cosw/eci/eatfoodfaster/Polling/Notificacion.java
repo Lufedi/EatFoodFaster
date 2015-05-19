@@ -19,6 +19,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
@@ -126,21 +127,21 @@ class LogicaNotificacion extends AsyncTask<String, Void , String> {
     }
 
     public void pedidoRecibido(String idPedido){
-
+        String URI = "http://eatfoodfaster.herokuapp.com/rest/notificacion/pedido/listo/";
         try {
         //construir un objeto jSON
         JSONObject jso=new JSONObject();
         jso.put("estado",EstadoPedido.RECIBIDOPORCLIENTE);
 
         DefaultHttpClient dhhtpc=new DefaultHttpClient();
-        HttpPost postreq=new HttpPost("https://LAURLDELRECURSO");
+        HttpPut putreq=new HttpPut(URI + idPedido);
 //agregar la versión textual del documento jSON a la petición
         StringEntity se=new StringEntity(jso.toString());
         se.setContentType("application/json;charset=UTF-8");
         se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json;charset=UTF-8"));
-        postreq.setEntity(se);
+            putreq.setEntity(se);
 //ejecutar la petición
-        HttpResponse httpr=dhhtpc.execute(postreq);
+        HttpResponse httpr=dhhtpc.execute(putreq);
 //Para obtener la respuesta:
         String reqResponse= EntityUtils.toString
                 (httpr.getEntity());
@@ -176,7 +177,7 @@ class LogicaNotificacion extends AsyncTask<String, Void , String> {
             alertDialog.show();
             */
 
-            Toast.makeText(context, "Si pedido esta listo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Si pedido esta listo puede pasar a recogerlo a la caja", Toast.LENGTH_LONG).show();
         }
 
 
