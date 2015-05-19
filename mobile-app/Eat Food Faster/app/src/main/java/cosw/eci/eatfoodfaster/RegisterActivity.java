@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -66,6 +67,15 @@ public class RegisterActivity extends ActionBarActivity {
                     reqResponse= EntityUtils.toString(httpr.getEntity());
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                if(reqResponse.length()==0){
+                    Intent in = new Intent(RegisterActivity.this,IndexActivity.class);
+                    startActivity(in);
+                }
+                else{
+                    Toast toast;
+                    toast = Toast.makeText(getApplicationContext(), "error al agregar el Cliente", Toast.LENGTH_LONG );
+                    toast.show();
                 }
                 return reqResponse.length()==0?"Cliente agregado correctamente":"error al agregar el Cliente";
             }
