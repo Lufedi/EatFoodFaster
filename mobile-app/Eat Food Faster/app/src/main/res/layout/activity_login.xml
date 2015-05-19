@@ -53,16 +53,14 @@
         android:layout_below="@+id/editTextPasswd"
         android:layout_centerHorizontal="true" />
 
-    <TextView android:id="@+id/link_to_register"
-        android:layout_width="fill_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="registrate!"
-        android:gravity="center"
-        android:textSize="20dip"
-        android:textColor="#0b84aa"
-        android:layout_marginTop="86dp"
-        android:layout_below="@+id/buttonLogin"
-        android:layout_alignParentStart="true"
-        android:onClick="registrarse" />
+        android:text="Registrate!"
+        android:id="@+id/button"
+        android:onClick="iniciarSesion"
+        android:background="#ff66ddff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
